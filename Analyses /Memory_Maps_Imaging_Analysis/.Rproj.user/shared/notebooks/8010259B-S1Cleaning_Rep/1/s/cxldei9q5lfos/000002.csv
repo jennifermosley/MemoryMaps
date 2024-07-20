@@ -1,0 +1,6 @@
+"0","```r
+arrow::write_parquet(fullLong,\"../Data/longEpMNet.parquet\")
+arrow::write_parquet(fullShort,\"../Data/shortEpMNet.parquet\")
+arrow::write_parquet(fullSimDf,\"../Data/simEpMNet.parquet\")
+save.image(\"/Users/jennifer/Library/CloudStorage/GoogleDrive-jmosl004@ucr.edu/My Drive/SYP/Behavioral Analyses /Replication/S1_Replication/S1_Replication.RData\")
+```"

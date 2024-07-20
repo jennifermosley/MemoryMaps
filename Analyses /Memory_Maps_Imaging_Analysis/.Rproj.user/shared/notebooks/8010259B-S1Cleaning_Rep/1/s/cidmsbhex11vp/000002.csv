@@ -1,0 +1,24 @@
+"0","```r
+DSrevcols = c(\"DS-S_1\", \"DS-S_5\", \"DS-S_6\", \"DS-S_7\", \"DS-S_9\", \"DS-S_14\")
+rawDf[ ,DSrevcols] = 8 - rawDf[ ,DSrevcols]
+ind1 <- grep(\"DS-S_1\", colnames(rawDf))
+ind1<-min(ind1)
+ind2<- grep(\"DS-S_14\", colnames(rawDf))
+ind2<-max(ind2)
+# Compute scores for Need for Cog
+rawDf$DS = rowMeans(rawDf[, ind1:ind2], na.rm = TRUE)
+
+psych::alpha(rawDf[ind1:ind2])
+```"
+"1","Warning: Some items were negatively correlated with the first principal component and probably 
+should be reversed.  
+To do this, run the function again with the 'check.keys=TRUE' option
+"
+"1","Some items ( DS-S_1 DS-S_5 DS-S_6 DS-S_7 DS-S_9 DS-S_14 ) were negatively correlated with the first principal component and 
+probably should be reversed.  
+To do this, run the function again with the 'check.keys=TRUE' option
+Reliability analysis   
+Call: psych::alpha(x = rawDf[ind1:ind2])
+
+ 
+"

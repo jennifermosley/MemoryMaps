@@ -1,0 +1,10 @@
+"0","```r
+is.emptyString <- function(input){
+  if(input==''){
+    output <- TRUE
+  }else{
+    output <- FALSE
+  }
+  return(output)
+}
+```"

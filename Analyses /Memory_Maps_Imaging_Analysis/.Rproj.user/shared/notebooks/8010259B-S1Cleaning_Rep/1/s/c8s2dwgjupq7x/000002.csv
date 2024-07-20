@@ -1,0 +1,16 @@
+"0","```r
+psych::alpha(rawDf[, grep(\"^SAM_1$\", colnames(rawDf)):grep(\"^SAM_19$\", colnames(rawDf))])
+```"
+"1","Warning: Some items were negatively correlated with the first principal component and probably 
+should be reversed.  
+To do this, run the function again with the 'check.keys=TRUE' option
+"
+"1","Some items ( SAM_10 ) were negatively correlated with the first principal component and 
+probably should be reversed.  
+To do this, run the function again with the 'check.keys=TRUE' option
+Reliability analysis   
+Call: psych::alpha(x = rawDf[, grep(\"^SAM_1$\", colnames(rawDf)):grep(\"^SAM_19$\", 
+    colnames(rawDf))])
+
+ 
+"

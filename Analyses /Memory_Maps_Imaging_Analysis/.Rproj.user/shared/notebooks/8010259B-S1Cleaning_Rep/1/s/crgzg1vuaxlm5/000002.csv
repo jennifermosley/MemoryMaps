@@ -1,0 +1,28 @@
+"0","```r
+computeNeighbors <- function(graph, label, variable, type = \"all\"){
+  curNeigh <- neighbors(graph, label, mode = type)
+  curGraph <- induced.subgraph(graph, curNeigh)
+  impInd <- which(!is.na(vertex_attr(curGraph, variable)))
+  impGraph <- induced.subgraph(curGraph, impInd)
+  valuesImp <- vertex_attr(impGraph, variable)
+  neighAve <- mean(as.numeric(valuesImp), na.rm = TRUE)
+  return(neighAve)
+}
+computeNeighbors <- compiler::cmpfun(computeNeighbors)
+
+modularityWT <- function(g){
+  wtc <- cluster_walktrap(g)
+  modularity(g, membership(wtc))
+}
+
+# Compactness/Breadth: Lower values are more compact, shorter distances in network
+Compactness <- function(g) {
+        gra.geo <- distances(g) ## get geodesics
+        gra.rdist <- 1/gra.geo  ## get reciprocal of geodesics
+        diag(gra.rdist) <- NA   ## assign NA to diagonal
+        gra.rdist[gra.rdist == Inf] <- 0 ## replace infinity with 0
+          # Compactness = mean of reciprocal distances
+        comp.igph <- mean(gra.rdist, na.rm=TRUE) 
+        return(comp.igph)
+        }
+```"

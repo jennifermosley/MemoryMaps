@@ -1,0 +1,13 @@
+"0","```r
+# Reverse code Sense of Self Scale items
+SOSS_revcols = c(\"SOSS_4\", \"SOSS_7\", \"SOSS_12\")
+rawDf[ ,SOSS_revcols] = 6 - rawDf[ ,SOSS_revcols]
+psych::alpha(rawDf[, grep(\"^SOSS_1$\", colnames(rawDf)):grep(\"^SOSS_12$\", colnames(rawDf))])
+```"
+"1","
+Reliability analysis   
+Call: psych::alpha(x = rawDf[, grep(\"^SOSS_1$\", colnames(rawDf)):grep(\"^SOSS_12$\", 
+    colnames(rawDf))])
+
+ 
+"

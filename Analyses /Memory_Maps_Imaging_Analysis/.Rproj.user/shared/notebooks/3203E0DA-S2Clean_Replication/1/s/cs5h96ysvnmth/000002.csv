@@ -1,0 +1,8 @@
+"0","```r
+colnames(rawDf) <- gsub(\"_Fund_1$\",\"_Fund\",colnames(rawDf))
+colnames(rawDf) <- gsub(\"_Expect_1$\",\"_Expect\",colnames(rawDf))
+colnames(rawDf) <- gsub(\"_Initiate_1$\",\"_Initiate\",colnames(rawDf))
+colnames(rawDf) <- gsub(\"_Control_1$\",\"_Control\",colnames(rawDf))
+colnames(rawDf) <- gsub(\"_Stability_1$\",\"_Stability\",colnames(rawDf))
+colnames(rawDf) <- gsub(\"_Locus_1$\",\"_Locus\",colnames(rawDf))
+```"
