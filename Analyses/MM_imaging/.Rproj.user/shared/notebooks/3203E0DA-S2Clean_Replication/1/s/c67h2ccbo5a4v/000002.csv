@@ -1,0 +1,26 @@
+"0","```r
+# Reverse code Self-Concept Clarity Scale items
+SCC_revcols = c(\"SCC1\", \"SCC2\", \"SCC3\", \"SCC4\", \"SCC5\", \"SCC7\", 
+                 \"SCC8\", \"SCC9\", \"SCC10\", \"SCC12\")
+rawDf[ ,SCC_revcols] = 6 - rawDf[ ,SCC_revcols]
+ind1 <- grep(\"SCC1\", colnames(rawDf))
+ind1<-min(ind1)
+ind2<- grep(\"SCC12\", colnames(rawDf))
+ind2<-max(ind2)
+# Compute score for Self-Concept Clarity Scale items
+rawDf$SCC = rowMeans(rawDf[,ind1:ind2], na.rm = TRUE)
+
+psych::alpha(rawDf[ind1:ind2])
+```"
+"1","Warning: Some items were negatively correlated with the first principal component and probably 
+should be reversed.  
+To do this, run the function again with the 'check.keys=TRUE' option
+"
+"1","Some items ( SCC6 ) were negatively correlated with the first principal component and 
+probably should be reversed.  
+To do this, run the function again with the 'check.keys=TRUE' option
+Reliability analysis   
+Call: psych::alpha(x = rawDf[ind1:ind2])
+
+ 
+"

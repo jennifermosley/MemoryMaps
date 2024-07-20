@@ -1,0 +1,3 @@
+"0","m <- lmer(scale(positive) ~  scale(outdegree) + scale(indegree) + numID + ( scale(outdegree) + scale(indegree) | subID), data=fullData)"
+"2","Error in scale(positive) : object 'positive' not found
+"

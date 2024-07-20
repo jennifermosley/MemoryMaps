@@ -1,0 +1,22 @@
+"0","```r
+MAIArevcols = c(\"MAIA.1_5\", \"MAIA.1_6\", \"MAIA.1_7\", \"MAIA.1_8\", \"MAIA.1_9\", \"MAIA.1_10\", \"MAIA.1_11\", \"MAIA.1_12\", \"MAIA.1_15\")
+rawDf[, MAIArevcols] = 7 - rawDf[ ,MAIArevcols]
+ind1 <- grep(\"MAIA\", colnames(rawDf))
+ind1 <- min(ind1)
+ind2 <- grep(\"MAIA\", colnames(rawDf))
+ind2 <- max(ind2)
+rawDf$MAIA <- rowMeans(rawDf[, ind1:ind2], na.rm = TRUE)
+psych::alpha(rawDf[,ind1:ind2])
+```"
+"1","Warning: Some items were negatively correlated with the first principal component and probably 
+should be reversed.  
+To do this, run the function again with the 'check.keys=TRUE' option
+"
+"1","Some items ( MAIA.1_5 MAIA.1_6 MAIA.1_7 MAIA.1_8 MAIA.1_9 MAIA.1_10 MAIA.1_11 MAIA.1_12 MAIA.1_15 ) were negatively correlated with the first principal component and 
+probably should be reversed.  
+To do this, run the function again with the 'check.keys=TRUE' option
+Reliability analysis   
+Call: psych::alpha(x = rawDf[, ind1:ind2])
+
+ 
+"

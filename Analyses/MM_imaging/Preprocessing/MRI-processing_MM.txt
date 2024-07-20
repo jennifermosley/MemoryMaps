@@ -1,0 +1,277 @@
+
+####################################################################################################################################################################################
+
+MM MRI Processing Documentation
+
+####################################################################################################################################################################################
+
+- Subject Directory Bidsification with dcm2bids - 
+
+## dcm2bids was installed using conda
+## Make sure dcm2bids is activated through miniconda
+
+conda activate dcm2bids # For dcm2bids
+parallel --version # Check that parallel is working, used for batch bidzation
+
+dcm2bids --help ## verify that dcm2bids is activated
+
+## See how bids structure is detected from dcm2bids for each subject's images
+## In bids directory with source data also available in directory
+## This is useful if you don't already know what the format will be for bidzation/bidsification
+
+dcm2bids_helper -d sourcedata/sub-02/
+
+## Take a look at the structure detected with dcm2bids
+
+ls /home/memoryMaps/neuroimaging/bids/tmp_dcm2bids/helper -l
+
+# Use the following mv command to be able to compare jsons of different subjects
+mv helper /home/jmosley/memoryMaps/neuroimaging/bids/sub-02_helper/
+
+## Investigate the information in the jsons of the resulting helper NifTI files for each subject to determine what information should be included in json file. 
+# Compare jsons side-by-side using the following command
+
+# This is an example that compares between subjects. For a single subject, you'll want to compare within subject before running a config file. This is most relevant when you are not yet sure what your config file will look like. 
+
+diff --side-by-side --suppress-common-lines file1.json file2.json
+diff --side-by-side --suppress-common-lines sub-02_helper/002_sub-02_t1_mprage_20240321140947.json sub-04_helper/014_sub-04_t1_mprage_20240418113928.json # Copy the json file names EXACTLY AS THEY ARE from the subject helper directory
+
+# Note what is different about each pair of jsons you compare and note the differences for anat, bold, and fmap files to account for differences/similarities in these files across subjects in the json config file.  
+
+# Check whether your json file is valid (in the correct format): https://jsonlint.com/
+
+## When your .config file is valid and ready to go, you will run the following command for dcm2bids:
+
+dcm2bids -d sourcedata -p sub-## -c code/config.json -o sub-## --bids_validate
+
+# I ran this:
+
+## pwd = ~/memoryMaps/neuroimaging/subjects
+
+dcm2bids -d sourcedata/sub-04 -p sub-04 -c code/config.json -o sub-04
+
+# Before running in batches, I compared anat, bold, map files between subjects by generating separate helper directories for each compared subject.
+# See configCheck.txt file for relevant workspace/commands.
+
+## Running dcm2bids in BATCH
+dcm2bids in GNU PARALLEL ** Don't forget to cite them!!! **
+
+# Batch will run ALL participants included in the sourcedata directory
+
+# Practice "run" to see what will be run with the command (without --dry-run)
+# Run the following in the subjects directory
+parallel --dry-run --plus dcm2bids -c code/config.json -d {} -p "{/..}" ::: sourcedata/sub-*
+
+# Actually run in parallel with --verbose flag to see output
+parallel --verbose --plus dcm2bids -c code/config.json -d {} -p "{/..}" ::: sourcedata/sub-* 
+
+# You will find anat/fmap/bold directories as output in the subjects directory. These output dirs will need to be consolidated into one directory of ses-01 and renamed to be bids-compatible.
+# Some subjects may have an extra bold run file (run5). This may be a result of more than one bold scan, perhaps due to an acquisition redo in the center. Always check between run4 and run5 to
+# confirm run5 is not a meaningful file (i.e., run5 is not the same as run4 except for differences in SeriesNumber, AcquisitionTime, ImagingFrequency). 
+
+# We are one step closer to fMRIprep and image reconstruction. fMRIprep will need our files to have the correct naming conventions and directory structure in order for the process to work.
+
+1) Create a ses-01 directory in each subject's dcm2bids output directory
+	
+	mkdir ses-01
+
+2) Rename each file in each filetype directory
+
+## Here is an example of correct naming conventions for sub-02:
+
+anat/
+	sub-02_ses-01_T1w.json 
+	sub-02_ses-01_T1w.nii.gz
+fmap/
+	sub-02_ses-01_dir-AP_run-01_epi.json
+	sub-02_ses-01_dir-AP_run-01_epi.nii.gz
+	sub-02_ses-01_dir-AP_run-03_epi.json
+	sub-02_ses-01_dir-AP_run-03_epi.nii.gz
+	sub-02_ses-01_dir-PA_run-02_epi.json
+	sub-02_ses-01_dir-PA_run-02_epi.nii.gz
+	sub-02_ses-01_dir-PA_run-04_epi.json
+	sub-02_ses-01_dir-PA_run-04_epi.nii.gz
+func/
+	sub-02_ses-01_task-recall_run-01_bold.json
+	sub-02_ses-01_task-recall_run-01_bold.nii.gz
+	sub-02_ses-01_task-recall_run-02_bold.json
+	sub-02_ses-01_task-recall_run-02_bold.nii.gz
+	sub-02_ses-01_task-recall_run-03_bold.json
+	sub-02_ses-01_task-recall_run-03_bold.nii.gz
+	sub-02_ses-01_task-speak_run-04_bold.json
+	sub-02_ses-01_task-speak_run-04_bold.nii.gz
+
+# We can manually rename the existing/dcm2bids output in the subjects dir using the mv command
+
+# In each subject's image directory, renaming each .nii.gz and .json file by the conventions above
+
+mv origFile newFile
+
+3) 3x check new file names before running fMRIprep
+
+
+####################################################################################################################################################################################
+
+### Image Preprocessing with fMRIPrep ###
+
+## Install fMRIprep
+
+# Since you're using the CAN HPC, you'll use an image of fMRIprep through Singularity/Docker (this requires Docker being installed on your local/personal system to compute on the HPC).
+
+# Here I was testing different versions to see how distortion correction changes across versions of fmriprep. It a recent version, but not the latest version (23.2.2) is best.
+
+# v23.2.2 fMRIPrep
+# v20.2.7 fMRIPrep
+
+* Build singularity image
+singularity build fmriprep-23.1.4.simg docker://nipreps/fmriprep:23.1.4 (v23.1.4)
+
+### v23.1.4 fMRIPrep - using this one (July 2024) ###
+
+## Set up freesurfer environment for fmriprep processes
+
+export FREESURFER_HOME=/home/jmosley/freesurfer/
+export FSFAST_HOME=/usr/local/freesurfer/fsfast
+export FSF_OUTPUT_FORMAT=nii 
+export SUBJECTS_DIR=/home/jmosley/freesurfer/subjects
+export MNI_DIR=/usr/local/freesurfer/mni
+export BIN_DIR=/usr/local/freesurfer/bin 
+export LIB_DIR=/usr/local/freesurfer/lib
+export FS_LICENSE=/home/jmosley/freesurfer/license.txt
+
+source $FREESURFER_HOME/SetUpFreeSurfer.sh
+
+* In same directory as fmriprep singularity image (.simg)
+# Make sure the subject's directory is bids valid. 1) Check that the tmp_dcm2bids directory is removed from the subjects directory 2) Check that the dm2bids sub-## directory output in the subject directory.
+
+## Batch A fmriprep
+singularity run fmriprep-23.1.4.simg memoryMaps/neuroimaging/subjects/ memoryMaps/neuroimaging/subjects/derivatives participant --participant-label 02 04 05 08 17 19 --omp-nthreads 8 --bold2t1w-init header --bold2t1w-dof 12 --ignore slicetiming --use-syn-sdc
+
+## The process may time out when the screen closes
+## Once re-connected to remote server, use this command to see if a process is still running: 
+
+	ps aux | grep recon-all | grep -v grep
+
+## You can replace grep 'recon-all' with other relevant words like 'fmriprep-23.1.4' or other commands
+
+## Batch A Output
+# Seems to be giving incomplete output. Interesting. Let's try Jake's preprocessing pipeline from the JPSP paper (Mapping the Self) with FSL FEAT
+
+###### Image Processing with FSL FEAT #######
+# More information and tutorials here: https://andysbrainbook.readthedocs.io/en/latest/fMRI_Short_Course/fMRI_04_Preprocessing.html. 
+
+1) Brain Extraction (BET)
+2) Use topup FSL tool to estimate susceptibility-induced distortions from magnetic field inhomogeneities (signal disruptions from cavernous structures in head, like the sinuses and eye sockets) in the EPI images
+3) FEAT
+
+
+# When your subjects are ready, restart the CAN session with a local display in mind (use the -Y flag)
+# Open fsl in your project directory by running:
+
+	fsl
+
+### BET (brain extraction, or skull-stripping) ###
+
+# Set input image to subject's anatomical image
+# The output will autofill with "brain" appended onto the end of the file. This will be your output file. 
+# Use default settings for thresholding and type of BET (0.5 and standard using bet2)
+
+Test on sub-02
+# Got _brain.nii.gz in subject's anatomical directory. Can inspect with fsleyes.
+
+### SDC (Susceptibility-Distortion Correction) with FSL top-up ###
+# More information on top-up: https://andysbrainbook.readthedocs.io/en/latest/TBSS/TBSS_Course/TBSS_04_TopUpEddy.html
+
+	1) Extract volumes of the EPI images in which both AP and PA directions are at a b-value of 0. 
+	
+	# In terminal, in the subject's fmap directory:
+
+	fslroi sub-02_ses-01_dir-AP_run-01_epi.nii.gz AP 0 1
+	fslroi sub-02_ses-01_dir-PA_run-02_epi.nii.gz PA 0 1
+
+	# This will create two new files (AP.nii.gz and PA.nii.gz). We will merge them next. 
+	
+	fslmerge -t AP_PA AP.nii.gz PA.nii.gz
+
+	# They will merge to create "AP_PA.nii.gz". Quality check this with fsleyes and toggle between the two volumnes to see how they combined into a single dataset.
+
+	# Lastly, create a file that indicates the phase-encoding direction (AP or PA) and the read-out time. Enter the numbers below into a file (nano editor) and
+	# and save as: acq_param.txt
+
+	0 1 0 0.0278403
+	0 -1 0 0.0278403
+
+	# TotalReadoutTime should be the same for all EPI images intended for the recall functional runs. TotalReadoutTime WILL be different between 2.2mm EPIs and 2.5mm EPIs. 	# Double-check TotalReadoutTime in the EPI .jsons for each subject. 
+	
+	# First three numbers of each correspond to phase encoding along X, Y, and Z dimensions. A-P direction, 1; P-A direction, -1.
+	# Last column corresponds to read-out time in milliseconds. (Used exact read-out time for each volume separately - exact values from Andy's BB) 
+
+	# Run top-up tool:
+	
+	topup --imain=AP_PA.nii.gz --datain=acq_param.txt --config=b02b0.cnf --out=AP_PA_topup
+
+	# Apply new images to the original phase-encoded data
+	applytopup --imain=sub-02_ses-01_dir-AP_run-01_epi.nii.gz --inindex=1 --datain=acq_param.txt --topup=AP_PA_topup --method=jac --out=AP_Cor
+
+	# To assess quality, load the output file "AP_Cor.nii.gz" and raw "sub-02_ses-01_dir-AP_run-01_epi.nii.gz" file for the subject to compare side-by-side in fsleyes.
+	# AP_Cor.nii.gz will be the distortion-corrected EPI fieldmap to use for registration. 
+
+
+### FEAT fMRI Analysis with FSL ###
+
+# Select 'First-Level Analysis' if not already selected. Select 'Preprocessing' in the 'Analysis' drop down menu.
+
+## Data Tab ##
+# Add 4D inputs that are the 3 bold NiFTI files for each recall run
+# Set the output directory to be recall.feat within the subject's /func directory
+# Leave all other parameters at default
+
+## Pre-Stats Tab ##
+# Motion Correction: MCFLIRT
+# Select B0 unwarping - required when using the BBR cost function for structural registration, see Registration Tab
+	# Select B0 fieldmap images for each run. This will be the merged EPI images/fieldmap (AP_PA.nii.gz ??).
+	# Select B0 fieldmap magnitude images for each run. This will be the distortion-corrected AND brain-extracted EPI image (AP_Cor_brain.nii.gz).
+	# Effective EPI echo spacing = 0.000320003 (** Different for 2.5mm EPIs for speaking run)
+	# EPI TE (Echo Time): 0.058 (** Double-check this in 2.5mm EPI .jsons for speaking run)
+	# Unwarp direction: y
+	# % Signal loss threshold: 10 (default)
+# Slice timing correction: None (default)
+# De-select BET brain extraction
+# Spatial smoothing FWHM: 6
+
+## Registration Tab ##
+
+# Select 'Expanded functional image' and import the subject's distortion-corrected AND brain-extracted fieldmap image: 'AP_Cor_brain.nii.gz'. Do this for each of the three recall runs. 
+	# Make sure 'Normal Search' and 12 DOF are selected
+
+# Select 'Main structural image' (if not already selected) and import the subject's skull-stripped ('_brain') anatomical image. o this for each of the three recall runs.   
+	# Make sure 'Normal Search' and BBR (boundary-based registration) are selected. BBR allows for simultaneous registration and correction of both the fieldmaps and 		structural images. 
+
+# Select 'Standard Space', if not already selected
+	# Make sure the input is set to MNI template in FSL directory (MNI152_T1_2mm_brain.nii.gz)
+	# Set to 'Normal search' and '12 DOF', if not already selected
+	# Select Nonlinear for FNIRT (refining FLIRT registration/normalization) and keep Warp resolution at 10mm. 
+
+# Double-check all of your parameters and then hit Go! Wait a bit for the process to run. Check out the logs in the html report.  
+
+# Check the logs to ensure that the process is complete (it is complete at the end of Preprocessing: Stage 2, if there were no errors/warnings at the end)
+# Check the Summary Registration in the report_reg.html file
+	# The representative functional image is the grayscale underlay. The MNI brain template is the red outline. 
+	# Look for whether the red outline is going over the outline of the functional underlay. Any major issues with overlay (overlay is totally off functional underlay) 		suggests issues with registration. 
+	# Look for whether the internal structures (e.g., ventricles) of the underlay are aligned between the underlay/overlay images
+# Check the Motion Correction Estimates in the report_prestats.html file
+	# Mean Displacement - Check for spikes that are greater than half of the present voxel size (e.g., more than 1mm)
+	# Translation (in mm) - Check for drifts (consistent, gradual changes in signal strength) greater than 2mm
+
+# Pre-Processing Complete!
+
+### Scripting FEAT for Group Analysis ###
+# Use run_FEAT-preproc.sh in subjects directory
+# Be sure to update the subject_IDs within the script before running your desired subjects
+
+
+
+
+
+
+

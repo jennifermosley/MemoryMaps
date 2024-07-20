@@ -1,0 +1,29 @@
+"0","```r
+# #Create a vector containing only the text
+# text <- as.vector(fullLong$memory)
+# # Create a corpus  
+# docs <- Corpus(VectorSource(text))
+# docs <- docs %>%
+#   tm_map(removeNumbers) %>%
+#   tm_map(removePunctuation) %>%
+#   tm_map(stripWhi61976tespace)
+# docs <- tm_map(docs, content_transformer(tolower))
+# docs <- tm_map(docs, removeWords, stopwords(\"english\"))
+# docs <- tm_map(docs, removeWords, c(\"the\",\"and\"))
+# 
+# memory <- fullLong %>%
+#   filter(!(memory %in% stopwords(source = \"snowball\")))
+
+library(vader)
+vo <- vader_df(fullLong$memory)
+fullLong <- cbind(fullLong, vad_pos = vo$pos, vad_neg = vo$neg, vad_comp = vo$compound)
+
+library(stringr)
+fullLong$nwords <- str_count(fullLong$memory, \"\\w+\")
+
+fullShort <- fullLong %>%
+  group_by(subID) %>%
+  summarise(vad_posAg = mean(vad_pos, na.rm=T),
+            vad_negAg = mean(vad_neg, na.rm=T),
+            vad_compAg = mean(vad_comp, na.rm=T)) %>% full_join(fullShort, by = \"subID\")
+```"

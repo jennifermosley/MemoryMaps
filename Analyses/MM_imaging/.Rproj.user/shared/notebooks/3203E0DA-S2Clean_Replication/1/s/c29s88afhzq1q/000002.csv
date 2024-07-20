@@ -1,0 +1,6 @@
+"0","```r
+indDiffs <- rawDf %>% select(subID, CESD, DS, SE, SCC, NFC)
+fullLong$subID <- as.numeric(fullLong$subID)
+#fullLong <- fullLong %>% inner_join(indDiffs, by=\"subID\")
+fullShort <- fullShort %>% inner_join(indDiffs, by=\"subID\")
+```"
