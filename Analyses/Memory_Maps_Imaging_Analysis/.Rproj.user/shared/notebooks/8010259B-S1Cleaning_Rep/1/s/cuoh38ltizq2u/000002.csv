@@ -1,7 +1,0 @@
-"0","```r
-rawDf <- data.table::fread(\"/Users/jennifer/Library/CloudStorage/GoogleDrive-jmosl004@ucr.edu/My Drive/SYP/Behavioral Analyses /Replication/S1_Replication/epmnRaw.csv\")
-rawDf <- as.data.frame(rawDf)
-
-rawDf <- subset(rawDf, id != 47001)
-rawDf <- subset(rawDf, id != 60761)
-```"
