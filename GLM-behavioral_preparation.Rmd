@@ -1,0 +1,57 @@
+---
+title: "bold-GLM_preparation"
+author: "Jennifer Mosley"
+date: "2024-07-18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Install/Intitialize Packages
+
+```{r}
+library(dplyr)
+```
+
+## Import Dataset and Clean/Factorize
+
+```{r}
+data <- read.csv("/Users/jennifer/Library/CloudStorage/GoogleDrive-jmosl004@ucr.edu/My Drive/SYP/Analyses /Memory Maps Imaging Analysis/fullData.csv")
+data <- data[ ,-1]
+data$subID <- as.factor(data$subID)
+```
+
+## Centrality Single-Subject
+
+### Create a centrality dataframe and assess centrality values
+```{r}
+cent <- data[ , c(1,2,4:6)]
+hist(cent$outdegree) # with n=23, most of outdegree values are below 5; heavily skewed
+hist(cent$indegree) # with n=23, most of outdegree values are below 5; heavily skewed
+
+hist(cent$degree)
+```
+
+### Center and scale centrality data
+```{r}
+cent$outdegree_scaled <- as.vector(scale(cent$outdegree))
+hist(cent$outdegree_scaled)
+
+cent$outdegree_scaled <- as.vector(scale(cent$outdegree))
+```
+
+### Let's try log transformation to reduce skew before centering again
+```{r}
+cent$outdegree_log <- log(cent$outdegree)
+
+# Replace Infs to 0s (result of log transforming 0s)
+cent$outdegree_log[is.infinite(cent$outdegree_log)] <- 0
+hist(cent$outdegree_log) # Our distribution is heavuly negatively skewed
+
+# Log transformation work best when positively skewed? 
+```
+
+### Visualize histogram within subjects
+

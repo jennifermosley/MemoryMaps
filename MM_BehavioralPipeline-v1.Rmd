@@ -1,0 +1,1259 @@
+---
+title: "MM_v1"
+author: "Jennifer Mosley"
+date: "2024-05-12"
+output: html_document
+---
+
+```{r eval=FALSE, include=FALSE}
+install.packages("here")
+install.packages("pacman")
+install.packages("tidyverse")
+install.packages("rapport") # for "is.empty" functions
+install.packages("stringr")
+library(tidyverse)
+library(here)
+library(pacman)
+library(rapport)
+library(stringr)
+
+install.packages("igraph")
+library(igraph)
+```
+
+Dataset Processing (Session One) - Including only relevant columns/data
+
+```{r}
+### Session One ###
+# rawDf_1 <- data.table::fread("sample23_S1.csv") # for developing pipeline with first sample
+rawDf_1 <- data.table::fread("MMS1_34.csv")
+rawDf_1 <- as.data.frame(rawDf_1)
+
+# Remove rows irrelevant to memory graph analysis (the first two rows are metadata) 
+rawDf_1 <- rawDf_1[-c(1, 2), ]
+
+# Remove data from participants not included in analysis
+
+# List of valid login IDs
+valid_ids <- c(2,4,5,8,17,19,22,23,24,26,31,34,41,42,43,44,45,46,48,50,59,61,108,
+               75,39,33,82,76,83,88,84,89,79,80)
+
+# Filter the dataframe
+rawDf_1 <- rawDf_1[rawDf_1$loginID %in% valid_ids, ]
+
+# Remove columns irrelevant to memory graph analysis
+procDf_1 <- rawDf_1 %>% 
+  select(-c(1:18),-c(33:128))
+  unlist(procDf_1)
+
+# Make procDf_1 ID numbers set to numeric
+procDf_1[, 1] <- unlist(lapply(procDf_1[, 1],as.numeric))
+
+# memList tree
+# Goal: determine which of the memory nomination stages will populate the subject's memory list
+
+# First, define each nomination phase through their corresponding columns
+
+# Phase 1 - General Life Story Nom
+ls_nom <- procDf_1 %>%
+  select(c(1),(15:38))
+
+# Phase 2 - Life Periods Nom
+lp_nom <- procDf_1 %>%
+  select(c(1),(39:62))
+
+# Phase 3 - memory-to-memory Nom
+m2m_nom <- procDf_1 %>%
+  select(c(1),(63:86))
+
+# Phase 4 - common life events Nom
+cle_nom <- procDf_1 %>%
+  select(c(1),(87:110))
+
+# Create memList vector to populate depending on which cells are empty
+memList <- data.frame(matrix(nrow = (length(procDf_1)), ncol = 25))
+as.data.frame(memList)
+
+colnames(memList) <- c("ID","mem1","mem2","mem3","mem4","mem5","mem6","mem7","mem8","mem9","mem10",
+             "mem11", "mem12", "mem13", "mem14", "mem15", "mem16", "mem17", "mem18",
+             "mem19", "mem20", "mem21", "mem22", "mem23", "mem24")
+
+# Make ID numeric
+memList[, 1] <- lapply(memList[, 1], as.numeric)
+
+# Make memories characters
+memList[, 2:25] <- lapply(memList[, 2:25], as.character)
+
+# Remove NA rows
+memList <- memList[!is.na(memList), ]
+
+```
+
+
+```{r}
+## Loop Outline
+
+# For each subject in the processed dataframe (procDf_1)
+for (i in 1:nrow(procDf_1)) {
+  
+  # !!! - populate the first memList column with subject IDs in Proc_Df1
+  
+  # search for empty cells in subject (index) row of ls_nom
+  
+  # if not empty, set subject row in memList to ls_nom values
+  if (any(procDf_1[i, 15:38] != "")) {
+    memList[i,1:length(ls_nom)] <- ls_nom[i, ] 
+  }
+  
+  # if empty, continue loop
+  # if (any(is.na(ls_nom[i, ])))
+    # search for empty cells in subject (index) row of lp_nom
+    
+    # if not empty, set subject row in memList to lp_nom values
+    if (any(procDf_1[i, 39:62] != "")) {
+      memList[i,1:length(lp_nom)] <- lp_nom[i, ]
+    }
+  
+  # if empty, continue loop
+  #if (any(is.na(lp_nom[i, ])))
+    # search for empty cells in subject (index) row of m2m_nom
+    
+    # if not empty, set subject row in memList to m2m_nom values
+    if (any(procDf_1[i, 63:86] != "")) {
+      memList[i, 1:length(m2m_nom)] <- m2m_nom[i, ]
+    }
+  
+  # if empty, continue loop
+  if (any(is.na(m2m_nom[i, ])))
+    # search for empty cells in subject (index) row of cle_nom
+    
+    # if not empty, set subject row in memList to cle_nom values
+    if (any(procDf_1[i, 87:110] != "")) {
+      memList[i,1:length(cle_nom)] <- cle_nom[i, ] 
+    }
+  
+  # if empty, remove row from procDf_1
+  if (any(is.na(m2m_nom[i, ]))) {
+    procDf_1 <- procDf_1 %>%
+      select(-c(i), )
+  }
+}
+```
+
+```{r include=FALSE}
+# With memories consolidated into one nomination stage in the memList dataframe, 
+# let's consolidate into one memory stage by reducing rows to 24 then importing
+# memories from memList
+
+# Define the range of columns (e.g., from col2 to target_col4)
+start_col <- 39
+end_col <- 110
+
+procDf_1 <- procDf_1[, -c(start_col:end_col)]
+
+# Define the target columns in the procDf_1 where you want to import values
+target_cols <- c("memList_ls_138","memList_ls_139","memList_ls_179","memList_ls_180",
+                "memList_ls_181","memList_ls_182","memList_ls_183","memList_ls_184",
+                "memList_ls_185","memList_ls_186","memList_ls_187","memList_ls_188",
+                "memList_ls_189","memList_ls_190","memList_ls_191","memList_ls_192",
+                "memList_ls_193","memList_ls_194","memList_ls_195","memList_ls_196",
+                "memList_ls_197","memList_ls_198","memList_ls_199","memList_ls_200")
+
+rename_cols <- c("Memory #1","Memory #2","Memory #3","Memory #4",
+                "Memory #5","Memory #6","Memory #7","Memory #8",
+                "Memory #9","Memory #10","Memory #11","Memory #12",
+                "Memory #13","Memory #14","Memory #15","Memory #16",
+                "Memory #17","Memory #18","Memory #19","Memory #20",
+                "Memory #21","Memory #22","Memory #23","Memory #24")
+
+# Assign values from memList to the specified columns in procDf_1 and rename target cols
+for (i in 1:nrow(procDf_1)) {
+  # import memList values to main dataframe
+  procDf_1[, target_cols] <- memList[, 2:25]
+}
+
+# rename column names to be Memory #1 - Memory #24 (to help program relation data processing)
+names(procDf_1)[15:38] <- rename_cols
+
+# new main dataframe (df)
+df <- procDf_1
+unlist(df)
+```
+
+
+```{r}
+# Create a dataframe for the relational-simulation data
+relSim <- df[,c(1,39:2438)]
+sub <- nrow(relSim)
+relInds <- grep("relations_",colnames(relSim)) # what are indices of relation indication
+
+# Define the is.empty function
+is_empty <- function(x) {
+  return(is.na(x) || x == "")
+}
+
+# Define the move_to_front function
+# move_to_front <- function(df, cols_to_move) {
+#   return(df[, c(cols_to_move, setdiff(names(df), cols_to_move))])
+# }
+move_to_front <- function(df, cols_to_move) {
+  all_cols <- seq_along(df)
+  remaining_cols <- setdiff(all_cols, cols_to_move)
+  return(df[, c(cols_to_move)])
+}
+
+# Function to remove columns
+remove_columns <- function(data, cols) {
+  data <- data[, !(names(data) %in% cols)]
+  return(data)
+}
+
+ls_patterns <- c("_ls", "_ls_")
+lp_patterns <- c("_lp", "_lp_")
+m2m_patterns <- c("_m2m", "_m2m_")
+cle_patterns <- c("_cle","_cle_")
+
+# Relations and their simulations per stage
+#lsInds <- grep("_ls",colnames(relSim))
+lsInds <- grep(paste(ls_patterns, collapse = "|"), colnames(relSim), value = FALSE)
+
+#lpInds <- grep("_lp",colnames(relSim))
+lpInds <- grep(paste(lp_patterns, collapse = "|"), colnames(relSim), value = FALSE)
+
+#m2mInds <- grep("_m2m",colnames(relSim))
+m2mInds <- grep(paste(m2m_patterns, collapse = "|"), colnames(relSim), value = FALSE)
+
+#cleInds <- grep("_cle",colnames(relSim))
+cleInds <- grep(paste(cle_patterns, collapse = "|"), colnames(relSim), value = FALSE)
+
+# Initialize a vector to keep track of columns to move
+cols_to_remove <- c()
+
+# Initialize a vector to input modified columns from relSim
+relSim2 <- data.frame()
+```
+
+```{r}
+lsSubs <- data.frame()
+lpSubs <- data.frame()
+m2mSubs <- data.frame()
+cleSubs <- data.frame()
+
+# First, annotate empty columns and send data to stage-wise dataframes
+for (s in 1:nrow(relSim)){
+  mtLs <- all(sapply(relSim[s, lsInds], is_empty)) # Is LS empty? (TRUE is YES)
+  mtLp <- all(sapply(relSim[s, lpInds], is_empty)) # Is LP empty? (TRUE is YES)
+  mtm2m <- all(sapply(relSim[s, m2mInds], is_empty)) # Is m2m empty? (TRUE is YES)
+  mtcle <- all(sapply(relSim[s, cleInds], is_empty)) # Is cle empty? (TRUE is YES)
+  
+  # If any of the conditions are met, mark columns for moving
+  if (mtLs == FALSE) {
+    # Extract the specified columns for the current row
+    ls <- relSim[s, lsInds]
+    # Append the extracted columns to the new dataframe
+    lsSubs <- rbind(lsSubs, ls)
+    print("Added to lsSubs")
+  }
+  
+  if (mtLp == FALSE) {
+    # Extract the specified columns for the current row
+    lp <- relSim[s, lpInds]
+    # Append the extracted columns to the new dataframe
+    lpSubs <- rbind(lpSubs, lp)
+    print("Added to lpSubs")
+  }
+  
+  if (mtm2m == FALSE) {
+    # Extract the specified columns for the current row
+    m2m <- relSim[s, m2mInds]
+    # Append the extracted columns to the new dataframe
+    m2mSubs <- rbind(m2mSubs, m2m)
+    print("Added to m2mSubs")
+  }
+  
+  if (mtcle == FALSE) {
+    # Extract the specified columns for the current row
+    cle <- relSim[s, cleInds]
+    # Append the extracted columns to the new dataframe
+    cleSubs <- rbind(cleSubs, cle)
+    print("Added to cleSubs")
+  }
+}
+
+relSim2 <- bind_rows(relSim2, lsSubs, lpSubs, m2mSubs, cleSubs)
+# relSim2 <- data.frame(relSim$loginID)
+
+# Function to shift non-empty cells to the front
+shift_non_empty_to_front <- function(row) {
+  non_empty <- row[!is.na(row)]
+  empty <- rep(NA, length(row) - length(non_empty))
+  return(c(non_empty, empty))
+}
+
+# Apply the function to each row
+relSim2 <- as.data.frame(t(apply(relSim2, 1, shift_non_empty_to_front)))
+
+# Remove empty columns after col600
+relSim2 <- relSim2[, 1:600]
+
+# Add subject IDs to data
+relSim2 <- relSim2 %>%
+  mutate(loginID = relSim$loginID) %>%
+  select(loginID, everything())
+
+# Rename the columns in relSim2
+```
+
+```{r}
+# More relation and simulation data processing
+
+# In relSim2, every 25 cells are the relation and sim data for each memory.
+
+# How many relation columns are there?
+rel <- length(grep("Memory", relSim2)) # There are 24, 1 for each target memory (nodes), as expected
+relInds <- grep("Memory", relSim2) # Here are the indices of cells that include 
+                                  # "Memory", which would be relation data
+
+# Let's rename the relation indices' columns to be Relations_1 - Relations_24
+# relInds will be the indices we would like to rename in relSim2
+
+# Generate new column names
+newRels <- paste0("Relations_", 1:24)
+
+# Rename the specified columns
+names(relSim2)[relInds] <- newRels
+
+# Let's fix the sim columns now!
+# I think #_sim_# suffices.
+# Using relInds as reference, let's rename each set of 24 columns between relInds
+# as these columns correspond to sim data.
+
+# Function to rename columns in chunks of 24
+rename_columns_in_chunks <- function(df, start_indices, chunk_size = 24) {
+  for (start in start_indices) {
+    new_col_names <- character()
+    # Calculate the end index for the current chunk
+    start <- start+1 # Whatever the relInd is plus 1 to start at the first sim cell
+    end <- (start + (chunk_size-1))
+    # Generate new column names for the current chunk
+    new_col_names <- paste0("_sim_", 1:24)
+    # Rename the columns in the current chunk
+    names(df)[start:end] <- new_col_names
+  }
+  return(df)
+}
+
+# Rename the columns in chunks
+relSim2 <- rename_columns_in_chunks(relSim2, relInds)
+```
+
+
+```{r}
+# More relation and simulation data processing - part 2
+
+# Add same prefix from relations columns to SIM columns
+simInds <- grep("_sim_", names(relSim2)) # Here are the indices whose colNames include "_sim_"
+
+# Step 3: Generate a sequence for every nth index
+firstSim <- seq(1, length(simInds), by = 24)
+
+# Step 4: Extract elements using the generated sequence
+first <- simInds[firstSim]
+
+# Determine the number of chunks
+# num_chunks <- ceiling(ncol(relSim2) / 24)
+
+# for (chunk in 1:24) {
+for (chunk in 1:24) {
+
+  start <- first[chunk]
+  end <- (start+23)
+  
+  # Create new column names for the current chunk
+  new_names <- paste0(chunk,"_sim_",1:24)
+  
+  # Assign the new names to the appropriate columns
+  colnames(relSim2)[start:end] <- new_names
+}
+```
+
+
+```{r}
+# Replace relSim in latest main dataframe
+# Original columns to replace in main dataframe (df)
+start_col <- 39
+end_col <- 2438
+
+# Ensure the range is within the bounds of df1's columns
+if (start_col < 1 || end_col > ncol(df) || start_col > end_col) {
+  stop("Invalid column range specified for df")
+}
+
+# Step 3: Replace the values and column names in df1 with those from df2 within the specified range
+num_cols_to_replace <- end_col - start_col + 1
+
+# If df2 has fewer columns than the range, only replace as many columns as df2 has
+replace_cols <- min(num_cols_to_replace, ncol(relSim2))
+
+# Replace the values in df1
+df[, start_col:(start_col + replace_cols - 1)] <- relSim2[, 2:replace_cols]
+
+# Replace the column names in df1
+colnames(df)[start_col:(start_col + replace_cols - 1)] <- colnames(relSim2)[2:replace_cols]
+
+# Remove extant stage columns (640:2438)
+columns_to_remove <- 640:2438
+df <- df[, -columns_to_remove]
+```
+
+```{r Memory Network Generation}
+uIds <- unique(df$loginID)
+# column names
+idSubs <- df %>%
+  select(contains("Relations_"))
+
+# Subjects to remove based on network
+removeSubs <- c()
+
+# Generate a matrix for each subject and for each memory based on relations to other memories
+for(n in 1:nrow(df)){
+  i <- df$loginID[n]
+  
+  idNames <- memList[memList$ID==i,2:25] %>% as_vector() %>% na.omit()
+  numMems <- sum(!is.na(memList[memList$ID==i,2:25]))
+  
+  # Function to extract numeric part from strings like "Memory #1"
+  extract_numeric <- function(x) {
+    as.numeric(sub("Memory #", "", x))
+  }
+  
+  # subset subject row
+  subDf <- df[df$ID==i,]
+  # generate empty matrix
+  subMat <- matrix(data = 0, nrow = numMems, ncol = numMems)
+  subMatW <- matrix(data = 0, nrow = numMems, ncol = numMems)
+  for(c in 1:numMems){
+    # subset identity "c"
+    j <- idSubs[n,c]
+    # split words by comma
+    selectWord <-strsplit(as.character(idSubs[n,c][[1]]),",") 
+    if(length(selectWord[[1]])==0){
+      next
+    }
+    
+    # which column index are select identities
+    ######rowSub <-which(idNames %in% selectWord[[1]])
+    # populate 1s for select identities in row and column for undirected
+    
+    # subMat[as.numeric(unlist(selectWord)),c] <- 1 # Unweighted matrix
+    subMat[extract_numeric(unlist(selectWord)), c] <- 1  # Set connections to 1 for selected nodes
+    diag(subMat) <- 0 # Set diagonal to 0s if participants nominated any self-connections
+    
+    for (p in unlist(selectWord)) {
+      numeric_p <- extract_numeric(p)
+      
+      if (!is.na(numeric_p)) {  # Only process if numeric_p is a valid numeric value
+        current_weight <- subMatW[numeric_p, c]
+        
+        col_name <- paste0(c, "_sim_", numeric_p)
+        
+        if (col_name %in% colnames(df)) {  # Check if the column exists in rawDf
+          new_value <- as.numeric(df[n, col_name])
+          
+          if (!is.na(current_weight) && !is.na(new_value)) {  # Ensure no NA values are involved
+            if (current_weight == 0) {
+              subMatW[numeric_p, c] <- new_value
+            } else if (current_weight > 0) {
+              subMatW[numeric_p, c] <- mean(c(current_weight, new_value))
+            }
+          } else if (is.na(current_weight)) {
+            subMatW[numeric_p, c] <- new_value  # Assign new_value if current_weight is NA
+          }
+        } else {
+          warning(paste("Column", col_name, "not found in df"))
+        }
+      } else {
+        warning(paste("Value", p, "in selectWord could not be converted to numeric"))
+      }
+    }
+    
+    ## ORIGINAL END
+    # if participant didn't indicate weight, replace with 0
+    subMatW[is.na(subMatW)] <- 0
+    # Flipped direction of fraction so more overlap is closer between identities
+    
+    diag(subMatW) <- 0 # Set diagonal to 0s if participants nominated any self-connections
+  }
+  rownames(subMat) <- idNames
+  colnames(subMat) <- idNames
+  
+  rownames(subMatW) <- idNames
+  colnames(subMatW) <- idNames
+  
+  # convert to graph
+  # subGraph <- graph.adjacency(subMat, mode="directed")
+  # subGraphW <- graph.adjacency(subMatW, weighted = T, mode="directed")
+  
+  subGraph <- graph_from_adjacency_matrix(subMat, mode="directed")
+  subGraphW <- graph_from_adjacency_matrix(subMatW, weighted = T, mode="directed")
+  
+  
+  # coerce to undirected
+  # subGraph.UD.C <- as.undirected(subGraph, mode="collapse")
+  # subGraph.UD.M <- as.undirected(subGraph, mode="mutual")
+  # subGraphW.UD.C <- as.undirected(subGraphW, mode="collapse")
+  # subGraphW.UD.M <- as.undirected(subGraphW, mode="mutual")
+  
+  # label
+  assign(paste0("subIMat.",i),subMat)
+  assign(paste0("subIGraph.",i),subGraph)
+  
+  assign(paste0("subIMatW.",i),subMatW)
+  assign(paste0("subIGraphW.",i),subGraphW)
+  
+  # label undirected
+  # assign(paste0("subGraph.UD.C.",i),subGraph.UD.C)
+  # assign(paste0("subGraph.UD.M.",i),subGraph.UD.M)
+  # assign(paste0("subGraphW.UD.C.",i),subGraphW.UD.C)
+  # assign(paste0("subGraphW.UD.M.",i),subGraphW.UD.M)
+  
+  if(length(E(subGraph))==0 | length(V(subGraph)) < 4 ){
+    removeSubs <- c(removeSubs, i)
+    rm(list = c(paste0("subIGraph.",i)))
+    rm(list = c(paste0("subIGraphW.",i)))
+    rm(list = c(paste0("subIMat.",i)))
+    rm(list = c(paste0("subIMatW.",i)))
+    
+    # rm(list = c(paste0("subGraph.UD.C.",i)))
+    # rm(list = c(paste0("subGraph.UD.M.",i)))
+    # rm(list = c(paste0("subGraphW.UD.C.",i)))
+    # rm(list = c(paste0("subGraphW.UD.M.",i)))
+  }
+}
+```
+
+
+```{r Memory Network Viz Prep, eval=FALSE, include=FALSE}
+
+## MUST RUN THIS CHUNK BEFORE MEMORY NETWORK VIZ CHUNK ##
+
+# Packages for memory network viz
+
+install.packages("RColorBrewer")
+library(RColorBrewer)
+display.brewer.all()
+display.brewer.pal(n = 8, name = 'Greens')
+brewer.pal(n = 8, name = "Greens")
+display.brewer.pal(n = 8, name = 'Greys')
+brewer.pal(n = 8, name = "Greys")
+
+install.packages("png")
+library(png)
+```
+
+
+```{r Memory Network Viz, include=FALSE}
+# Visualize memory networks
+
+# View the resulting graphs
+# subject 43's graph
+plot.igraph(subIGraph.43,
+            edge.arrow.size = 0.25,
+            edge.arrow.width = 0.45,
+            edge.color = '#525252',
+            edge.size = 60,
+            vertex.size = 22,
+            vertex.color = '#A1D99B',
+            vertex.frame.color = '#BDBDBD',
+            vertex.frame.width = 1,
+            vertex.label.font = 1,
+            vertex.label.cex = 1,
+            vertex.label.dist = 0,
+            vertex.label.degree = -pi/4)
+
+subs <- df$loginID
+  
+# plot the loginID# plot the graph for the current subject
+# Change the integre in subIGraph.# to generate the subject of interest
+plot.igraph(subIGraph.5,
+            edge.arrow.size = 0.25,
+            edge.arrow.width = 0.45,
+            edge.color = '#525252',
+            edge.size = 60,
+            vertex.size = 18,
+            vertex.color = '#A1D99B',
+            vertex.frame.color = '#BDBDBD',
+            vertex.frame.width = 1,
+            vertex.label.font = 2,
+            vertex.label.cex = 1,
+            vertex.label.dist = 0,
+            vertex.label.degree = -pi/4)
+
+# Use Tkplot to increase dimensions of image (making sure all labels are visible)
+# Export tkplot output as eps file
+# Open eps file in Inkscape and modify in a subject-friendly way
+
+```
+
+
+```{r Generate Functions for Network Metrics}
+computeNeighbors <- function(graph, label, variable, type = "all"){
+  curNeigh <- neighbors(graph, label, mode = type)
+  curGraph <- induced.subgraph(graph, curNeigh)
+  impInd <- which(!is.na(vertex_attr(curGraph, variable)))
+  impGraph <- induced.subgraph(curGraph, impInd)
+  valuesImp <- vertex_attr(impGraph, variable)
+  neighAve <- mean(as.numeric(valuesImp), na.rm = TRUE)
+  return(neighAve)
+}
+computeNeighbors <- compiler::cmpfun(computeNeighbors)
+
+modularityWT <- function(g){
+  wtc <- cluster_walktrap(g)
+  modularity(g, membership(wtc))
+}
+
+# Compactness/Breadth: Lower values are more compact, shorter distances in network
+Compactness <- function(g) {
+        gra.geo <- distances(g) ## get geodesics
+        gra.rdist <- 1/gra.geo  ## get reciprocal of geodesics
+        diag(gra.rdist) <- NA   ## assign NA to diagonal
+        gra.rdist[gra.rdist == Inf] <- 0 ## replace infinity with 0
+          # Compactness = mean of reciprocal distances
+        comp.igph <- mean(gra.rdist, na.rm=TRUE) 
+        return(comp.igph)
+        }
+```
+
+
+```{r Importing Session Two Data, include=FALSE}
+# Let's get the session two data ready for processing in the same dataframe
+rawDf_2 <- data.table::fread("MMS2_34.csv")
+rawDf_2 <- as.data.frame(rawDf_2)
+
+# Remove columns not needed for analysis
+# Removes metadata columns
+rawDf_2 <- rawDf_2 %>% 
+  select(-c(1:18),-c(262:289))
+unlist(rawDf_2)
+
+# Remove first two rows that are not needed for analysis
+rawDf_2 <- rawDf_2[-c(1, 2), ]  
+
+# Remove all rows that don't correspond to subjects used in memory generation steps
+rawDf_2 <- rawDf_2[rawDf_2$login_id %in% subs, ]
+
+## Create an updated main data frame including only information and subjects needed for analysis ##
+
+# Remove any rows where importance columns are empty - this would assume it is a trash response (unfinished S2 retake entry)
+imInds <- grep("_importance",colnames(rawDf_2))
+
+# Create a logical condition to check for empty cells in the specified columns
+nonempty <- rowSums(rawDf_2[imInds] == "") == 0
+
+# Update data frame with only relevant and complete subjects
+rawDf_2 <- rawDf_2[nonempty, ]
+
+# Create a new main dataframe (df2)
+df2 <- rawDf_2
+
+# Before we remove feedback, let's create a separate df for each subject's feedback
+feedback <- matrix(nrow = nrow(df2))
+feedback <- as.data.frame(feedback)
+
+feedback <- feedback %>%
+  mutate(
+    ID = df2$login_id,
+    comments = df2$comments,
+    confusing = df2$confusing
+  )
+
+feedback <- feedback[, -1] # Remove the first column that is generated in mutate
+
+# Remove feedback question columns from main df
+df2 <- df2 %>% 
+  select(-c(242:243))
+unlist(df2)
+
+# Don't forget to check the length of your resulting dataframe, in case
+# you now have less subjects that you do in your session 1 dataframe. 
+# The lengths of these dfs will need to be equal throughout the rest of pipeline. 
+```
+
+
+```{r Processing S2 Columns and Rating Values}
+# Let's modify columns in our new dataframe to match the naming conventions from session one
+
+# Now that we know 84:107 corresponds to memories 1:24 in the same order, let's remove loginID and memList cols
+df2 <- df2 %>% 
+  select(-c(1:25))
+
+# Let's re-number the reference prefix for each memory
+
+for (i in 84:107) { # For every colname that starts with Qualtrics labels
+  m <- i - 83  # Mapping 84 -> 1, 85 -> 2, ..., 107 -> 24
+  
+  inds <- grep(paste0("^", i, "_"), colnames(df2))
+  
+  # Pattern to replace 
+  pattern <- paste0(i,"_")
+  
+  # Pattern to insert
+  newPattern <- paste0(m,"_")
+  
+  # Create new column names for the current chunk
+  new_names <- gsub(pattern, newPattern, colnames(df2)[inds])
+  
+  # Assign the new names to the appropriate columns
+  colnames(df2)[inds] <- new_names
+}
+
+# Next, let's fix some of the value labels for the session two data
+
+# 1) Importance - needs to be continuous/integers only
+
+# Get Importance indices in df2
+imInds <- grep("_importance",colnames(df2))
+
+# Update the extract numeric function for rating coding
+
+# Function to extract numeric from strings 
+extract_numeric <- function(x) {
+  as.numeric(sub(".*[^0-7](\\d+)$", "\\1", x))
+}
+
+# Update Importance indices
+df2[imInds] <- lapply(df2[imInds], extract_numeric)
+
+# 2) Clear
+
+# Get Clear indices in df2
+clearInds <- grep("_clear",colnames(df2))
+
+# Update Clear indices
+df2[clearInds] <- lapply(df2[clearInds], extract_numeric)
+
+# 3) Easy
+
+# Get Clear indices in df2
+easyInds <- grep("_easy",colnames(df2))
+
+# Update Clear indices
+df2[easyInds] <- lapply(df2[easyInds], extract_numeric)
+
+# 4) Transformativeness_2 --> Change
+
+# Get Change indices in df2
+chanInds <- grep("_transformativeness2",colnames(df2))
+
+# Update Change indices
+df2[chanInds] <- lapply(df2[chanInds], extract_numeric)
+
+# Update Change column names for clarity
+colnames(df2) <- gsub("_transformativeness2$", "_change", colnames(df2))
+
+# Now that we have coding set, let's fix the suffixes of some of these columns
+# We'll need to keep the recency suffixes for date calculation, which is the next chunk
+
+# Update selfother_1
+colnames(df2) <- gsub("_selfother_1$", "_agency", colnames(df2))
+
+# Update transformativeness1_1
+colnames(df2) <- gsub("_transformativeness1_1$", "_transformativeness", colnames(df2))
+```
+
+
+
+
+```{r Recency Data Processing}
+# Let's fix the recency columns for meaningful interpretations of recency
+# Recency asks how long ago the experience/memory happened in years, month, days
+
+# Let's use lubridate for this processing 
+# install.packages("lubridate")
+library(lubridate)
+
+# recency_12 corresponds to YEARS
+# Some data are actual years (2008) and others are number of years (2)
+# We need to standardize this to numbers of years
+
+# Determine year (recency_12) column indices
+yearInds <-grep("_recency_12$",colnames(df2))
+
+# Initialize an empty vector to hold the calculated dates
+dates <- vector("list", length(yearInds))
+
+# Let's get the current year (year of data acquisition: 2024)
+today <- as.numeric(format(Sys.Date(), "%Y"))
+
+# Let's make sure the Recency columns are numeric and not characters
+df2[, yearInds] <- lapply(df2[, yearInds], as.numeric)
+
+# Convert the years_data to number of years ago using dplyr across()
+df2 <- df2 %>%
+  mutate(across(all_of(yearInds), 
+                ~ if_else(!is.na(.) & nchar(as.character(.)) == 4, today - ., .)))
+
+# recency_13 corresponds to MONTHS 
+
+# Determine month (recency_13) column indices
+mthInds <-grep("_recency_13$",colnames(df2))
+
+# Let's make sure the Recency columns are numeric and not characters
+df2[, mthInds] <- lapply(df2[, mthInds], as.numeric)
+
+# recency_14 corresponds to DAYS 
+
+# Determine day (recency_14) column indices
+dayInds <-grep("_recency_14$",colnames(df2))
+
+# Let's make sure the Recency columns are numeric and not characters
+df2[, dayInds] <- lapply(df2[, dayInds], as.numeric)
+
+
+# Let's make another variable that shows recency in days only and insert it next
+# to recency columns
+
+# In order to make recency_sum per memory, let's create a working df
+
+# Convert index arrays to column names
+yearCols <- colnames(df2)[yearInds]
+monthCols <- colnames(df2)[mthInds]
+dayCols <- colnames(df2)[dayInds]
+
+# Extract columns using dplyr and index arrays
+recDf1 <- df2 %>%
+  select(all_of(yearCols))
+
+recDf2 <- df2 %>%
+  select(all_of(monthCols))
+
+recDf3 <- df2 %>%
+  select(all_of(dayCols))
+
+recDf <- cbind(recDf1, recDf2, recDf3)
+
+# New col indices for recDf
+yearCols <- grep("_recency_12$",colnames(recDf))
+monthCols <- grep("_recency_13$",colnames(recDf))
+dayCols <- grep("_recency_14$",colnames(recDf))
+
+yearInds <-grep("_recency_12$",colnames(recDf))
+mthInds <-grep("_recency_13$",colnames(recDf))
+dayInds <-grep("_recency_14$",colnames(recDf))
+
+# Convert years to days
+# Conversion factor
+days_per_year <- 365.25
+
+# Perform the conversion iteratively
+for (col in yearCols) {
+  recDf[[col]] <- recDf[[col]] * days_per_year
+}
+
+# Convert months to days
+# Conversion factor
+days_per_month <- 30.44
+
+# Perform the conversion iteratively
+for (col in monthCols) {
+  recDf[[col]] <- recDf[[col]] * days_per_month
+}
+
+# Sum through year columns 
+# Loop through each set of year, month, and day indices
+for (i in 1:24) {
+  
+  # Patterns for each recency column
+  yearpattern <- sprintf("^%d_recency_12$", i)
+  monthpattern <- sprintf("^%d_recency_13$", i)
+  daypattern <- sprintf("^%d_recency_14$", i)
+  
+  # Find the indices of matching columns using which
+  yearCols <- which(grepl(yearpattern, colnames(recDf)))
+  monthCols <- which(grepl(monthpattern, colnames(recDf)))
+  dayCols <- which(grepl(daypattern, colnames(recDf)))
+  
+  # Combine all year, month, and day columns for the current iteration
+  current_indices <- c(yearCols, monthCols, dayCols)
+  
+  for (r in 1:nrow(recDf)) {
+    # Compute the sum of the columns for the current row and iteration
+    recDf[r, paste0(i, "_recency_sum")] <- sum(recDf[r, current_indices], na.rm = TRUE)
+  }
+}
+
+# New Interpretation of recency_sum columns: More days/less recency - less days/more recency
+# Let's add these sum columns into our main df (df2)
+for (i in 1:24){
+  # Find the position of the columns where to insert the new column
+  afterPattern <- sprintf("^%d_recency_14$", i)
+  beforePattern <- sprintf("^%d_importance$", i+1)
+  
+  insert_after <- which(grepl(afterPattern, colnames(df2)))
+  insert_before <- which(grepl(beforePattern, colnames(df2)))
+  
+  sum_column_name <- paste0(i, "_recency_sum")
+  
+  # Insert the new column in the desired location
+  df2 <- df2 %>%
+    add_column(
+      !!sum_column_name := recDf[[sum_column_name]],
+      .after = colnames(df2)[insert_after]
+    )
+}
+
+```
+
+
+
+```{r}
+# Let's add our newly cleaned main df (cleanDf)
+
+# Remove remaining metadata from S1 df
+df <- df[, -c(731:760)]
+df <- df[, -c(639)]
+
+# Merge S1 df and S2 df
+cleanDf <- cbind(df,df2)
+
+# Not FULLY CLEANED - still need to process individual differences measures
+```
+
+
+```{r}
+# Let's recode our individual differences questionnaires
+
+# Extract ID Q responses into own df
+idDf <- cleanDf[, c(639:729)]
+
+# 1) RSE - need to remove all text and only keep the integer at the end of the string
+rseInds <- grep("RSE", colnames(idDf), value = FALSE)
+length(rseInds) # there are 10 RSE questions
+
+idDf[rseInds] <- lapply(idDf[rseInds], extract_numeric)
+
+# 2) NFC-6 - need to remove all text and only keep the integer at the end of the string
+nfcInds <- grep("NFC-6", colnames(idDf), value = FALSE)
+length(nfcInds) # there are 6 NFC questions
+
+idDf[nfcInds] <- lapply(idDf[nfcInds], extract_numeric)
+
+# 3) SCC - need to remove all text and only keep the integer at the end of the string
+sccInds <- grep("SCC", colnames(idDf), value = FALSE)
+length(sccInds) # there are 12 SCC questions
+
+idDf[sccInds] <- lapply(idDf[sccInds], extract_numeric)
+
+# 4) DS-S - need to re-code choice text to choice values (1 - SD --> 7 - SA)
+# CHECK OUTPUT AFTER RUNNING AGAIN WITH SHS AND OTHER EXTRACT FUNCTIONS USING AS.NUMERIC
+dssInds <- grep("DS-S", colnames(idDf), value = FALSE)
+length(dssInds) # there are 14 DS-S questions
+
+dss <- idDf[dssInds] # Let's create a separate working dataframe for these variables
+dss <- as.data.frame(dss) # Having a dataframe will help us check our function befoe incorporating
+# it into our main idDf (individual differences dataframe)
+
+# Replacement function
+recode <- function(x) {
+  x <- as.character(x)  # Ensure x is a character vector
+  x[x == "Strongly disagree"] <- 1
+  x[x == "Disagree"] <- 2
+  x[x == "Somewhat disagree"] <- 3
+  x[x == "Neither agree nor disagree"] <- 4
+  x[x == "Somehwat agree"] <- 5
+  x[x == "Agree"] <- 6
+  x[x == "Strongly agree"] <- 7
+  return(as.numeric(x))  # Convert to numeric
+}
+
+# Apply the replacement function to each column in the dataframe
+dss <- lapply(dss, recode) # We're grabbing the values from our working dataframe
+idDf[dssInds] <- lapply(dss, recode) # Now we apply our working dataframe into the main dataframe
+
+# 5) CESD - need to remove all text and only keep the integer at the end of the string
+cesdInds <- grep("CESD", colnames(idDf), value = FALSE)
+length(cesdInds) # there are 20 CESD questions
+
+idDf[cesdInds] <- lapply(idDf[cesdInds], extract_numeric)
+
+# 7) RRQ - need to re-code choice text to choice values (double-check coding - any reversed?)
+# CHECK THIS OUTPUT AFTER RUNNING WHOLE CHUNK
+rrqInds <- grep("RRQ", colnames(idDf), value = FALSE)
+length(rrqInds) # there are 24 RRQ questions 
+
+rrq <- idDf[rrqInds] # Create working dataframes like we did for DS-S
+rrq <- as.data.frame(rrq)
+
+# Let's update the recode function to match the RRQ value mapping
+recode <- function(x) {
+  x <- as.character(x)  # Ensure x is a character vector
+  x[x == "Strongly Disagree"] <- 1
+  x[x == "Disagree"] <- 2
+  x[x == "Neutral"] <- 3
+  x[x == "Agree"] <- 4
+  x[x == "Strongly Agree"] <- 5
+  return(as.numeric(x))  # Convert to numeric
+}
+
+# Apply the replacement function to each column in the dataframe
+dss <- lapply(dss, recode) # We're grabbing the values from our working dataframe
+idDf[dssInds] <- lapply(dss, recode) # Now we apply our working dataframe into the main dataframe
+
+# 6) SHS - need to remove all text and only keep the integer at the BEGINNING of the string
+shsInds <- grep("SHS", colnames(idDf), value = FALSE)
+length(shsInds) # there are 4 SHS questions
+
+# Function to extract numeric values from strings in SHS columns ('1 - not at all')
+extract_numeric_shs <- function(x) {
+  # Ensure x is an atomic vector
+  x <- as.character(x)
+  # Extract numeric values from strings
+  numeric_values <- as.numeric(str_extract(x, "\\d+"))
+  return(numeric_values)
+}
+
+# Update the dataframe using mutate_all
+idDf <- idDf %>% mutate_all(~as.numeric(str_extract(as.character(.), "\\d+")))
+
+# Applying the function
+strings <-  idDf[, shsInds]
+numeric_values <- lapply(strings, extract_numeric_shs)
+
+# Convert the list back to a data frame
+numeric_values_df <- as.data.frame(numeric_values)
+
+print(numeric_values_df)
+
+# Updating the dataframe with the numeric values
+idDf[, shsInds] <- numeric_values_df
+print(numeric_values)
+
+idDf[shsInds] <- lapply(idDf[shsInds], extract_numeric_shs)
+
+```
+
+
+```{r}
+# Let's combine our idDf into the clean dataframe where the original data is located
+cleanDf[,639:729] <- idDf
+```
+
+
+```{r}
+
+uIds <- unique(cleanDf$loginID) # what are the subjects we are processing from sess one?
+
+fullLong <- matrix(ncol=43)
+fullShort <- matrix(ncol=46)
+
+# colnames(df2)[which(colnames(df2)=="M1_IM"):(which(colnames(df2)=="M1_IM")+28)]
+# varnames <- c("IM", "IO", "Pos", "Neg", "Joy", "Cheer", "Happy", "Lively", "Proud", "Miserable", "Mad", "Afraid", "Scared", "Sad", "PANAS_P", "PANAS_N", "Clear", "Rep", "Funda", "Change", 
+# "Distinct", "Certain", "Often", "Breadth", "Self", "Other", "T.Y", 
+# "T.M", "T.D")
+
+  # uIds <- get(paste0("T",i,"s"))
+  # raw <- get(paste0("T",i,"raw"))
+
+for(j in 1:length(uIds)){
+  subID <- uIds[j]
+  subNetUW <- get(paste0("subIGraph.",subID))
+  subNetW <- get(paste0("subIGraphW.",subID))
+  numMems <- sum(!is.na(memList[memList$ID==subID,2:25]))
+  
+  tsubNetW <- graph_from_adjacency_matrix(t(as.matrix(as_adjacency_matrix(subNetW))))
+  tsubNetUW <- graph_from_adjacency_matrix(t(as.matrix(as_adjacency_matrix(subNetUW))))
+  
+  subNet.UD.C <- as.undirected(subNetUW, mode="collapse")
+  subNet.UD.M <- as.undirected(subNetUW, mode="mutual")
+  subNetW.UD.C <- as.undirected(subNetW, mode="collapse")
+  subNetW.UD.M <- as.undirected(subNetW, mode="mutual")
+  
+  #lapply(colnames(rawDf)[which(colnames(rawDf)=="M1_IM"):(which(colnames(rawDf)=="M1_IM")+26)], function(x) as.numeric(rawDf[rawDf$subID==subID, x]))
+  # c("M1_IM", "M1_IO", "M1_Val_1", "M1_Val_2", "M1_PANAS_1", "M1_PANAS_2", 
+  # "M1_PANAS_3", "M1_PANAS_4", "M1_PANAS_5", "M1_PANAS_6", "M1_PANAS_7", 
+  # "M1_PANAS_8", "M1_PANAS_9", "M1_PANAS_10", "M1_Clear", "M1_Rep", 
+  # "M1_Fund", "M1_Chan", "M1_Dist", "M1_Cert", "M1_Often", "M1_Breadth", 
+  # "M1_SO_1", "M1_SO_2", "M1_Length_12", "M1_Length_13", "M1_Length_14", 
+  # "M1_Qual", "M1_Why")
+  
+  variables <- c("importance", "clear", "easy", "agency", "transformativeness", "change", "recency_12", 
+                  "recency_13", "recency_14", "recency_sum")
+  for(v in variables){
+    aVar <- as.numeric(cleanDf[cleanDf$loginID==subID, paste0(1:numMems,"_",v)])
+    assign(v,aVar)
+  }
+  
+  
+  V(subNetUW)$importance <- importance
+  V(subNetUW)$clear <- clear
+  V(subNetUW)$easy <- easy
+  V(subNetUW)$agency <- agency
+  V(subNetUW)$transformativeness <- transformativeness
+  V(subNetUW)$change <- change
+  V(subNetUW)$recency_12 <- recency_12
+  V(subNetUW)$recency_13 <- recency_13
+  V(subNetUW)$recency_14 <- recency_14
+  V(subNetUW)$recency_sum <- recency_sum
+
+  
+  V(subNetW)$importance <- importance
+  V(subNetW)$clear <- clear
+  V(subNetW)$easy <- easy
+  V(subNetW)$agency <- agency
+  V(subNetW)$transformativeness <- transformativeness
+  V(subNetW)$change <- change
+  V(subNetW)$recency_12 <- recency_12
+  V(subNetW)$recency_13 <- recency_13
+  V(subNetW)$recency_14 <- recency_14
+  V(subNetW)$recency_sum <- recency_sum
+
+  
+  subLong <- 
+    cbind(subID,
+          as_vector(memList[memList$ID==subID,2:(numMems+1)]),
+          seq(1,numMems),
+          degree(subNetUW),
+          degree(subNetUW,mode="out"),
+          degree(subNetUW,mode="in"),
+          strength(subNetW),
+          strength(subNetW, mode="out"),
+          strength(subNetW, mode="in"),
+          eigen_centrality(subNetUW)$vector,
+          eigen_centrality(subNetW)$vector,
+          hub_score(subNetUW)$vector,
+          hub_score(subNetW)$vector,
+          page_rank(subNetUW)$vector,
+          page_rank(subNetW)$vector,
+          page_rank(tsubNetUW)$vector,
+          page_rank(tsubNetW)$vector,
+          authority_score(subNetUW)$vector,
+          authority_score(subNetW)$vector,
+          degree(subNet.UD.C),
+          degree(subNet.UD.M),
+          strength(subNetW.UD.C),
+          strength(subNetW.UD.M),
+          importance, 
+          clear,
+          easy,
+          agency,
+          transformativeness,
+          change,
+          recency_12,
+          recency_13,
+          recency_14,
+          recency_sum
+    )
+  
+  for(v in variables){
+    aVar <- unlist(lapply(1:numMems, function(x) computeNeighbors(subNetUW, x, v, "all"))) 
+    assign(paste0(v,"_neighs"),aVar)
+  }
+  
+  subLong <- cbind(subLong,
+          importance_neighs, 
+          clear_neighs,
+          easy_neighs,
+          agency_neighs,
+          transformativeness_neighs,
+          change_neighs,
+          recency_12_neighs,
+          recency_13_neighs,
+          recency_14_neighs,
+          recency_sum_neighs
+                   
+  )
+  
+  # identity to identity network total edges
+  idEdgT <- ecount(subNetUW)
+  # density
+  density <- edge_density(subNetUW)
+  # average distance
+  aveDist <- mean_distance(subNetUW)
+  # clustering coefficient
+  idTrans <- transitivity(subNetUW, "global")
+  # small worldness
+  # global efficiency
+  globEff <- brainGraph::efficiency(subNetUW, type = "global")
+  # Mean strength
+  meanStre <- mean(strength(subNetW))
+  # Sum strength
+  sumStre <- sum(strength(subNetW))
+  # Similarity mean
+  idSimGlob <- (similarity(subNetW, method = "dice"))%>% .[lower.tri(.)] %>% mean()
+  # Reciprocity
+  recip <- reciprocity(subNetW)
+  # Diameter
+  diam <- diameter(subNetW)
+  # Average Path Length (Unweighted)
+  apl <- average.path.length(subNetUW)
+  # Average Path Length (weighted)
+  aplW <- average.path.length(subNetW)
+  # Modularity (Unweighted)
+  modular <- modularityWT(subNetUW)
+  # Modularity (Weighted)
+  modularW <- modularityWT(subNetW)
+  # Compactness (Unweighted)
+  compact <- Compactness(subNetUW)
+  # Compactness (Weighted)
+  compactW <- Compactness(subNetW)
+  # Cohesion (Unweighted)
+  cohes <- cohesion(subNetUW)
+  # Cohesion (Weighted)
+  cohesW <- cohesion(subNetW)
+  # Centralization
+  centrDeg <- centr_degree((subNetUW))$centralization 
+  centrBet <- centr_betw((subNetUW))$centralization
+  centrClo <- centr_clo((subNetUW))$centralization
+  centrEig <- centr_eigen((subNetUW))$centralization
+  # Centralization (Weighted)
+  centrDegW <- centr_degree((subNetW))$centralization 
+  centrBetW <- centr_betw((subNetW))$centralization
+  centrCloW <- centr_clo((subNetW))$centralization
+  centrEigW <- centr_eigen((subNetW))$centralization
+  # Dominance/Variability
+  sdDeg <- sd(degree(subNetUW))      
+  sdBet <- sd(betweenness(subNetUW))
+  sdClo <- sd(closeness(subNetUW))
+  sdEig <- sd(evcent(subNetUW)$vector)
+  # Dominance/Variability (Weighted)
+  sdDegW <- sd(degree(subNetW))      
+  sdBetW <- sd(betweenness(subNetW))
+  sdCloW <- sd(closeness(subNetW))
+  sdEigW <- sd(evcent(subNetW)$vector)
+  
+  # assortativity identification
+  homophs <- unlist(
+    lapply(variables, function(x) assortativity(subNetUW, as.numeric(
+      vertex_attr(subNetUW, x) +
+        rnorm(1, 0, .00001), 
+      directed=T
+    )))
+  )
+  names(homophs) <- paste0(variables,"_homoph")
+  
+  subShort <- c(subID,idEdgT,density,aveDist,idTrans,globEff, numMems, meanStre, sumStre, idSimGlob, recip, diam, apl, aplW, modular, modularW, compact, compactW, cohes, cohesW, centrDeg, centrBet, centrClo, centrEig, centrDegW, centrBetW, centrCloW, centrEigW, sdDeg, sdBet, sdClo, sdEig,  sdDegW, sdBetW, sdCloW, sdEigW, homophs)
+  
+  fullLong <- rbind(fullLong, subLong)
+  fullShort <- rbind(fullShort, subShort)
+}
+
+fullLong <- as.data.frame(fullLong)
+begNames <- c("subID","memory","memCode","degree", "outdegree", "indegree", "strength","strengthOut","strengthIn","eigen","eigenW","hub","hubW","page","pageW","pageOut","pageOutW","auth","authW","UD.C.Deg","UD.M.Deg","UD.C.Streng","UD.M.Streng")
+colnames(fullLong)[1:length(begNames)] <- begNames
+
+fullLong[4:ncol(fullLong)] <- apply(fullLong[4:ncol(fullLong)], 2, as.numeric)
+
+begNames <- c("subID","edgeTot","dense","aveDist","idTrans","globEff","numID",
+              "meanStre","sumStre","idSimGlob","recip","diam","apl","aplW",
+              "modular","modularW","compact","compactW","cohes","cohesW","centrDeg",
+              "centrBet","centrClo","centEig","centrDegW","centrBetW","centrCloW",
+              "centrEigW","sdDeg","sdBet","sdClo","sdEig","sdDegW","sdBetW","sdCloW","sdEigW",
+              paste0(variables,"_Homoph"))
+colnames(fullShort)[1:length(begNames)] <- begNames
+fullShort <- as.data.frame(fullShort)
+
+# Use this to export final datasets
+# write.csv(fullLong,"~/Downloads/fullLong.csv", row.names = FALSE)
+# write.csv(fullShort,"~/Downloads/fullShort.csv", row.names = FALSE)
+```
