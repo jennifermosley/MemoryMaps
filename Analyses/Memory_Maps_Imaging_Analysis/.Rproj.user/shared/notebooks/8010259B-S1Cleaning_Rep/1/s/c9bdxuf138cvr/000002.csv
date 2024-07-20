@@ -1,0 +1,17 @@
+"0","```r
+CESDrevcols = c(\"CESD4\", \"CESD8\", \"CESD12\", \"CESD16\", \"DS-S_9\", \"DS-S_14\")
+rawDf[ ,CESDrevcols] = 5 - rawDf[ ,CESDrevcols]
+ind1 <- grep(\"CESD1\", colnames(rawDf))
+ind1<-min(ind1)
+ind2<- grep(\"CESD20\", colnames(rawDf))
+ind2<-max(ind2)
+# Compute scores for Need for Cog
+rawDf$CESD = rowMeans(rawDf[, ind1:ind2], na.rm = TRUE)
+psych::alpha(rawDf[ind1:ind2])
+```"
+"1","
+Reliability analysis   
+Call: psych::alpha(x = rawDf[ind1:ind2])
+
+ 
+"

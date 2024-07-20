@@ -1,0 +1,2 @@
+"0","cent$outdegree_scaled <- as.vector(scale(cent$outdegree))"
+"0","hist(cent$outdegree_scaled)"

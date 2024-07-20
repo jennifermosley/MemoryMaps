@@ -1,0 +1,54 @@
+"0","```r
+uIds <- unique(rawDf$subID)
+
+#fullSimDf <- matrix(ncol=6, nrow=8*length(uIds))
+fullSimDf <- data.frame()
+
+    dvars <- c(\"IM\", \"positive\", \"negative\", \"Clear\", \"Easy\", \"Rep\", \"Fund\", \"Chan\", \"Know\", \"Taught\", \"Expect\", \"Breadth\", \"Initiate\", \"Locus\", \"Control\", \"Stability\")
+
+for(i in uIds){
+    #subDf <- rawFirst[rawFirst$id==i,]
+    subDf <- fullLong[fullLong$subID==i,]
+  
+    # mem graph
+    curGraph <- get(paste0(\"subIGraph.\",i))
+    
+    # weighted mem graph
+    curGraphW <- get(paste0(\"subIGraphW.\",i))
+    
+    sim=similarity.dice(curGraph)
+    simVect=sim[lower.tri(sim)==T]
+    # if(length(simVect)<28){
+    #   break
+    # }
+    
+    simW=similarity.dice(curGraphW)
+    simWVect=sim[lower.tri(simW)==T]
+    # if(length(simVectIT)<28){
+    #   break
+    # }
+    
+    dmat <- matrix(ncol=length(dvars),nrow=length(simVect))
+    iter <- 1
+    for(d in 1:length(dvars) ){
+    Vect <- as.vector(dist(subDf[dvars[d]]))
+    dmat[,d] <- Vect
+    iter <- iter + 1
+    # if(length(posVect)<28){
+    #   break
+    # }
+    }
+
+    
+    curSimDf <- cbind(subID = rep(i,length(simVect)), Sim = simVect, dmat)
+    
+    
+    # if(any(apply(curSimDf, 2, length)!=28)){
+    #   break
+    # }
+    
+    fullSimDf <- rbind(fullSimDf, curSimDf)
+    
+}
+colnames(fullSimDf) <- c(\"subID\", \"Sim\", dvars)
+```"

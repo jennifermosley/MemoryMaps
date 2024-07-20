@@ -1,0 +1,21 @@
+"0","```r
+convertLength <- function(Year, Month, Day){
+  Y <- (Year * 365) # Year to days
+  M <- (Month * 30.5) # Months to days
+  if(is.na(Y)){
+    Y<-0
+  }
+  if(is.na(M)){
+    M<-0
+  }
+  if(is.na(Day)){
+    Day<-0
+  }
+  Y + M + Day
+}
+
+for(i in 1:nrow(fullLong)){
+  fullLong$length[i] <- convertLength(fullLong$Length_12[i], fullLong$Length_13[i], fullLong$Length_14[i])
+}
+fullLong$length[fullLong$length > (365*65)] <- NA # Remove outliers
+```"

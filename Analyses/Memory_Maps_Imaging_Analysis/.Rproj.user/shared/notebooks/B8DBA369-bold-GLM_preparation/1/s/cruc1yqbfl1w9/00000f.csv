@@ -1,0 +1,2 @@
+"0","cent <- data[ , c(1,2,4:6)]"
+"0","hist(cent$outdegree) # with n=23, most of outdegree values are below 5; heavily skewed"

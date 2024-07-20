@@ -1,0 +1,92 @@
+{
+    "descriptions": [
+        {
+            "datatype": "anat",
+            "suffix": "T1w",
+            "criteria": {
+                "SeriesDescription": "*t1_mprage*",
+                "ImagingFrequency": "123.*",
+                "ReceiveCoilName": {"one":[
+                    "Head_32",
+                    "Spine_32"
+                ]}
+            }
+        },
+        {
+            "datatype": "fmap",
+            "suffix": "epi",
+            "criteria": {
+                "SeriesDescription": "*SE_EPI_2.2mm_AP*",
+                "ImagingFrequency": "123.*"
+            }
+        },
+        {
+            "datatype": "fmap",
+            "suffix": "epi",
+            "criteria": {
+                "SeriesDescription": "*SE_EPI_2.2mm_PA*",
+                "ImagingFrequency": "123.*"
+            }
+        },
+        {
+            "datatype": "func",
+            "suffix": "bold",
+            "criteria": {
+                "SeriesDescription": "*fMRI_experiment_run1_2.2mm_TR1.0*",
+                "ImagingFrequency": "123.*"
+            },
+            "sidecar_changes": {
+                "TaskName": "recall"
+            }
+        },
+        {
+            "datatype": "func",
+            "suffix": "bold",
+            "criteria": {
+                "SeriesDescription": "*fMRI_experiment_run2_2.2mm_TR1.0*",
+                "ImagingFrequency": "123.*"
+            },
+            "sidecar_changes": {
+                "TaskName": "recall"
+            }
+        },
+        {
+            "datatype": "func",
+            "suffix": "bold",
+            "criteria": {
+                "SeriesDescription": "*fMRI_experiment_run3_2.2mm_TR1.0*",
+                "ImagingFrequency": "123.*"
+            },
+            "sidecar_changes": {
+                "TaskName": "recall"
+            }
+        },
+        {
+            "datatype": "fmap",
+            "suffix": "epi",
+            "criteria": {
+                "SeriesDescription": "*SE_EPI_2.5mm_AP*",
+                "ImagingFrequency": "123.*"
+            }
+        },
+        {
+            "datatype": "fmap",
+            "suffix": "epi",
+            "criteria": {
+                "SeriesDescription": "*SE_EPI_2.5mm_PA*",
+                "ImagingFrequency": "123.*"
+            }
+        },
+        {
+            "datatype": "func",
+            "suffix": "bold",
+            "criteria": {
+                "SeriesDescription": "*fMRI_long_run1_2.5mm_TR1.5*",
+                "ImagingFrequency": "123.*"
+            },
+            "sidecar_changes": {
+                "TaskName": "speak"
+            }
+        }
+    ]
+}
