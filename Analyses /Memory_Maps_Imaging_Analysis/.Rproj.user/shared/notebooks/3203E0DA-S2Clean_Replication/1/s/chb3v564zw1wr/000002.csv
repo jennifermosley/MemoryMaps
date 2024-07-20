@@ -1,9 +1,0 @@
-"0","```r
-```r
-arrow::write_parquet(fullLong, here(\RepData/longEpMNet2.parquet\))
-arrow::write_parquet(fullShort,here(\RepData/shortEpMNet2.parquet\))
-arrow::write_parquet(fullSimDf, here(\RepData/simEpMNet2.parquet\))
-arrow::write_parquet(rankDf, here(\RepData/rankings2.parquet\))
-dir.create(\/Users/jennifer/Library/CloudStorage/GoogleDrive-jmosl004@ucr.edu/My Drive/SYP/Behavioral Analyses /Replication\)
-```
-```"
