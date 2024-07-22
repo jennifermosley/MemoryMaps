@@ -1,5 +1,0 @@
-"0","cent$outdegree_log <- log(cent$outdegree)"
-"0",""
-"0","# Replace Infs to 0s (result of log transforming 0s)"
-"0","cent$outdegree_log[is.infinite(cent$outdegree_log)] <- 0"
-"0","hist(cent$outdegree_log) # Our distribution is heavuly negatively skewed"
