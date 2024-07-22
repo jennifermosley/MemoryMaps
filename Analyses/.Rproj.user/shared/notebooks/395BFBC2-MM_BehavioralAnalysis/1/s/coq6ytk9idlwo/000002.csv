@@ -1,0 +1,47 @@
+"0","```r
+#library(groundhog)
+
+pkgs <-  c(\"tidyverse\",\"here\", \"lmerTest\", \"sjPlot\",\"broom.mixed\", \"kableExtra\", \"ggeffects\", \"gt\", \"brms\", \"bayestestR\",\"ggdist\", \"pheatmap\", \"heatmaply\",\"pheatmap\",\"gplots\",\"RColorBrewer\", \"tm\", \"wordcloud\", \"psych\", \"wesanderson\",\"patchwork\", \"broom.mixed\", \"dplyr\", \"gtsummary\")
+
+pacman::p_load(\"tidyverse\",\"here\", \"lmerTest\", \"sjPlot\",\"broom.mixed\", \"kableExtra\", \"ggeffects\", \"gt\", \"brms\", \"bayestestR\",\"ggdist\", \"pheatmap\", \"heatmaply\",\"pheatmap\",\"gplots\",\"RColorBrewer\", \"tm\", \"wordcloud\", \"psych\", \"wesanderson\",\"patchwork\", \"broom.mixed\", \"dplyr\", \"gtsummary\",\"ordinal\",\"r2glmm\")
+
+update.packages(pkgs)
+
+library(lmerTest)
+library(dplyr)
+
+# Useful resources Jake imported from S2 analysis
+devtools::source_url(\"https://raw.githubusercontent.com/JacobElder/MiscellaneousR/master/corToOne.R\")
+```"
+"1","ℹ SHA-1 hash of file is \"07e3c11d2838efe15b1a6baf5ba2694da3f28cb1\"
+"
+"0","```r
+devtools::source_url(\"https://raw.githubusercontent.com/JacobElder/MiscellaneousR/master/plotCommAxes.R\")
+```"
+"1","ℹ SHA-1 hash of file is \"374a4de7fec345d21628a52c0ed0e4f2c389df8e\"
+"
+"0","```r
+devtools::source_url(\"https://raw.githubusercontent.com/JacobElder/MiscellaneousR/master/named.effects.ref.R\")
+```"
+"1","ℹ SHA-1 hash of file is \"611f7a9f62fa079ff4018b7aaef881791942546d\"
+"
+"0","```r
+# Import fullLong includes memories for each subject
+fullLong <- read.csv(\"fullLong.csv\")
+fullLong <- fullLong[-1, ]
+
+# Import fullShort - doesn't include memories for each subject
+fullShort <- read.csv(\"fullShort.csv\")
+fullShort <- fullShort[-1, ]
+# rankData <- arrow::read_parquet(here(\"RepData/rankings2.parquet\"))
+
+# Join fullLong and fullShort
+fullData <- fullLong %>% full_join(fullShort, by = c(\"subID\"))
+fullData$subID <- as.factor(fullData$subID)
+
+# Download fullData file for separate analysis (onset file creation)
+write.csv(fullData,\"fullData.csv\")
+
+# pal1 <-n colorRampPalette(brewer.pal(11,\"BrBG\"))(227)
+pal <- colorRampPalette(wes_palette(\"Zissou1\", 5))(length(unique(fullLong$subID)))
+```"

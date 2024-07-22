@@ -1,0 +1,2 @@
+"0","# Create dataframe including only the data for the current subject"
+"0","currentSubj <- subset(cent, subID == 4)"

@@ -1,0 +1,5 @@
+"0","```r
+m<-lmer( scale(vad_pos) ~  scale(outdegree) + scale(indegree) + numID + ( scale(outdegree) + scale(indegree) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+r2beta(m)
+```"

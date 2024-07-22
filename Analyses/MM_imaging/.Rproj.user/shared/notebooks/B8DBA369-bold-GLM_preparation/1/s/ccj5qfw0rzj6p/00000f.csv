@@ -1,3 +1,0 @@
-"0","data <- read.csv(""/Users/jennifer/Library/CloudStorage/GoogleDrive-jmosl004@ucr.edu/My Drive/SYP/Analyses /Memory Maps Imaging Analysis/fullData.csv"")"
-"0","data <- data[ ,-1]"
-"0","data$subID <- as.factor(data$subID)"

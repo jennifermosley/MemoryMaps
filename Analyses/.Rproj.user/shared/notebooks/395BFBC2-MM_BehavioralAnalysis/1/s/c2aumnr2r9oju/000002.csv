@@ -1,0 +1,9 @@
+"0","```r
+m <-lmer( scale(importance) ~  scale(outdegree) + scale(indegree) + numID + ( scale(outdegree) + scale(indegree) | subID), data=fullData)
+```"
+"1","fixed-effect model matrix is rank deficient so dropping 1 column / coefficient
+boundary (singular) fit: see help('isSingular')
+"
+"0","```r
+tbl_regression(m) %>% as_gt()
+```"

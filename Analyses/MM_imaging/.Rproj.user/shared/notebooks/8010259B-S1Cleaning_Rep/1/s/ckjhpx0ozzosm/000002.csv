@@ -1,5 +1,0 @@
-"0","```r
-allNA <- which( rowSums(is.na(memMat[,2:31])) != 30 ) # which rows are not all NA
-notallNAsubs <- memMat$subID[allNA]
-rawDf <- rawDf[rawDf$subID %in% notallNAsubs,]
-```"

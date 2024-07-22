@@ -1,0 +1,6 @@
+"0","```r
+m<-lmer( scale(negative) ~  scale(outdegree) + scale(indegree) + numID + ( scale(outdegree) + scale(indegree) | subID), data=fullData)
+
+tbl_regression(m) %>% as_gt()
+#
+```"

@@ -1,0 +1,4 @@
+"0","```r
+m<-lmer( scale(vad_pos) ~  scale(strengthOut) + scale(strengthIn) + numID + scale(length) + ( scale(strengthOut) + scale(strengthIn) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+```"
