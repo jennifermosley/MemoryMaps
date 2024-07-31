@@ -20,7 +20,8 @@ is_all_na <- function(column) {
 }
 ### Functions ###
 
-data <- read.csv("centralityDf.csv") # Import fullData dataset
+
+data <- read.csv("centralityDf.csv") # Import Centrality dataset
 data <- data[ ,-1] # Remove the first column
 data$subID <- as.factor(data$subID) # Set subject IDs to a factor
 
@@ -28,13 +29,13 @@ data$subID <- as.factor(data$subID) # Set subject IDs to a factor
 # 1) Onsets relative to start of scan
 # 2) Duration of trial (13s - based on subjects' recall duration in task output)
 # 3) Trial condition
-#   a) H-v-L-outdegree_run# // -indegree_run#
-#   b) In-v-Out_run# **
-#   c) H-v-L_degree_run# **
+#   a) outdegree
+#   b) indegree
+#   c) degree
 
 # Import imaging event output files as individual subject data frames 
 subs <- as.numeric(levels(data$subID))
-subs <- subs[-34] # Removed since it is not currently included in centrality df
+# subs <- subs[-34] # Removed since it is not currently included in centrality df
 # sub22 - Need to figure out modeling missing trial 8
 
 # Subject loop for importing and cleaning subject dataframe
@@ -93,7 +94,8 @@ for (s in subs){
   
   # For the manipulations we will do, we need subID of Data to not 
   # be factorized but numeric
-  data$subID <- as.numeric(data$subID)
+  # data$subID <- as.numeric(data$subID)
+  data$subID <- as.numeric(as.character(data$subID))
   
   for (r in runs) {
     
@@ -111,9 +113,9 @@ for (s in subs){
     }
     
     ## Set duration ##
-    duration <- 13.0299
-    durationVec <- rep(duration,times=8)
-    durationVec <- as.data.frame(durationVec)
+    durationVal <- 13.0299
+    duration <- rep(durationVal,times=8)
+    duration <- as.data.frame(duration)
     
     ## Set Onset (using onset matrices)
     
@@ -135,39 +137,97 @@ for (s in subs){
     ## End of onsets definition
     
     ## Set trial conditions
-    # For centrality, high-v-low indegree/outdegree; high-low degree; outdegree>indegree
+    # For centrality, outdegree; indegree; degree
     
     # Subset current subject data from centrality dataframe
     subDf <- filter(data, subID == s)
     
     # Import centrality data to onsetsVec
-    conditionsDf <- select(subDf, c(high_outdegree, low_outdegree))
+    # CHANGE for EACH condition included in GLM
+    
+    # For Outdegree
+    # conditionsDf <- select(subDf, c(outdegree))
+    # conditionsDf <- as.data.frame(conditionsDf)
+    # 
+    # out <- data.frame(outdegree = numeric(0))
+    
+    # for (t in trials) {
+    #   # Subset conditions based on run
+    #   condition <- conditionsDf %>% slice(t)
+    #   out <- rbind(out,condition)
+    # }
+    
+    # For Indegree
+    # conditionsDf <- select(subDf, c(indegree))
+    # conditionsDf <- as.data.frame(conditionsDf)
+    # 
+    # inde <- data.frame(indegree = numeric(0))
+    # 
+    # for (t in trials) {
+    #   # Subset conditions based on run
+    #   condition <- conditionsDf %>% slice(t)
+    #   inde <- rbind(inde,condition)
+    # }
+    
+    # For Degree
+    conditionsDf <- select(subDf, c(degree))
     conditionsDf <- as.data.frame(conditionsDf)
-    
-    cent1 <- data.frame(A=NA, B=NA)
-    colnames(cent1) <- c("high_outdegree","low_outdegree")
-    
+
+    deg <- data.frame(indegree = numeric(0))
+
     for (t in trials) {
       # Subset conditions based on run
       condition <- conditionsDf %>% slice(t)
-      cent1 <- rbind(cent1,condition)
+      deg <- rbind(deg,condition)
     }
-    
-    # Remove first row created in df construction
-    cent1 <- cent1[-1, ]
     
     ## End of trial conditions
     
+    # OUTDEGREE
     # Create events dataframe which will be exported
-    events <- mutate(onsetsDf,cent1,durationVec)
+    # events <- mutate(onsetsDf,out,duration)
     
+    # INDEGREE
+    # Create events dataframe which will be exported
+    # events <- mutate(onsetsDf,inde,duration)
+    
+    # DEGREE
+    # Create events dataframe which will be exported
+    events <- mutate(onsetsDf,deg,duration)
+    
+    # OUTDEGREE
     # Label events file with current run
-    eventFilename <- paste0("hi-v-lo_outdegree_run",r,".txt")
+    # eventFilename <- paste0("outdegree_run",r,".txt")
     
-    path <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/",s)
-    dir.create(path = path)
-    newPath <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/",s,"/")
-    write.table(events, paste0(newPath,eventFilename))
+    # INDEGREE
+    # Label events file with current run
+    # eventFilename <- paste0("indegree_run",r,".txt")
     
+    # DEGREE
+    # Label events file with current run
+    eventFilename <- paste0("degree_run",r,".txt")
+    
+    # Export the file to the appropriate location
+    # CHANGE for EACH condition included in GLM
+    
+    # OUTDEGREE
+    # path <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/outdegree/",s)
+    # dir.create(path = path, showWarnings = FALSE)
+    # newPath <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/outdegree/",s,"/")
+    # write.table(events, paste0(newPath,eventFilename),row.names = F)
+    
+    # INDEGREE
+    # path <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/indegree/",s)
+    # dir.create(path = path, showWarnings = FALSE)
+    # newPath <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/indegree/",s,"/")
+    # write.table(events, paste0(newPath,eventFilename),row.names = F)
+    
+    # DEGREE
+    path <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/degree/",s)
+    dir.create(path = path, showWarnings = FALSE)
+    newPath <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/degree/",s,"/")
+    write.table(events, paste0(newPath,eventFilename),row.names = F)
+
   } # End of run subprocess
+}
   

@@ -20,7 +20,7 @@ library(ggplot2)
 
 ```{r}
 data <- read.csv("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/fullData.csv")
-data <- data[ ,-c(1,2)]
+data <- data[ ,-c(1)]
 data$subID <- as.factor(data$subID)
 ```
 
@@ -52,10 +52,25 @@ hist(cent$degree) # general connections, regardless of direction
 
 ```{r}
 cent$outdegree_scaled <- as.vector(scale(cent$outdegree))
-hist(cent$outdegree_scaled)
+outdegreeSc_freq34 <- hist(cent$outdegree_scaled) # Distribution scaled
+outdegree_freq34 <- hist(cent$outdegree)# Distribution not-scaled
 
-cent$indegree_scaled <- as.vector(scale(cent$indegree))
-hist(cent$indegree_scaled)
+outdegree_mean <- mean(cent$outdegree) # Mean number of outward connections 
+outdegree_sd <- sd(cent$outdegree) # Standard deviations of outward connections 
+
+cent$indegree_scaled <- as.vector(scale(cent$indegree)) 
+outdegreeSc_freq34 <- hist(cent$indegree_scaled) # Distribution scaled
+indegree_freq34 <- hist(cent$indegree)# Distribution not-scaled
+
+indegree_mean <- mean(cent$indegree) # Mean number of inward connections 
+indegree_sd <- sd(cent$indegree) # Standard deviations of inward connections 
+
+cent$degree_scaled <- as.vector(scale(cent$degree))
+degreeS_freq34 <- hist(cent$degree_scaled) # Distribution scaled
+degree_freq34 <- hist(cent$degree) # Distribution not-scaled
+
+degree_mean <- mean(cent$degree) # Mean number of overall connections 
+degree_sd <- sd(cent$degree) # Standard deviations of overall connections 
 ```
 
 ### Prepare within-subjects centrality data frame
@@ -64,7 +79,7 @@ hist(cent$indegree_scaled)
 
 ```{r}
 # Create dataframe including only the data for the current subject
-currentSubj <- subset(cent, subID == 108)
+currentSubj <- subset(cent, subID == 59)
 ```
 
 #### Check Distribution and Median
@@ -72,7 +87,7 @@ currentSubj <- subset(cent, subID == 108)
 ```{r}
 # Check distribution of outdegree vs. centered/scaled outdegree
 hist(currentSubj$outdegree) # See the middle point
-hist(currentSubj$outdegree_scaled)
+#hist(currentSubj$outdegree_scaled)
 
 # Check median
 median(currentSubj$outdegree) # See the middle point
@@ -80,7 +95,15 @@ median(currentSubj$outdegree_scaled)
 
 # Check distribution of indegree vs. centered/scaled indegree
 hist(currentSubj$indegree) # See the middle point
-hist(currentSubj$indegree_scaled)
+#hist(currentSubj$indegree_scaled)
+
+# Check median
+median(currentSubj$indegree) # See the middle point
+median(currentSubj$indegree_scaled)
+
+# Check distribution of degree
+hist(currentSubj$degree) # See the middle point
+#hist(currentSubj$indegree_scaled)
 
 # Check median
 median(currentSubj$indegree) # See the middle point
@@ -206,5 +229,5 @@ centralityDf %>%
   geom_histogram() +
   theme_blank()
 
-write.csv(centralityDf,"centralityDf.csv")
+write.csv(cent,"centralityDf.csv")
 ```
