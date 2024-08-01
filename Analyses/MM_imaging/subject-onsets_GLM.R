@@ -24,6 +24,8 @@ is_all_na <- function(column) {
 data <- read.csv("centralityDf.csv") # Import Centrality dataset
 data <- data[ ,-1] # Remove the first column
 data$subID <- as.factor(data$subID) # Set subject IDs to a factor
+data$degree_scaled <- scale(data$degree)
+colnames(data$degree_scaled) <- "degree_scaled"
 
 # We need the following information for onset files:
 # 1) Onsets relative to start of scan
@@ -146,22 +148,21 @@ for (s in subs){
     # CHANGE for EACH condition included in GLM
     
     # For Outdegree
-    # conditionsDf <- select(subDf, c(outdegree))
-    # conditionsDf <- as.data.frame(conditionsDf)
-    # 
-    # out <- data.frame(outdegree = numeric(0))
+     conditionsDf <- select(subDf, c(outdegree_scaled))
+     conditionsDf <- as.data.frame(conditionsDf)
     
-    # for (t in trials) {
-    #   # Subset conditions based on run
-    #   condition <- conditionsDf %>% slice(t)
-    #   out <- rbind(out,condition)
-    # }
+     out <- data.frame(outdegree_scaled = numeric(0))
+     for (t in trials) {
+       # Subset conditions based on run
+       condition <- conditionsDf %>% slice(t)
+       out <- rbind(out,condition)
+     }
     
     # For Indegree
-    # conditionsDf <- select(subDf, c(indegree))
+    # conditionsDf <- select(subDf, c(indegree_scaled))
     # conditionsDf <- as.data.frame(conditionsDf)
     # 
-    # inde <- data.frame(indegree = numeric(0))
+    # inde <- data.frame(indegree_scaled = numeric(0))
     # 
     # for (t in trials) {
     #   # Subset conditions based on run
@@ -170,34 +171,34 @@ for (s in subs){
     # }
     
     # For Degree
-    conditionsDf <- select(subDf, c(degree))
-    conditionsDf <- as.data.frame(conditionsDf)
-
-    deg <- data.frame(indegree = numeric(0))
-
-    for (t in trials) {
-      # Subset conditions based on run
-      condition <- conditionsDf %>% slice(t)
-      deg <- rbind(deg,condition)
-    }
+    # conditionsDf <- select(subDf, c(degree_scaled))
+    # conditionsDf <- as.data.frame(conditionsDf)
+    # 
+    # deg <- data.frame(degree_scaled = numeric(0))
+    # 
+    # for (t in trials) {
+    #   # Subset conditions based on run
+    #   condition <- conditionsDf %>% slice(t)
+    #   deg <- rbind(deg,condition)
+    # }
     
     ## End of trial conditions
     
     # OUTDEGREE
     # Create events dataframe which will be exported
-    # events <- mutate(onsetsDf,out,duration)
+    events <- mutate(onsetsDf,duration,out)
     
     # INDEGREE
     # Create events dataframe which will be exported
-    # events <- mutate(onsetsDf,inde,duration)
+    # events <- mutate(onsetsDf,duration,inde)
     
     # DEGREE
     # Create events dataframe which will be exported
-    events <- mutate(onsetsDf,deg,duration)
+    # events <- mutate(onsetsDf,duration,deg)
     
     # OUTDEGREE
     # Label events file with current run
-    # eventFilename <- paste0("outdegree_run",r,".txt")
+    eventFilename <- paste0("outdegree_run",r,".txt")
     
     # INDEGREE
     # Label events file with current run
@@ -205,16 +206,16 @@ for (s in subs){
     
     # DEGREE
     # Label events file with current run
-    eventFilename <- paste0("degree_run",r,".txt")
+    # eventFilename <- paste0("degree_run",r,".txt")
     
     # Export the file to the appropriate location
     # CHANGE for EACH condition included in GLM
     
     # OUTDEGREE
-    # path <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/outdegree/",s)
-    # dir.create(path = path, showWarnings = FALSE)
-    # newPath <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/outdegree/",s,"/")
-    # write.table(events, paste0(newPath,eventFilename),row.names = F)
+    path <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/outdegree/",s)
+    dir.create(path = path, showWarnings = FALSE)
+    newPath <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/outdegree/",s,"/")
+    write.table(events, paste0(newPath,eventFilename),row.names = F)
     
     # INDEGREE
     # path <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/indegree/",s)
@@ -223,10 +224,10 @@ for (s in subs){
     # write.table(events, paste0(newPath,eventFilename),row.names = F)
     
     # DEGREE
-    path <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/degree/",s)
-    dir.create(path = path, showWarnings = FALSE)
-    newPath <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/degree/",s,"/")
-    write.table(events, paste0(newPath,eventFilename),row.names = F)
+    # path <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/degree/",s)
+    # dir.create(path = path, showWarnings = FALSE)
+    # newPath <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/degree/",s,"/")
+    # write.table(events, paste0(newPath,eventFilename),row.names = F)
 
   } # End of run subprocess
 }
