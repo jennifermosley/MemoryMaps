@@ -215,19 +215,19 @@ for (s in subs){
     path <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/outdegree/",s)
     dir.create(path = path, showWarnings = FALSE)
     newPath <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/outdegree/",s,"/")
-    write.table(events, paste0(newPath,eventFilename),row.names = F)
+    write.table(events, paste0(newPath,eventFilename),row.names = F,col.names = F)
     
     # INDEGREE
     # path <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/indegree/",s)
     # dir.create(path = path, showWarnings = FALSE)
     # newPath <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/indegree/",s,"/")
-    # write.table(events, paste0(newPath,eventFilename),row.names = F)
+    # write.table(events, paste0(newPath,eventFilename),row.names = F,col.names = F)
     
     # DEGREE
     # path <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/degree/",s)
     # dir.create(path = path, showWarnings = FALSE)
     # newPath <- paste0("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/event_timings/degree/",s,"/")
-    # write.table(events, paste0(newPath,eventFilename),row.names = F)
+    # write.table(events, paste0(newPath,eventFilename),row.names = F,col.names = F)
 
   } # End of run subprocess
 }
