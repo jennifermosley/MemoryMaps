@@ -19,7 +19,7 @@ library(ggplot2)
 ## Import Dataset and Clean/Factorize
 
 ```{r}
-data <- read.csv("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/fullData.csv")
+data <- read.csv("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/fullData_40.csv")
 data <- data[ ,-c(1)]
 data$subID <- as.factor(data$subID)
 ```
