@@ -37,7 +37,7 @@ fullData$subID <- as.factor(fullData$subID)
 # fullData <- fullData[ ,-1]
 
 # Download fullData file for separate analysis (onset file creation)
-write.csv(fullData,"~/GitLab/SecondYearProject/MemoryMaps/Data/processed/fullData.csv")
+write.csv(fullData,"~/GitLab/SecondYearProject/MemoryMaps/Data/processed/fullData40.csv")
 
 # pal1 <-n colorRampPalette(brewer.pal(11,"BrBG"))(227)
 pal <- colorRampPalette(wes_palette("Zissou1", 5))(length(unique(fullLong$subID)))

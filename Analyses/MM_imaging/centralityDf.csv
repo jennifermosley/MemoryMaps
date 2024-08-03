@@ -1,817 +1,937 @@
-,subID,memory,degree,outdegree,indegree,outdegree_scaled,indegree_scaled
-1,2,Purple slippers trunk parking lot,2,2,0,0.016384114,-0.946526822
-2,2,Mcdonalds playground stuck crying,2,1,1,-0.414888046,-0.46409966
-3,2,Spongebob project elementary school,6,4,2,0.878928433,0.018327502
-4,2,grandma dentures brushing nature,3,0,3,-0.846160205,0.500754665
-5,2,dad cigarettes smoking hug dog horse,4,3,1,0.447656274,-0.46409966
-6,2,mom yelling orchestra chair broke,6,5,1,1.310200593,-0.46409966
-7,2,pizza classroom tiny piece,3,2,1,0.016384114,-0.46409966
-8,2,sprain finger basketball scary,6,4,2,0.878928433,0.018327502
-9,2,arm broke park Rebecca,2,0,2,-0.846160205,0.018327502
-10,2,glasses broke crying basketball,4,0,4,-0.846160205,0.983181827
-11,2,hermit crab gumdo wooden sword fight,12,10,2,3.466561391,0.018327502
-12,2,Mom crying fight napkin,6,4,2,0.878928433,0.018327502
-13,2,piano competition shaking international,3,0,3,-0.846160205,0.500754665
-14,2,high school chemistry project nakita nation,5,4,1,0.878928433,-0.46409966
-15,2,Phone photos Spanish embarrassing,6,2,4,0.016384114,0.983181827
-16,2,Panda Express friend hungry delicious,7,3,4,0.447656274,0.983181827
-17,2,Beach sand walking family happy,1,0,1,-0.846160205,-0.46409966
-18,2,Indian food delicious bone stuck throat,7,2,5,0.016384114,1.465608989
-19,2,Mukbangs tiktok reels delicious longing,5,4,1,0.878928433,-0.46409966
-20,2,wingstop stomach hurting pain,4,1,3,-0.414888046,0.500754665
-21,2,cousin annoying selfish painful,3,0,3,-0.846160205,0.500754665
-22,2,friend funny food beach happy,8,1,7,-0.414888046,2.430463314
-23,2,Girl class angry invertebrate uneasy,5,2,3,0.016384114,0.500754665
-24,2,Turtle video YouTube shocked happy,6,4,2,0.878928433,0.018327502
-25,4,Fireflies by Owl City,7,3,4,0.447656274,0.983181827
-26,4,TV falling down,4,3,1,0.447656274,-0.46409966
-27,4,Dehydrated Bread,9,6,3,1.741472752,0.500754665
-28,4,"Hear me out, 1 am Denny's?",1,0,1,-0.846160205,-0.46409966
-29,4,Yogurtland crying,7,4,3,0.878928433,0.500754665
-30,4,The Sarcastic Club Squeeze,4,3,1,0.447656274,-0.46409966
-31,4,Sorry Chair,3,1,2,-0.414888046,0.018327502
-32,4,AP test confession,3,0,3,-0.846160205,0.500754665
-33,4,Wikihow to dance,2,1,1,-0.414888046,-0.46409966
-34,4,Always bet on Hakari,2,1,1,-0.414888046,-0.46409966
-35,4,Middle School Breakfast Monitor Event,2,1,1,-0.414888046,-0.46409966
-36,4,Rejection in Japan,3,2,1,0.016384114,-0.46409966
-37,4,The Admin Building Kindness Tree,3,1,2,-0.414888046,0.018327502
-38,4,Raising Canes Incident,2,0,2,-0.846160205,0.018327502
-39,4,King of Steam,3,2,1,0.016384114,-0.46409966
-40,4,The Discord Presentation,1,0,1,-0.846160205,-0.46409966
-41,4,Spring Break Concert,4,2,2,0.016384114,0.018327502
-42,4,You know them very well,2,1,1,-0.414888046,-0.46409966
-43,4,I drank sprite and cake,2,1,1,-0.414888046,-0.46409966
-44,4,Last Karaoke Night,0,0,0,-0.846160205,-0.946526822
-45,4,The LA Incident,2,1,1,-0.414888046,-0.46409966
-46,4,Across the Spiderverse accident,4,2,2,0.016384114,0.018327502
-47,4,The Irvine Train back,6,4,2,0.878928433,0.018327502
-48,4,15 brownies sold,12,5,7,1.310200593,2.430463314
-49,5,crashing into a duck statue,1,0,1,-0.846160205,-0.46409966
-50,5,the day that tia died,2,1,1,-0.414888046,-0.46409966
-51,5,seeing dad lash out,2,1,1,-0.414888046,-0.46409966
-52,5,little ones entry and exit,2,1,1,-0.414888046,-0.46409966
-53,5,therapy and how it helped,5,4,1,0.878928433,-0.46409966
-54,5,march of 2020,4,1,3,-0.414888046,0.500754665
-55,5,moms new bed,5,3,2,0.447656274,0.018327502
-56,5,how life was under floor renovation,3,1,2,-0.414888046,0.018327502
-57,5,french fry near death experience,4,3,1,0.447656274,-0.46409966
-58,5,bee attack ,2,1,1,-0.414888046,-0.46409966
-59,5,elementary school threatened,5,4,1,0.878928433,-0.46409966
-60,5,first phone to now,4,3,1,0.447656274,-0.46409966
-61,5,in the name of love song,2,0,2,-0.846160205,0.018327502
-62,5,first day and graduation day,2,0,2,-0.846160205,0.018327502
-63,5,first car accident as adult ,2,1,1,-0.414888046,-0.46409966
-64,5,first time getting in trouble at school,2,1,1,-0.414888046,-0.46409966
-65,5,sister flips out on dad,2,1,1,-0.414888046,-0.46409966
-66,5,extra long time in shower ,1,0,1,-0.846160205,-0.46409966
-67,5,my driving accident ,3,2,1,0.016384114,-0.46409966
-68,5,summer time grandma went down,3,0,3,-0.846160205,0.500754665
-69,5,death in neighborhood,0,0,0,-0.846160205,-0.946526822
-70,5,first time moving out ,2,1,1,-0.414888046,-0.46409966
-71,5,Avid 2018,2,1,1,-0.414888046,-0.46409966
-72,5,scariest times,0,0,0,-0.846160205,-0.946526822
-73,8,LAX Hotel Issue,0,0,0,-0.846160205,-0.946526822
-74,8,Round 1 date,1,1,0,-0.414888046,-0.946526822
-75,8,May 15th ,1,1,0,-0.414888046,-0.946526822
-76,8,Move in day,2,1,1,-0.414888046,-0.46409966
-77,8,Disney airbnb,2,1,1,-0.414888046,-0.46409966
-78,8,20th birthday,1,0,1,-0.846160205,-0.46409966
-79,8,Flowermart 1st time,2,1,1,-0.414888046,-0.46409966
-80,8,LA Trip with friends,4,2,2,0.016384114,0.018327502
-81,8,Late night san diego,3,3,0,0.447656274,-0.946526822
-82,8,1st day of pre school,4,2,2,0.016384114,0.018327502
-83,8,Acko Riding as kid,4,3,1,0.447656274,-0.46409966
-84,8,Wasabi guarding valuables,2,1,1,-0.414888046,-0.46409966
-85,8,Finding Pocky ,3,2,1,0.016384114,-0.46409966
-86,8,Shaoshao brought home,1,0,1,-0.846160205,-0.46409966
-87,8,Grandfather death,2,1,1,-0.414888046,-0.46409966
-88,8,Funeral for grandpa,1,0,1,-0.846160205,-0.46409966
-89,8,Drinking with family in Japan,3,2,1,0.016384114,-0.46409966
-90,8,Pretend worker in Japan,1,0,1,-0.846160205,-0.46409966
-91,8,Shibuya and Akihabara,1,0,1,-0.846160205,-0.46409966
-92,8,Shooting range with friends,2,1,1,-0.414888046,-0.46409966
-93,8,Shadowing in hospital,3,0,3,-0.846160205,0.500754665
-94,8,The Fishbowl,2,1,1,-0.414888046,-0.46409966
-95,8,Final for BCH110B,1,0,1,-0.846160205,-0.46409966
-96,8,Jake mimic flexing guy,2,1,1,-0.414888046,-0.46409966
-97,17,North Marin United State Cup Championship,2,2,0,0.016384114,-0.946526822
-98,17,Brother's beachside wedding In Hawaii,7,5,2,1.310200593,0.018327502
-99,17,Senior Ditch Day at the River,2,0,2,-0.846160205,0.018327502
-100,17,High School Senior Year Prom,5,4,1,0.878928433,-0.46409966
-101,17,Quince Mexico Trip in the Summer,6,0,6,-0.846160205,1.948036152
-102,17,2024 Vacation to Waikiki Hawaii,1,0,1,-0.846160205,-0.46409966
-103,17,Trip to Aquarium of the Pacific ,3,0,3,-0.846160205,0.500754665
-104,17,New York City Family Roadtrip,0,0,0,-0.846160205,-0.946526822
-105,17,Snowmass Colorado with Doug Carlston,8,5,3,1.310200593,0.500754665
-106,17,Niagra Falls with Boat Tour,3,3,0,0.447656274,-0.946526822
-107,17,Buffalo Billiards and being with friends,1,0,1,-0.846160205,-0.46409966
-108,17,Late night runs at Luchessi Park,1,0,1,-0.846160205,-0.46409966
-109,17,High School Graduation Yayos After Party ,2,2,0,0.016384114,-0.946526822
-110,17,Golden State Warriors Championship Parade,2,0,2,-0.846160205,0.018327502
-111,17,UCR Freshman Year Move In Week ,2,0,2,-0.846160205,0.018327502
-112,17,First UCR Block Party Event,1,0,1,-0.846160205,-0.46409966
-113,17,Christmas Break at SF Union Square,3,0,3,-0.846160205,0.500754665
-114,17,My Sisters Quince Party in SF,2,1,1,-0.414888046,-0.46409966
-115,17,Kiaras Birthday In Vallejo,1,0,1,-0.846160205,-0.46409966
-116,17,Giants Baseball Game with my friends,0,0,0,-0.846160205,-0.946526822
-117,17,Seattle Space Needle and the city,8,6,2,1.741472752,0.018327502
-118,17,Driving to LA for Drake Concert,8,5,3,1.310200593,0.500754665
-119,17,Meeting my brother At Pismo Beach,3,2,1,0.016384114,-0.46409966
-120,17,Clippers game to The Groves Market,1,1,0,-0.414888046,-0.946526822
-121,19,Shiro ,2,2,0,0.016384114,-0.946526822
-122,19,Sweet Creek,1,0,1,-0.846160205,-0.46409966
-123,19,Kyle,0,0,0,-0.846160205,-0.946526822
-124,19,Jaeden,9,8,1,2.604017072,-0.46409966
-125,19,Dad ,2,0,2,-0.846160205,0.018327502
-126,19,Shooting star,2,1,1,-0.414888046,-0.46409966
-127,19,Snowcat,0,0,0,-0.846160205,-0.946526822
-128,19,Monique,1,1,0,-0.414888046,-0.946526822
-129,19,Montecito,1,0,1,-0.846160205,-0.46409966
-130,19,Grandma,1,0,1,-0.846160205,-0.46409966
-131,19,Miyuk Gook,3,2,1,0.016384114,-0.46409966
-132,19,El Monte Aquatics,5,0,5,-0.846160205,1.465608989
-133,19,Painting ,7,6,1,1.741472752,-0.46409966
-134,19,Ichiko Aoba,4,3,1,0.447656274,-0.46409966
-135,19,Little Tokyo Girl,4,4,0,0.878928433,-0.946526822
-136,19,Beginners Day,1,0,1,-0.846160205,-0.46409966
-137,19,Donkeys ,1,0,1,-0.846160205,-0.46409966
-138,19,Seaside ,2,1,1,-0.414888046,-0.46409966
-139,19,New Years 2024,3,1,2,-0.414888046,0.018327502
-140,19,Yummy Tea ,9,2,7,0.016384114,2.430463314
-141,19,Crescent City,3,1,2,-0.414888046,0.018327502
-142,19,Arches,4,2,2,0.016384114,0.018327502
-143,19,1st Year Parties,5,3,2,0.447656274,0.018327502
-144,19,Juicy,4,0,4,-0.846160205,0.983181827
-145,48,discovery science center bubble show cousins,2,1,1,-0.414888046,-0.46409966
-146,48,linda crafts hidden from grandma,1,0,1,-0.846160205,-0.46409966
-147,48,mom payless forgetting shoes for school,10,9,1,3.035289231,-0.46409966
-148,48,twins jungle gym third grade,1,0,1,-0.846160205,-0.46409966
-149,48,twins shared journal entries,2,2,0,0.016384114,-0.946526822
-150,48,twins career day slushee face paint,0,0,0,-0.846160205,-0.946526822
-151,48,free lunch park grandmas house,3,2,1,0.016384114,-0.46409966
-152,48,early day kindergarten baby sister born,2,1,1,-0.414888046,-0.46409966
-153,48,gold rush day square dancing,6,4,2,0.878928433,0.018327502
-154,48,family san francisco trip,2,0,2,-0.846160205,0.018327502
-155,48,family san diego trip,0,0,0,-0.846160205,-0.946526822
-156,48,friends san diego trip,6,3,3,0.447656274,0.500754665
-157,48,jordan met up sierra bella park,3,0,3,-0.846160205,0.500754665
-158,48,freshmen link crew orientation,8,1,7,-0.414888046,2.430463314
-159,48,covid pandemic shut down day,2,1,1,-0.414888046,-0.46409966
-160,48,failed first drivers test blonde lady,2,1,1,-0.414888046,-0.46409966
-161,48,wisdom teeth and braces week,0,0,0,-0.846160205,-0.946526822
-162,48,quince court beach video,3,1,2,-0.414888046,0.018327502
-163,48,day of my quince,8,6,2,1.741472752,0.018327502
-164,48,highschool graduation,7,2,5,0.016384114,1.465608989
-165,48,senior year homecoming queen,6,2,4,0.016384114,0.983181827
-166,48,senior year prom,3,2,1,0.016384114,-0.46409966
-167,48,link crew disneyland trip,3,1,2,-0.414888046,0.018327502
-168,48,first day of college,6,4,2,0.878928433,0.018327502
-169,50,Life in Ghana,2,1,1,-0.414888046,-0.46409966
-170,50,California 2019,2,0,2,-0.846160205,0.018327502
-171,50,Private School,5,4,1,0.878928433,-0.46409966
-172,50,Hillcrest High,3,1,2,-0.414888046,0.018327502
-173,50,Nana 2018,1,0,1,-0.846160205,-0.46409966
-174,50,College Acceptances,3,3,0,0.447656274,-0.946526822
-175,50,Covid Lockdown,3,1,2,-0.414888046,0.018327502
-176,50,UCR Life,3,0,3,-0.846160205,0.500754665
-177,50,Choir performance,6,0,6,-0.846160205,1.948036152
-178,50,2023 Ghana,6,2,4,0.016384114,0.983181827
-179,50,School in Ghana,1,0,1,-0.846160205,-0.46409966
-180,50,Kayemon Debut,1,0,1,-0.846160205,-0.46409966
-181,50,Church Life in Ghana,3,2,1,0.016384114,-0.46409966
-182,50,Birthday party,4,1,3,-0.414888046,0.500754665
-183,50,Playing sports in Ghana,7,5,2,1.310200593,0.018327502
-184,50,Volleyball at Hillcrest,3,0,3,-0.846160205,0.500754665
-185,50,Cross Country racing,5,3,2,0.447656274,0.018327502
-186,50,Emotionless but calm,4,2,2,0.016384114,0.018327502
-187,50,Old house at demo,2,1,1,-0.414888046,-0.46409966
-188,50,St Micheal's swing,6,1,5,-0.414888046,1.465608989
-189,50,Barracks camp ,3,1,2,-0.414888046,0.018327502
-190,50,Nana Yaw and Isaac,7,7,0,2.172744912,-0.946526822
-191,50,Sunday School,9,7,2,2.172744912,0.018327502
-192,50,Vacation Bible School,7,6,1,1.741472752,-0.46409966
-193,22,Sadness,4,3,1,0.447656274,-0.46409966
-194,22,Joyful,4,1,3,-0.414888046,0.500754665
-195,22,Betrayed,3,2,1,0.016384114,-0.46409966
-196,22,Painful,7,7,0,2.172744912,-0.946526822
-197,22,Annoyed,2,1,1,-0.414888046,-0.46409966
-198,22,Concerned,4,2,2,0.016384114,0.018327502
-199,22,Funny,1,0,1,-0.846160205,-0.46409966
-200,22,Naive,4,2,2,0.016384114,0.018327502
-201,22,Energetic,4,3,1,0.447656274,-0.46409966
-202,22,Hopeful,2,1,1,-0.414888046,-0.46409966
-203,22,Worried,4,3,1,0.447656274,-0.46409966
-204,22,Happy,5,0,5,-0.846160205,1.465608989
-205,22,Broken,4,2,2,0.016384114,0.018327502
-206,22,Heartbroken,11,6,5,1.741472752,1.465608989
-207,22,New Perspectives,4,3,1,0.447656274,-0.46409966
-208,22,Critique,4,0,4,-0.846160205,0.983181827
-209,22,Disconnected,3,2,1,0.016384114,-0.46409966
-210,22,Easy going,4,3,1,0.447656274,-0.46409966
-211,22,Peaceful,3,0,3,-0.846160205,0.500754665
-212,22,Fun Chaotic,1,0,1,-0.846160205,-0.46409966
-213,22,Workaholic ,2,1,1,-0.414888046,-0.46409966
-214,22,Time Management,5,1,4,-0.414888046,0.983181827
-215,22,Music Therapy,3,1,2,-0.414888046,0.018327502
-216,22,Sleepy,6,3,3,0.447656274,0.500754665
-217,23,Family trip to new york city to visit my aunt ,1,0,1,-0.846160205,-0.46409966
-218,23,The day I got my dog for my 7th birthday ,1,0,1,-0.846160205,-0.46409966
-219,23,My 5th grade graduation ,1,0,1,-0.846160205,-0.46409966
-220,23,The day I passed my drivers license test ,2,1,1,-0.414888046,-0.46409966
-221,23,My 5th birthday party ,7,5,2,1.310200593,0.018327502
-222,23,The day my cousin moved to vegas ,5,3,2,0.447656274,0.018327502
-223,23,When I got first place at worlds,2,1,1,-0.414888046,-0.46409966
-224,23,Family trip to Disney World ,1,0,1,-0.846160205,-0.46409966
-225,23,Became league champion for the 100 and 200m,2,1,1,-0.414888046,-0.46409966
-226,23,Family trip the Bahamas ,2,0,2,-0.846160205,0.018327502
-227,23,The day my uncle passed away ,0,0,0,-0.846160205,-0.946526822
-228,23,My high school graduation party ,1,1,0,-0.414888046,-0.946526822
-229,23,The day I ran 12.27 in the 100m,1,0,1,-0.846160205,-0.46409966
-230,23,The day I moved to UC Riverside ,1,0,1,-0.846160205,-0.46409966
-231,23,Family trip to Washigton DC ,2,0,2,-0.846160205,0.018327502
-232,23,The day my aunt Jonie moved out,0,0,0,-0.846160205,-0.946526822
-233,23,My brothers 8th grade graduation ,2,0,2,-0.846160205,0.018327502
-234,23,My last gymnastics competition ,1,0,1,-0.846160205,-0.46409966
-235,23,My 8th grade graduation ,1,0,1,-0.846160205,-0.46409966
-236,23,Saying goodbye to my friends before moving ,1,0,1,-0.846160205,-0.46409966
-237,23,Last day practicing with coach and reggie ,4,3,1,0.447656274,-0.46409966
-238,23,When my teacher took my harry potter book ,3,0,3,-0.846160205,0.500754665
-239,23,The day I passed my permit test ,11,11,0,3.89783355,-0.946526822
-240,23,My last AP Gov class of high school ,0,0,0,-0.846160205,-0.946526822
-241,24,Truck:,7,5,2,1.310200593,0.018327502
-242,24,Guinness:,1,0,1,-0.846160205,-0.46409966
-243,24,Military: ,12,5,7,1.310200593,2.430463314
-244,24,SubUwU: ,5,2,3,0.016384114,0.500754665
-245,24,Grandpa Howard: ,3,0,3,-0.846160205,0.500754665
-246,24,Welk: ,3,1,2,-0.414888046,0.018327502
-247,24,Running through Fire: ,4,2,2,0.016384114,0.018327502
-248,24,English 1A: ,2,1,1,-0.414888046,-0.46409966
-249,24,Alphonse The Clanless: ,3,1,2,-0.414888046,0.018327502
-250,24,Wii: ,1,0,1,-0.846160205,-0.46409966
-251,24,ElHafsi: ,7,3,4,0.447656274,0.983181827
-252,24,Halo 2: ,13,5,8,1.310200593,2.912890476
-253,24,Discord DND: ,7,6,1,1.741472752,-0.46409966
-254,24,Sacrificial Lamb: ,5,2,3,0.016384114,0.500754665
-255,24,Baker's: ,2,1,1,-0.414888046,-0.46409966
-256,24,Freddy: ,1,0,1,-0.846160205,-0.46409966
-257,24,One Piece: ,3,3,0,0.447656274,-0.946526822
-258,24,Black Clover: ,1,0,1,-0.846160205,-0.46409966
-259,24,Pegasus: ,2,0,2,-0.846160205,0.018327502
-260,24,Octopaths: ,4,3,1,0.447656274,-0.46409966
-261,24,Unova: ,2,0,2,-0.846160205,0.018327502
-262,24,Plague: ,6,4,2,0.878928433,0.018327502
-263,24,Inland Empire: ,7,6,1,1.741472752,-0.46409966
-264,24,Lancer: ,7,4,3,0.878928433,0.500754665
-265,26,how i didn't go to preschool,4,3,1,0.447656274,-0.46409966
-266,26,doing gymnastics as a kid,11,10,1,3.466561391,-0.46409966
-267,26,chinese school/VBS,5,4,1,0.878928433,-0.46409966
-268,26,my parents' life story ?,4,2,2,0.016384114,0.018327502
-269,26,chad's halloween party in 6th grade,5,4,1,0.878928433,-0.46409966
-270,26,visiting temple in oakland,2,1,1,-0.414888046,-0.46409966
-271,26,crashing the green car 2x,4,2,2,0.016384114,0.018327502
-272,26,high school thyroid diagnosis,6,3,3,0.447656274,0.500754665
-273,26,"high school volunteering - zucchini, scottish",6,5,1,1.310200593,-0.46409966
-274,26,"first job - staples, nice aura",9,3,6,0.447656274,1.948036152
-275,26,high school my first boyfriend,1,0,1,-0.846160205,-0.46409966
-276,26,my first breakup,7,6,1,1.741472752,-0.46409966
-277,26,smoking in sri's car,3,2,1,0.016384114,-0.46409966
-278,26,guess I'm going to UCR,4,2,2,0.016384114,0.018327502
-279,26,pentland w/nowreen - eldon's house/friends,3,0,3,-0.846160205,0.500754665
-280,26,travel bug- aus with friends,1,0,1,-0.846160205,-0.46409966
-281,26,great grandma's birthdays/reunions,4,2,2,0.016384114,0.018327502
-282,26,graduation day/making our caps,4,1,3,-0.414888046,0.500754665
-283,26,dad's financial crisis,3,1,2,-0.414888046,0.018327502
-284,26,"isabelle coming out, SD family",9,5,4,1.310200593,0.983181827
-285,26,kenny,15,0,15,-0.846160205,6.289880613
-286,26,passing quals ,2,0,2,-0.846160205,0.018327502
-287,26,"RCH S6, feeding blind, teeth brushing",4,1,3,-0.414888046,0.500754665
-288,26,unhappy during grad school 2nd year,6,4,2,0.878928433,0.018327502
-289,34,playing with waterballoons in kindergarten,0,0,0,-0.846160205,-0.946526822
-290,34,getting asked to prom,1,1,0,-0.414888046,-0.946526822
-291,34,walking across the stage at graduation,1,0,1,-0.846160205,-0.46409966
-292,34,moving into my dorm at UCR,6,4,2,0.878928433,0.018327502
-293,34,first visit at the temple,2,1,1,-0.414888046,-0.46409966
-294,34,getting a keyboard piano for christmas,0,0,0,-0.846160205,-0.946526822
-295,34,going to legoland with my little brother,0,0,0,-0.846160205,-0.946526822
-296,34,hiding under the table with my cousin during a storm,5,2,3,0.016384114,0.500754665
-297,34,wax museum project in sixth grade ,6,3,3,0.447656274,0.500754665
-298,34,holding a snake in Ms. Fukishima's class,7,4,3,0.878928433,0.500754665
-299,34,going to the taylor swift concert ,5,4,1,0.878928433,-0.46409966
-300,34,waking up late for my first test for WHAP,2,1,1,-0.414888046,-0.46409966
-301,34,taking the AP psych exam,9,3,6,0.447656274,1.948036152
-302,34,my first halloween party with friends in 2022,2,1,1,-0.414888046,-0.46409966
-303,34,getting surprised for my 18th birthday,2,1,1,-0.414888046,-0.46409966
-304,34,getting acupuncture at the temple ,2,0,2,-0.846160205,0.018327502
-305,34,having to move into my aunts house ,0,0,0,-0.846160205,-0.946526822
-306,34,going for a walk in the forest ,2,1,1,-0.414888046,-0.46409966
-307,34,watching doctor strange with my best friend,2,1,1,-0.414888046,-0.46409966
-308,34,spending my summer in france ,3,2,1,0.016384114,-0.46409966
-309,34,going to gradnite at disneyland,5,2,3,0.016384114,0.500754665
-310,34,collecting rolliepollies and hiding them in my desk,2,1,1,-0.414888046,-0.46409966
-311,34,playing capture the flag ,2,1,1,-0.414888046,-0.46409966
-312,34,crying on the last day of 8th grade,2,1,1,-0.414888046,-0.46409966
-313,33,holding down dustpan for mom,1,0,1,-0.846160205,-0.46409966
-314,33,split my head in fourth grade,0,0,0,-0.846160205,-0.946526822
-315,33,first failed test third grade,6,5,1,1.310200593,-0.46409966
-316,33,Suspension in fifth grade(people mover),1,1,0,-0.414888046,-0.946526822
-317,33,In school suspension 6th grade,1,0,1,-0.846160205,-0.46409966
-318,33,mother's day avocado toast incident,5,0,5,-0.846160205,1.465608989
-319,33,Bryce seventh grade homeroom,2,0,2,-0.846160205,0.018327502
-320,33,First day of highschool sports,1,1,0,-0.414888046,-0.946526822
-321,33,Meeting JT in Freshman Biology,0,0,0,-0.846160205,-0.946526822
-322,33,First season of track,5,0,5,-0.846160205,1.465608989
-323,33,Becoming friends with Kevin over quarantine,5,1,4,-0.414888046,0.983181827
-324,33,League finals for track senior year,0,0,0,-0.846160205,-0.946526822
-325,33,rejected from every UC except riverside,2,1,1,-0.414888046,-0.46409966
-326,33,Returning my cap and gown,13,13,0,4.76037787,-0.946526822
-327,33,getting COVID on welcome week,1,0,1,-0.846160205,-0.46409966
-328,33,Richard in my freshman year,1,0,1,-0.846160205,-0.46409966
-329,33,Dad's christmas outburst ,1,0,1,-0.846160205,-0.46409966
-330,33,First day with my new bike,2,0,2,-0.846160205,0.018327502
-331,33,Crash bike first time in Riverside,7,6,1,1.741472752,-0.46409966
-332,33,Meeting Jo,6,3,3,0.447656274,0.500754665
-333,33,Managers at work mad at me,4,3,1,0.447656274,-0.46409966
-334,33,PA pool party,4,2,2,0.016384114,0.018327502
-335,33,First thanksgiving birthday,3,0,3,-0.846160205,0.500754665
-336,33,Schutes and Ladders test failed,3,1,2,-0.414888046,0.018327502
-337,31,First car accident as a kid,4,3,1,0.447656274,-0.46409966
-338,31,Birthday party at Chucky(?) Cheese,4,3,1,0.447656274,-0.46409966
-339,31,21st birthday party,3,2,1,0.016384114,-0.46409966
-340,31,College dorm experience,4,3,1,0.447656274,-0.46409966
-341,31,First long-term relationship,4,1,3,-0.414888046,0.500754665
-342,31,College graduation,2,1,1,-0.414888046,-0.46409966
-343,31,First apartment,2,0,2,-0.846160205,0.018327502
-344,31,First full-time job,1,0,1,-0.846160205,-0.46409966
-345,31,First undergraduate research symposium,4,3,1,0.447656274,-0.46409966
-346,31,First first-author publication,4,3,1,0.447656274,-0.46409966
-347,31,Dad's passing,1,0,1,-0.846160205,-0.46409966
-348,31,First PC that I built,3,1,2,-0.414888046,0.018327502
-349,31,First memories of my pets,2,1,1,-0.414888046,-0.46409966
-350,31,Injury to right leg,3,2,1,0.016384114,-0.46409966
-351,31,My tattoo,2,1,1,-0.414888046,-0.46409966
-352,31,Chipped toenail during childhood,1,0,1,-0.846160205,-0.46409966
-353,31,First trip to disneyland,1,0,1,-0.846160205,-0.46409966
-354,31,Trip to cancun,1,0,1,-0.846160205,-0.46409966
-355,31,Trip to seattle,3,1,2,-0.414888046,0.018327502
-356,31,First presentation in grad school,4,3,1,0.447656274,-0.46409966
-357,31,First date with current girlfriend,1,0,1,-0.846160205,-0.46409966
-358,31,Girlfriend's white coat ceremony,1,0,1,-0.846160205,-0.46409966
-359,31,Moving to California,2,1,1,-0.414888046,-0.46409966
-360,31,Stolen car,1,0,1,-0.846160205,-0.46409966
-361,46,Divorce of mom and dad ,4,3,1,0.447656274,-0.46409966
-362,46,grandfather passing ,9,6,3,1.741472752,0.500754665
-363,46,starting high school ,6,5,1,1.310200593,-0.46409966
-364,46,getting my drivers license  ,10,4,6,0.878928433,1.948036152
-365,46,getting into UCR,10,8,2,2.604017072,0.018327502
-366,46,my boyfriend asking me to be his girlfriend ,16,10,6,3.466561391,1.948036152
-367,46,getting coffee with my friend Salomay ,4,2,2,0.016384114,0.018327502
-368,46,halloween nights with my friends ,15,6,9,1.741472752,3.395317639
-369,46,my childhood dog Roxy ,5,3,2,0.447656274,0.018327502
-370,46,my 20th birthday party ,7,0,7,-0.846160205,2.430463314
-371,46,going to Hawaii with my friend Sam ,8,5,3,1.310200593,0.500754665
-372,46,graduating high school ,8,5,3,1.310200593,0.500754665
-373,46,beach trips with friends ,4,2,2,0.016384114,0.018327502
-374,46,first day of college ,4,0,4,-0.846160205,0.983181827
-375,46,Playing lacrosse in high school ,6,4,2,0.878928433,0.018327502
-376,46,going ice skating with family during Christmas ,6,5,1,1.310200593,-0.46409966
-377,46,Volunteering at the hospital ,11,6,5,1.741472752,1.465608989
-378,46,seeing my grandpa in a senior center ,3,1,2,-0.414888046,0.018327502
-379,46,going to disneyland with my dad ,5,3,2,0.447656274,0.018327502
-380,46,seeing my dad remarry ,3,2,1,0.016384114,-0.46409966
-381,46,seeing my baby nephew be born ,7,3,4,0.447656274,0.983181827
-382,46,Oceanside trip with my friend Sam ,3,0,3,-0.846160205,0.500754665
-383,46,working at starbucks ,6,0,6,-0.846160205,1.948036152
-384,46,My brothers and I living in separate homes growing up ,12,3,9,0.447656274,3.395317639
-385,59,First golf medal in the rain,2,2,0,0.016384114,-0.946526822
-386,59,Acceptance into college,2,1,1,-0.414888046,-0.46409966
-387,59,Sadness from a relative's death,1,1,0,-0.414888046,-0.946526822
-388,59,Watching that basketball game with friends,1,0,1,-0.846160205,-0.46409966
-389,59,Asking out a girl to prom,0,0,0,-0.846160205,-0.946526822
-390,59,Losing my first sports bet,0,0,0,-0.846160205,-0.946526822
-391,59,Graduating high school,0,0,0,-0.846160205,-0.946526822
-392,59,Feeling dejection after breakup,2,1,1,-0.414888046,-0.46409966
-393,59,Seeing her for the first time,0,0,0,-0.846160205,-0.946526822
-394,59,Seeing her for the last time,1,0,1,-0.846160205,-0.46409966
-395,59,Watching a movie after car crash,1,0,1,-0.846160205,-0.46409966
-396,59,Choosing where to commit,2,2,0,0.016384114,-0.946526822
-397,59,Giving up on golf,2,0,2,-0.846160205,0.018327502
-398,59,Winning that golf game in Camarillo,6,5,1,1.310200593,-0.46409966
-399,59,Eating Blaze Pizza after winning,1,1,0,-0.414888046,-0.946526822
-400,59,Buying my first Jordan shoes,5,4,1,0.878928433,-0.46409966
-401,59,Getting my first job,4,2,2,0.016384114,0.018327502
-402,59,Working my last shift,2,0,2,-0.846160205,0.018327502
-403,59,Saying bye to my underclassmen friends,1,0,1,-0.846160205,-0.46409966
-404,59,Hearing the news on a date,0,0,0,-0.846160205,-0.946526822
-405,59,Lying on bed staring at stars,2,0,2,-0.846160205,0.018327502
-406,59,Dropping my phone in the backyard,0,0,0,-0.846160205,-0.946526822
-407,59,Hitting the gym after 4 months,3,0,3,-0.846160205,0.500754665
-408,59,Singing songs to her in room,0,0,0,-0.846160205,-0.946526822
-409,45,"My dog, Teddy, passing away.",1,1,0,-0.414888046,-0.946526822
-410,45,Graduating high school.,10,9,1,3.035289231,-0.46409966
-411,45,Completing my Girl Scout Gold Award.,4,3,1,0.447656274,-0.46409966
-412,45,Starting my first job. ,4,2,2,0.016384114,0.018327502
-413,45,Buying my first car.,6,4,2,0.878928433,0.018327502
-414,45,Adopting my cats. ,8,3,5,0.447656274,1.465608989
-415,45,Transferring job locations. ,4,2,2,0.016384114,0.018327502
-416,45,Danzantes Unidos Festival in Fresno.,1,0,1,-0.846160205,-0.46409966
-417,45,Beyond Wonderland with my boyfriend.,5,4,1,0.878928433,-0.46409966
-418,45,High School Grad Nite.,1,0,1,-0.846160205,-0.46409966
-419,45,The start of the pandemic. ,6,2,4,0.016384114,0.983181827
-420,45,Receiving my UCR acceptance letter. ,8,3,5,0.447656274,1.465608989
-421,45,Selling Girl Scout cookies. ,8,6,2,1.741472752,0.018327502
-422,45,Coldplay concert for my birthday. ,7,2,5,0.016384114,1.465608989
-423,45,Moving into my first apartment. ,7,4,3,0.878928433,0.500754665
-424,45,My dad with the owie lamb. ,8,2,6,0.016384114,1.948036152
-425,45,24 Hour Fitness child care.,6,4,2,0.878928433,0.018327502
-426,45,Seattle with my Girl Scout Troop. ,6,2,4,0.016384114,0.983181827
-427,45,Getting my first piercing. ,5,3,2,0.447656274,0.018327502
-428,45,"My dog, Cato, passing away. ",6,3,3,0.447656274,0.500754665
-429,45,Getting my driver's license. ,7,4,3,0.878928433,0.500754665
-430,45,Getting baptized. ,4,1,3,-0.414888046,0.500754665
-431,45,Funko Pops with my boyfriend. ,6,2,4,0.016384114,0.983181827
-432,45,First car accident in my car.,6,1,5,-0.414888046,1.465608989
-433,61,Cutting my hand open with sink,5,5,0,1.310200593,-0.946526822
-434,61,How Joel and I became friends,2,1,1,-0.414888046,-0.46409966
-435,61,Learning my great grandma has alzheimers,4,3,1,0.447656274,-0.46409966
-436,61,Leaving St. Linus,2,1,1,-0.414888046,-0.46409966
-437,61,Meeting Nick and John,6,5,1,1.310200593,-0.46409966
-438,61,Getting my first detention,4,3,1,0.447656274,-0.46409966
-439,61,Finding out I could go blind,4,2,2,0.016384114,0.018327502
-440,61,Washington DC Trip,5,2,3,0.016384114,0.500754665
-441,61,Becoming student council president,3,3,0,0.447656274,-0.946526822
-442,61,Drama with many girls,2,1,1,-0.414888046,-0.46409966
-443,61,Winning 4th in Academic Decathlon,4,2,2,0.016384114,0.018327502
-444,61,Graduating Valedictorian,5,3,2,0.447656274,0.018327502
-445,61,Accepted into the Onward Scholar's Program,3,2,1,0.016384114,-0.46409966
-446,61,Running my first track event,3,2,1,0.016384114,-0.46409966
-447,61,Getting appendicitis,16,2,14,0.016384114,5.80745345
-448,61,Asking out my current girlfriend,6,5,1,1.310200593,-0.46409966
-449,61,My aunt leaving our family,2,0,2,-0.846160205,0.018327502
-450,61,COVID 19 pandemic,3,2,1,0.016384114,-0.46409966
-451,61,First varsity volleyball game during pandemic,4,2,2,0.016384114,0.018327502
-452,61,Graduating with latin honors,4,0,4,-0.846160205,0.983181827
-453,61,Accepted into UCR,3,1,2,-0.414888046,0.018327502
-454,61,Going to Philippines 2023,1,0,1,-0.846160205,-0.46409966
-455,61,Spending time with my dad's family,4,1,3,-0.414888046,0.500754665
-456,61,My first day as a teacher,1,0,1,-0.846160205,-0.46409966
-457,44,confined,5,3,2,0.447656274,0.018327502
-458,44,strict,6,4,2,0.878928433,0.018327502
-459,44,decent,3,2,1,0.016384114,-0.46409966
-460,44,fun,4,3,1,0.447656274,-0.46409966
-461,44,loved,4,2,2,0.016384114,0.018327502
-462,44,friends,5,3,2,0.447656274,0.018327502
-463,44,family,8,6,2,1.741472752,0.018327502
-464,44,hard,6,4,2,0.878928433,0.018327502
-465,44,standards,2,1,1,-0.414888046,-0.46409966
-466,44,yolo,3,2,1,0.016384114,-0.46409966
-467,44,toys,3,1,2,-0.414888046,0.018327502
-468,44,trick-or-treat,4,0,4,-0.846160205,0.983181827
-469,44,explore,8,5,3,1.310200593,0.500754665
-470,44,puberty,5,3,2,0.447656274,0.018327502
-471,44,worry-full,2,0,2,-0.846160205,0.018327502
-472,44,esteem,2,0,2,-0.846160205,0.018327502
-473,44,complex,6,1,5,-0.414888046,1.465608989
-474,44,studies,4,1,3,-0.414888046,0.500754665
-475,44,college,4,1,3,-0.414888046,0.500754665
-476,44,parties,4,2,2,0.016384114,0.018327502
-477,44,drinking,3,2,1,0.016384114,-0.46409966
-478,44,smoking,11,7,4,2.172744912,0.983181827
-479,44,virginity,2,1,1,-0.414888046,-0.46409966
-480,44,freedom,6,1,5,-0.414888046,1.465608989
-481,43,dublin apartments waiting for dad ,0,0,0,-0.846160205,-0.946526822
-482,43,playing tag in miami with cousins,1,0,1,-0.846160205,-0.46409966
-483,43,karaoke in dorms 1st week,6,5,1,1.310200593,-0.46409966
-484,43,moving to a new house ,0,0,0,-0.846160205,-0.946526822
-485,43,christmas lights with trisha,2,1,1,-0.414888046,-0.46409966
-486,43,six flags with group,2,1,1,-0.414888046,-0.46409966
-487,43,1st time going to party,2,1,1,-0.414888046,-0.46409966
-488,43,getting a puppy,0,0,0,-0.846160205,-0.946526822
-489,43,cherry picking with cousins,0,0,0,-0.846160205,-0.946526822
-490,43,strawberry picking and flower fields,2,1,1,-0.414888046,-0.46409966
-491,43,palm springs with friends,2,1,1,-0.414888046,-0.46409966
-492,43,first time snorkeling in hawaii,3,2,1,0.016384114,-0.46409966
-493,43,san diego zoo during thanksgiving,3,1,2,-0.414888046,0.018327502
-494,43,"moving into drom, far from family",1,0,1,-0.846160205,-0.46409966
-495,43,taking cousins out for dessert ,1,1,0,-0.414888046,-0.946526822
-496,43,"SF with cousins, 1 car",5,1,4,-0.414888046,0.983181827
-497,43,carmel by the sea,1,0,1,-0.846160205,-0.46409966
-498,43,SF with shreeya ,2,1,1,-0.414888046,-0.46409966
-499,43,putting together pieces with asa ,4,3,1,0.447656274,-0.46409966
-500,43,19th birthday,2,1,1,-0.414888046,-0.46409966
-501,43,3am trip to newport beach,2,1,1,-0.414888046,-0.46409966
-502,43,"trip to SD, Spring 23",2,1,1,-0.414888046,-0.46409966
-503,43,"hike to the C, thorns ",5,3,2,0.447656274,0.018327502
-504,43,downtown with asa ,2,0,2,-0.846160205,0.018327502
-505,108,crawling with my brother,13,10,3,3.466561391,0.500754665
-506,108,giraffe slide at Vaness Preschool,17,11,6,3.89783355,1.948036152
-507,108,diboo table dance party ,8,8,0,2.604017072,-0.946526822
-508,108,swings with grandpa,14,13,1,4.76037787,-0.46409966
-509,108,six flags cheer competition,3,0,3,-0.846160205,0.500754665
-510,108,"first crush, snickering in bathroom",8,0,8,-0.846160205,2.912890476
-511,108,brushing TJ's teeth ,15,8,7,2.604017072,2.430463314
-512,108,"youth retreat, all nighter bear siting",20,10,10,3.466561391,3.877744801
-513,108,"first day of middle school, binder",20,4,16,0.878928433,6.772307775
-514,108,"second day, next door neighbor",15,3,12,0.447656274,4.842599126
-515,108,"soak city, kathleen leg, cotton candy",8,3,5,0.447656274,1.465608989
-516,108,"disneyland, glow hour ",13,13,0,4.76037787,-0.946526822
-517,108,"mun, taking pics with laura",1,0,1,-0.846160205,-0.46409966
-518,108,"asb elections, cheating drama",14,14,0,5.191650029,-0.946526822
-519,108,asb putting up door poster,16,14,2,5.191650029,0.018327502
-520,108,learning itzy icy don knabe,17,17,0,6.485466508,-0.946526822
-521,108,"biking with ddongs, tire pops ",16,3,13,0.447656274,5.325026288
-522,108,"driving test, 100% ",14,5,9,1.310200593,3.395317639
-523,108,"online classes, ft with evelyn ",13,0,13,-0.846160205,5.325026288
-524,108,meeting kcm people outside glasgow,17,6,11,1.741472752,4.360171963
-525,108,Indian kids wanting autograph,13,5,8,1.310200593,2.912890476
-526,108,"Julie Miss house, tuktut, ice cream",6,0,6,-0.846160205,1.948036152
-527,108,"snorlax kyle, ",18,2,16,0.016384114,6.772307775
-528,108,"flowers, sycamore park",17,9,8,3.035289231,2.912890476
-529,42,"toddler, sitting in box playing",2,1,1,-0.414888046,-0.46409966
-530,42,"AP biology, crying as cramming",2,1,1,-0.414888046,-0.46409966
-531,42,"Mr. Duan art classes, oil painting",4,2,2,0.016384114,0.018327502
-532,42,"Bassoon case, weekend GSYO practices",2,1,1,-0.414888046,-0.46409966
-533,42,"All nighter Ochem 8C, genetics final",2,1,1,-0.414888046,-0.46409966
-534,42,"Arguing with mom, ADHD diagnosis",2,1,1,-0.414888046,-0.46409966
-535,42,"First year, studying biology in Rivera",2,1,1,-0.414888046,-0.46409966
-536,42,Crying in BCH100 discussion,3,1,2,-0.414888046,0.018327502
-537,42,"Ochem 8B final, completed in office",2,1,1,-0.414888046,-0.46409966
-538,42,Crying finishing When Breath Becomes Air,3,1,2,-0.414888046,0.018327502
-539,42,"Accompanying dad at work, in truck",5,3,2,0.447656274,0.018327502
-540,42,Working on sterile technique,4,3,1,0.447656274,-0.46409966
-541,42,"Summer with Penny, making dumplings",1,0,1,-0.846160205,-0.46409966
-542,42,Hanging at Sarah's house with Farrah,3,2,1,0.016384114,-0.46409966
-543,42,"Ms. Karry, piano classes in shed",1,0,1,-0.846160205,-0.46409966
-544,42,"MHHS office hours, Fuson's backstory, Daniel",8,7,1,2.172744912,-0.46409966
-545,42,"Walking with Eric, talking grad school",5,4,1,0.878928433,-0.46409966
-546,42,Wisdom teeth removal aftermath,2,0,2,-0.846160205,0.018327502
-547,42,"SF portfolio day with Sarah, Christina",4,2,2,0.016384114,0.018327502
-548,42,CSSSA eating Buldak ramen with Marion,3,1,2,-0.414888046,0.018327502
-549,42,"Walking through natural history museum, Sekirou",4,1,3,-0.414888046,0.500754665
-550,42,"Beach day with Aly, Brenton, Vanessa",4,1,3,-0.414888046,0.500754665
-551,42,"Spring splash, pizza and Just Dance",1,0,1,-0.846160205,-0.46409966
-552,42,"Thinking about future, noon outside MRB",1,0,1,-0.846160205,-0.46409966
-553,41,getting my first dog,6,5,1,1.310200593,-0.46409966
-554,41,exploring the slope in the back,5,4,1,0.878928433,-0.46409966
-555,41,my messed up eye,1,0,1,-0.846160205,-0.46409966
-556,41,going to the bookstore with my dad,4,1,3,-0.414888046,0.500754665
-557,41,getting picked up by my grandma,3,1,2,-0.414888046,0.018327502
-558,41,painting my nails,5,3,2,0.447656274,0.018327502
-559,41,going to indonesia,4,3,1,0.447656274,-0.46409966
-560,41,having fun in eighth grade,3,2,1,0.016384114,-0.46409966
-561,41,breaking my toe,3,0,3,-0.846160205,0.500754665
-562,41,spraining my wrist,3,2,1,0.016384114,-0.46409966
-563,41,getting my other two dogs,4,3,1,0.447656274,-0.46409966
-564,41,meeting my first best friend in middle school,5,3,2,0.447656274,0.018327502
-565,41,fajita prank in high school,3,2,1,0.016384114,-0.46409966
-566,41,getting into college,3,1,2,-0.414888046,0.018327502
-567,41,seeing my brother leave for college,2,1,1,-0.414888046,-0.46409966
-568,41,making new friends in college (1st year),1,0,1,-0.846160205,-0.46409966
-569,41,hanging out at usha's dorm in 1st year,2,1,1,-0.414888046,-0.46409966
-570,41,bombing chem1B midterm 2,2,0,2,-0.846160205,0.018327502
-571,41,talking with my philosophy professor,4,2,2,0.016384114,0.018327502
-572,41,taking two finals back to back (chem8c and biol102),6,0,6,-0.846160205,1.948036152
-573,41,getting a free head of lettuce at school,5,4,1,0.878928433,-0.46409966
-574,41,anderson throwing a box in lecture hall,5,3,2,0.447656274,0.018327502
-575,41,the unfortunate beach trip (spring freshman yr),1,0,1,-0.846160205,-0.46409966
-576,41,ruining my hair and getting scammed,2,0,2,-0.846160205,0.018327502
-577,39,getting my horse,9,9,0,3.035289231,-0.946526822
-578,39,my parents divorcing,4,2,2,0.016384114,0.018327502
-579,39,my relationship with alex,4,3,1,0.447656274,-0.46409966
-580,39,being super depressed in high school,5,4,1,0.878928433,-0.46409966
-581,39,living with the martellos,0,0,0,-0.846160205,-0.946526822
-582,39,kamp karaman,3,1,2,-0.414888046,0.018327502
-583,39,vacationing in maine,2,2,0,0.016384114,-0.946526822
-584,39,meeting john,5,2,3,0.016384114,0.500754665
-585,39,deciding to major in psychology,2,0,2,-0.846160205,0.018327502
-586,39,going to paris,2,0,2,-0.846160205,0.018327502
-587,39,going to london,3,0,3,-0.846160205,0.500754665
-588,39,applying to grad school,2,0,2,-0.846160205,0.018327502
-589,39,working at harvard,5,2,3,0.016384114,0.500754665
-590,39,meeting kate & the LEL,2,1,1,-0.414888046,-0.46409966
-591,39,road trip to california,2,1,1,-0.414888046,-0.46409966
-592,39,completing my SYP,1,0,1,-0.846160205,-0.46409966
-593,39,halloween party at willow run,1,0,1,-0.846160205,-0.46409966
-594,39,reuniting with kayla,3,1,2,-0.414888046,0.018327502
-595,39,starting antidepressants,2,1,1,-0.414888046,-0.46409966
-596,39,playing volleyball in high school,2,1,1,-0.414888046,-0.46409966
-597,39,going to firefly with jenny,5,3,2,0.447656274,0.018327502
-598,39,going to warped tour with summer,1,0,1,-0.846160205,-0.46409966
-599,39,concerts at starland ballroom,4,3,1,0.447656274,-0.46409966
-600,39,AJ's wedding in savannah,3,0,3,-0.846160205,0.500754665
-601,75,Living in Los Angeles,14,8,6,2.604017072,1.948036152
-602,75,Moving to Riverside,10,8,2,2.604017072,0.018327502
-603,75,Starting school,7,4,3,0.878928433,0.500754665
-604,75,Being accessed by school district ,11,5,6,1.310200593,1.948036152
-605,75,Moving to elementary school,4,3,1,0.447656274,-0.46409966
-606,75,Making friends,9,4,5,0.878928433,1.465608989
-607,75,English classes,5,1,4,-0.414888046,0.983181827
-608,75,Breaking my arm,6,2,4,0.016384114,0.983181827
-609,75,Brother moving away to college,8,4,4,0.878928433,0.983181827
-610,75,Meeting my first nephew,8,2,6,0.016384114,1.948036152
-611,75,Bonding more with my other brother,6,3,3,0.447656274,0.500754665
-612,75,Meeting my closest friend,9,4,5,0.878928433,1.465608989
-613,75,Parents getting divorced,9,7,2,2.172744912,0.018327502
-614,75,Change in personality,9,6,3,1.741472752,0.500754665
-615,75,"Discovering music, books, movies etc.",11,8,3,2.604017072,0.500754665
-616,75,Finding my own beliefs,6,2,4,0.016384114,0.983181827
-617,75,Starting middle school,6,3,3,0.447656274,0.500754665
-618,75,Academic struggles,6,2,4,0.016384114,0.983181827
-619,75,Father moving away,6,5,1,1.310200593,-0.46409966
-620,75,Online school in 2020,9,4,5,0.878928433,1.465608989
-621,75,Senior year high school,5,3,2,0.447656274,0.018327502
-622,75,Friendships drifting apart,4,2,2,0.016384114,0.018327502
-623,75,Starting college ,31,9,22,3.035289231,9.666870749
-624,75,Getting diagnosed with ADHD,9,5,4,1.310200593,0.983181827
-625,76,Minecraft with kids my mom babysat,3,3,0,0.447656274,-0.946526822
-626,76,Going to Fiesta Village,2,1,1,-0.414888046,-0.46409966
-627,76,Science teacher buys snacks for me,5,3,2,0.447656274,0.018327502
-628,76,Neighbor's parents pick me up,5,2,3,0.016384114,0.500754665
-629,76,Beginning dance,1,0,1,-0.846160205,-0.46409966
-630,76,Public speaking class/debate,1,0,1,-0.846160205,-0.46409966
-631,76,8th grade skit for drama class,1,1,0,-0.414888046,-0.946526822
-632,76,Swimming during band camp,3,2,1,0.016384114,-0.46409966
-633,76,The start of COVID,3,2,1,0.016384114,-0.46409966
-634,76,Dalgona coffee,3,2,1,0.016384114,-0.46409966
-635,76,Windy Rancho Verde band competition,1,0,1,-0.846160205,-0.46409966
-636,76,Senior sunrise,5,4,1,0.878928433,-0.46409966
-637,76,Homecoming announcement,4,3,1,0.447656274,-0.46409966
-638,76,Senior field day,3,2,1,0.016384114,-0.46409966
-639,76,Getting ready for graduation,3,0,3,-0.846160205,0.500754665
-640,76,Day 2 freshmen orientation,2,1,1,-0.414888046,-0.46409966
-641,76,Plane flight to Boston,1,0,1,-0.846160205,-0.46409966
-642,76,Ski Mask Block Party,2,0,2,-0.846160205,0.018327502
-643,76,VSA ACE Week,1,0,1,-0.846160205,-0.46409966
-644,76,First time at Knott's Berry Farm,2,1,1,-0.414888046,-0.46409966
-645,76,Dance final,1,0,1,-0.846160205,-0.46409966
-646,76,Illenium Concert,2,1,1,-0.414888046,-0.46409966
-647,76,Valentine's Day,2,1,1,-0.414888046,-0.46409966
-648,76,Spring Splash,4,1,3,-0.414888046,0.500754665
-649,79,"parrots, death, religion, hospital, thunder",0,0,0,-0.846160205,-0.946526822
-650,79," room, struggle, five, unkept",0,0,0,-0.846160205,-0.946526822
-651,79,"dad, tears, unfair, anger",2,1,1,-0.414888046,-0.46409966
-652,79,"helicopter, spotlight, danger, gun",3,2,1,0.016384114,-0.46409966
-653,79,"cancer, call, tears",6,4,2,0.878928433,0.018327502
-654,79,"wither, weak, tubes, food",1,1,0,-0.414888046,-0.946526822
-655,79,"joy, love, bestie, eyes",6,3,3,0.447656274,0.500754665
-656,79,"friend, chem, talk",6,4,2,0.878928433,0.018327502
-657,79,"group, apartment, slime, dance",6,5,1,1.310200593,-0.46409966
-658,79,"flowers, car, food, open",4,2,2,0.016384114,0.018327502
-659,79,"grandma, beautiful, funny, tiktok, ",6,4,2,0.878928433,0.018327502
-660,79,"mom, sad, surgery, """"ugly"""", weight",6,1,5,-0.414888046,1.465608989
-661,79,"parents, money, argue, belittle,",7,7,0,2.172744912,-0.946526822
-662,79,"work, hug, comfort, break, leave",4,0,4,-0.846160205,0.983181827
-663,79,"sister, love, roblox, hug",2,1,1,-0.414888046,-0.46409966
-664,79," looks, perfect, ugly, notice, bad",6,2,4,0.016384114,0.983181827
-665,79,"dream, fear, shooting ,hide, accept",4,2,2,0.016384114,0.018327502
-666,79,"phone, trouble, talking, people, pillow",6,4,2,0.878928433,0.018327502
-667,79,"ponytail, mirror, stare, cry, mark",6,1,5,-0.414888046,1.465608989
-668,79,"illness, hate, embarrassed, hide, makeup, medicine",5,2,3,0.016384114,0.500754665
-669,79,"dying, fear, after, unknown",4,0,4,-0.846160205,0.983181827
-670,79,"weird, stalk, text, scary, paranoid, man",6,0,6,-0.846160205,1.948036152
-671,79,"mom, walmart, hard, money, 12am, starving",1,1,0,-0.414888046,-0.946526822
-672,79,"rice, meat, dinner, only, onion, hungry, best",3,3,0,0.447656274,-0.946526822
-673,83,"daycare help, dim lights in fall",2,2,0,0.016384114,-0.946526822
-674,83,elementary sister lunches,4,3,1,0.447656274,-0.46409966
-675,83,mom volunteering christmas day kindergarten ,4,1,3,-0.414888046,0.500754665
-676,83,asb lta secretary,9,6,3,1.741472752,0.500754665
-677,83,ucla sleepover bruin life,4,2,2,0.016384114,0.018327502
-678,83,mental hospital confusion,2,0,2,-0.846160205,0.018327502
-679,83,selling childhood home,4,2,2,0.016384114,0.018327502
-680,83,moving to seattle for...ever?,0,0,0,-0.846160205,-0.946526822
-681,83,driver's license mailbox mina accident,4,0,4,-0.846160205,0.983181827
-682,83,first job in n out,3,1,2,-0.414888046,0.018327502
-683,83,boba vape freezer,2,2,0,0.016384114,-0.946526822
-684,83,starbucks drive-thru and bar love,7,5,2,1.310200593,0.018327502
-685,83,moving in to dorm,3,2,1,0.016384114,-0.46409966
-686,83,delts ceos and hoes ensuing chaos,0,0,0,-0.846160205,-0.946526822
-687,83,fourth of july nobu police stop,5,3,2,0.447656274,0.018327502
-688,83,oregon police pleads,0,0,0,-0.846160205,-0.946526822
-689,83,spring quarter sopi pledging memories,0,0,0,-0.846160205,-0.946526822
-690,83,sd uggs,2,1,1,-0.414888046,-0.46409966
-691,83,rainy post college ramen boba croffle,0,0,0,-0.846160205,-0.946526822
-692,83,75 hard winter quarter growth,2,1,1,-0.414888046,-0.46409966
-693,83,covid first sneakout first kiss,3,2,1,0.016384114,-0.46409966
-694,83,opening first college acceptance,0,0,0,-0.846160205,-0.946526822
-695,83,klara's house paranoia ,4,0,4,-0.846160205,0.983181827
-696,83,irvine spectrum summerfields steal bonding,2,0,2,-0.846160205,0.018327502
-697,82,my 6th birthday party at home,6,3,3,0.447656274,0.500754665
-698,82,kindergarten field trip to fairytale land,6,5,1,1.310200593,-0.46409966
-699,82,not wanting to get my flu shot for the first time ,2,0,2,-0.846160205,0.018327502
-700,82,grandparents taking my brother and i to mcdonalds after school,6,2,4,0.016384114,0.983181827
-701,82,getting my ears pierced at 8 years old,5,3,2,0.447656274,0.018327502
-702,82,throwing up in a walmart from food poisoning ,8,6,2,1.741472752,0.018327502
-703,82,my first crush in middle school ,10,9,1,3.035289231,-0.46409966
-704,82,first day of high school ,2,0,2,-0.846160205,0.018327502
-705,82,first dance show of high school ,6,5,1,1.310200593,-0.46409966
-706,82,my high school graduation day ,2,0,2,-0.846160205,0.018327502
-707,82,my 8th grade graduation ,2,1,1,-0.414888046,-0.46409966
-708,82,my junior and senior year of high school being online ,2,0,2,-0.846160205,0.018327502
-709,82,playing video games with new friends during the pandemic ,5,2,3,0.016384114,0.500754665
-710,82,going to the beach with friends for the first time ,3,2,1,0.016384114,-0.46409966
-711,82,summer camping with family for the first time ,2,0,2,-0.846160205,0.018327502
-712,82,my first date with a guy ,2,0,2,-0.846160205,0.018327502
-713,82,my baby brother being born ,2,0,2,-0.846160205,0.018327502
-714,82,helping plan my grandpa's funeral ,6,3,3,0.447656274,0.500754665
-715,82,first day of university in a new city ,13,9,4,3.035289231,0.983181827
-716,82,meeting my best friends in university ,4,2,2,0.016384114,0.018327502
-717,82,my 21st birthday being in las vegas ,4,0,4,-0.846160205,0.983181827
-718,82,going to hawaii for the first time ,2,0,2,-0.846160205,0.018327502
-719,82,being scolded while doing math homework ,3,0,3,-0.846160205,0.500754665
-720,82,taking my little brother to the park ,5,2,3,0.016384114,0.500754665
-721,84,Quince,2,2,0,0.016384114,-0.946526822
-722,84,Freshman Football,8,6,2,1.741472752,0.018327502
-723,84,High School Softball,6,6,0,1.741472752,-0.946526822
-724,84,Nov-23,9,5,4,1.310200593,0.983181827
-725,84,Mexico ,5,4,1,0.878928433,-0.46409966
-726,84,Phakday,0,0,0,-0.846160205,-0.946526822
-727,84,Buggs ,1,1,0,-0.414888046,-0.946526822
-728,84,Going to Yosemite,6,5,1,1.310200593,-0.46409966
-729,84,Kitty,13,9,4,3.035289231,0.983181827
-730,84,Peer Counseling class in High school,2,1,1,-0.414888046,-0.46409966
-731,84,Culinary Course with Damien ,2,0,2,-0.846160205,0.018327502
-732,84,After School Softball Practice,6,5,1,1.310200593,-0.46409966
-733,84,Championship game against Edgewood,8,4,4,0.878928433,0.983181827
-734,84,Grandma's Surprise Party,7,3,4,0.447656274,0.983181827
-735,84,Tia Lucila,7,2,5,0.016384114,1.465608989
-736,84,Angels game with Alexa,5,0,5,-0.846160205,1.465608989
-737,84,Disneyland,1,0,1,-0.846160205,-0.46409966
-738,84,graduation,5,0,5,-0.846160205,1.465608989
-739,84,Move in Riverside,6,0,6,-0.846160205,1.948036152
-740,84,Bus in Mexico,0,0,0,-0.846160205,-0.946526822
-741,84,Riverside bus,1,0,1,-0.846160205,-0.46409966
-742,84,Formal Semi,4,0,4,-0.846160205,0.983181827
-743,84,Senior night,4,1,3,-0.414888046,0.500754665
-744,84,Spring Splash,0,0,0,-0.846160205,-0.946526822
-745,88,Spontaneous anger towards previously unknown relative,2,1,1,-0.414888046,-0.46409966
-746,88,Crying in school bathroom,4,2,2,0.016384114,0.018327502
-747,88,Mom reading me specific children's book,3,2,1,0.016384114,-0.46409966
-748,88,Crying to mom about bullying,1,0,1,-0.846160205,-0.46409966
-749,88,Coming out to parents,2,1,1,-0.414888046,-0.46409966
-750,88,Bad breakup with highschool ex,2,1,1,-0.414888046,-0.46409966
-751,88,Psychiatric ward stay for 3 days,2,1,1,-0.414888046,-0.46409966
-752,88,Self-harm in highschool bathroom,2,1,1,-0.414888046,-0.46409966
-753,88,Unsuccessful overdose,2,1,1,-0.414888046,-0.46409966
-754,88,Moving to different independent-study highschool,1,0,1,-0.846160205,-0.46409966
-755,88,Meeting friend at thanksgiving party,1,0,1,-0.846160205,-0.46409966
-756,88,Betrayal of former best friend,2,1,1,-0.414888046,-0.46409966
-757,88,Reconnecting with old friend ,1,0,1,-0.846160205,-0.46409966
-758,88,Sudden abandonment of 8th grade friend,0,0,0,-0.846160205,-0.946526822
-759,88,Bullying in 6th grade,1,1,0,-0.414888046,-0.946526822
-760,88,"""""Nobody likes you"""" statement from peer",5,3,2,0.447656274,0.018327502
-761,88,"""""I just want to be happy"""" ",5,2,3,0.016384114,0.500754665
-762,88,1st time at group therapy,4,2,2,0.016384114,0.018327502
-763,88,Adopting my 1st cat,4,2,2,0.016384114,0.018327502
-764,88,Being sent to counselor's office,4,2,2,0.016384114,0.018327502
-765,88,Failing highschool English class,7,4,3,0.878928433,0.500754665
-766,88,Making a promise ,5,3,2,0.447656274,0.018327502
-767,88,Friend bringing me pizza,2,1,1,-0.414888046,-0.46409966
-768,88,Emotional conversation with mom,2,1,1,-0.414888046,-0.46409966
-769,89,Jumping onto wet floor,4,3,1,0.447656274,-0.46409966
-770,89,Running at night,3,2,1,0.016384114,-0.46409966
-771,89,Grabbing a ballon,2,0,2,-0.846160205,0.018327502
-772,89,First stitches,3,2,1,0.016384114,-0.46409966
-773,89,Second stitches,3,2,1,0.016384114,-0.46409966
-774,89,Staying in hospital for 4 days,1,0,1,-0.846160205,-0.46409966
-775,89,What food are we eating today,3,1,2,-0.414888046,0.018327502
-776,89,Baby brother,3,2,1,0.016384114,-0.46409966
-777,89,Not sharing toys,3,2,1,0.016384114,-0.46409966
-778,89,Pushing baby brother,8,4,4,0.878928433,0.983181827
-779,89,"Uncle wedding (orange shirt, gray pants)",6,5,1,1.310200593,-0.46409966
-780,89,Roasted pork for lunch and dinner,5,4,1,0.878928433,-0.46409966
-781,89,Hearing rats ,1,0,1,-0.846160205,-0.46409966
-782,89,First time bicycle riding,1,0,1,-0.846160205,-0.46409966
-783,89,Scraping my knee in first grade,1,0,1,-0.846160205,-0.46409966
-784,89,Moving to the US,4,0,4,-0.846160205,0.983181827
-785,89,Living with another family,3,2,1,0.016384114,-0.46409966
-786,89,Broke my dad's favorite toy,1,0,1,-0.846160205,-0.46409966
-787,89,Went to Frank Wright Elementary,3,1,2,-0.414888046,0.018327502
-788,89,Detention school,3,2,1,0.016384114,-0.46409966
-789,89,Transfer to Durfee school (3rd grade),1,0,1,-0.846160205,-0.46409966
-790,89,Made friends in America,1,0,1,-0.846160205,-0.46409966
-791,89,Went to Arroyo High School,2,1,1,-0.414888046,-0.46409966
-792,89,COVID,1,0,1,-0.846160205,-0.46409966
-793,80,grandparents holding my hand at beach,4,3,1,0.447656274,-0.46409966
-794,80,mom takes picture with Scooby-Doo,6,5,1,1.310200593,-0.46409966
-795,80,adopting a puppy for my birthday,2,0,2,-0.846160205,0.018327502
-796,80,chewing sugarcane for the first time,2,1,1,-0.414888046,-0.46409966
-797,80,frog dissection in 7th grade biology,2,1,1,-0.414888046,-0.46409966
-798,80,1st place at marching band championships,5,3,2,0.447656274,0.018327502
-799,80,dislocating my kneecap,4,2,2,0.016384114,0.018327502
-800,80,bee sting on my middle finger,1,0,1,-0.846160205,-0.46409966
-801,80,first kiss,5,4,1,0.878928433,-0.46409966
-802,80,laughing about emoji with a friend,3,2,1,0.016384114,-0.46409966
-803,80,first time eating tomato in burger,2,1,1,-0.414888046,-0.46409966
-804,80,falling asleep in high school history,8,6,2,1.741472752,0.018327502
-805,80,accident while running in PE,3,1,2,-0.414888046,0.018327502
-806,80,learning piccolo for the first time,2,1,1,-0.414888046,-0.46409966
-807,80,calling out friend on their behavior,3,1,2,-0.414888046,0.018327502
-808,80,letting pianist play my violin,1,0,1,-0.846160205,-0.46409966
-809,80,eating silpancho with grandma,2,0,2,-0.846160205,0.018327502
-810,80,mom teaches me how to park,1,0,1,-0.846160205,-0.46409966
-811,80,late to biology midterm,1,0,1,-0.846160205,-0.46409966
-812,80,going on the bus alone,2,0,2,-0.846160205,0.018327502
-813,80,first youth orchestra rehearsal,2,1,1,-0.414888046,-0.46409966
-814,80,late to first ever university lecture,2,1,1,-0.414888046,-0.46409966
-815,80,ant infestation in my bedroom,2,0,2,-0.846160205,0.018327502
-816,80,crying before symposium at practice session,1,0,1,-0.846160205,-0.46409966
+"","subID","memory","degree","outdegree","indegree","outdegree_scaled","indegree_scaled","degree_scaled"
+"1","2","Purple slippers trunk parking lot",2,2,0,0.0117705818588364,-0.955523465203832,-0.581038567823706
+"2","2","Mcdonalds playground stuck crying",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"3","2","Spongebob project elementary school",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"4","2","grandma dentures brushing nature",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"5","2","dad cigarettes smoking hug dog horse",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"6","2","mom yelling orchestra chair broke",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"7","2","pizza classroom tiny piece",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"8","2","sprain finger basketball scary",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"9","2","arm broke park Rebecca",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"10","2","glasses broke crying basketball",4,0,4,-0.835711311977387,0.982439619153236,0.0166011019378201
+"11","2","hermit crab gumdo wooden sword fight",12,10,2,3.40169815720373,0.0134580769747018,2.40715978098392
+"12","2","Mom crying fight napkin",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"13","2","piano competition shaking international",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"14","2","high school chemistry project nakita nation",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"15","2","Phone photos Spanish embarrassing",6,2,4,0.0117705818588364,0.982439619153236,0.614240771699346
+"16","2","Panda Express friend hungry delicious",7,3,4,0.435511528776948,0.982439619153236,0.913060606580109
+"17","2","Beach sand walking family happy",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"18","2","Indian food delicious bone stuck throat",7,2,5,0.0117705818588364,1.4669303902425,0.913060606580109
+"19","2","Mukbangs tiktok reels delicious longing",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"20","2","wingstop stomach hurting pain",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"21","2","cousin annoying selfish painful",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"22","2","friend funny food beach happy",8,1,7,-0.411970365059275,2.43591193242104,1.21188044146087
+"23","2","Girl class angry invertebrate uneasy",5,2,3,0.0117705818588364,0.497948848063969,0.315420936818583
+"24","2","Turtle video YouTube shocked happy",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"25","4","Fireflies by Owl City",7,3,4,0.435511528776948,0.982439619153236,0.913060606580109
+"26","4","TV falling down",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"27","4","Dehydrated Bread",9,6,3,1.70673436953128,0.497948848063969,1.51070027634163
+"28","4","Hear me out, 1 am Denny's?",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"29","4","Yogurtland crying",7,4,3,0.85925247569506,0.497948848063969,0.913060606580109
+"30","4","The Sarcastic Club Squeeze",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"31","4","Sorry Chair",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"32","4","AP test confession",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"33","4","Wikihow to dance",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"34","4","Always bet on Hakari",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"35","4","Middle School Breakfast Monitor Event",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"36","4","Rejection in Japan",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"37","4","The Admin Building Kindness Tree",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"38","4","Raising Canes Incident",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"39","4","King of Steam",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"40","4","The Discord Presentation",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"41","4","Spring Break Concert",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"42","4","You know them very well",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"43","4","I drank sprite and cake",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"44","4","Last Karaoke Night",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"45","4","The LA Incident",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"46","4","Across the Spiderverse accident",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"47","4","The Irvine Train back",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"48","4","15 brownies sold",12,5,7,1.28299342261317,2.43591193242104,2.40715978098392
+"49","5","crashing into a duck statue",5,5,0,1.28299342261317,-0.955523465203832,0.315420936818583
+"50","5","the day that tia died",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"51","5","seeing dad lash out",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"52","5","little ones entry and exit",7,6,1,1.70673436953128,-0.471032694114565,0.913060606580109
+"53","5","therapy and how it helped",9,8,1,2.55421626336751,-0.471032694114565,1.51070027634163
+"54","5","march of 2020",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"55","5","moms new bed",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"56","5","how life was under floor renovation",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"57","5","french fry near death experience",11,9,2,2.97795721028562,0.0134580769747018,2.10833994610316
+"58","5","bee attack ",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"59","5","elementary school threatened",7,4,3,0.85925247569506,0.497948848063969,0.913060606580109
+"60","5","first phone to now",6,3,3,0.435511528776948,0.497948848063969,0.614240771699346
+"61","5","in the name of love song",5,2,3,0.0117705818588364,0.497948848063969,0.315420936818583
+"62","5","first day and graduation day",8,1,7,-0.411970365059275,2.43591193242104,1.21188044146087
+"63","5","first car accident as adult ",7,3,4,0.435511528776948,0.982439619153236,0.913060606580109
+"64","5","first time getting in trouble at school",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"65","5","sister flips out on dad",6,2,4,0.0117705818588364,0.982439619153236,0.614240771699346
+"66","5","extra long time in shower ",8,0,8,-0.835711311977387,2.9204027035103,1.21188044146087
+"67","5","my driving accident ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"68","5","summer time grandma went down",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"69","5","death in neighborhood",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"70","5","first time moving out ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"71","5","Avid 2018",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"72","5","scariest times",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"73","7","Colton Condo",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"74","7","Austin and Ally (On Set)",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"75","7","OPA Talent Show",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"76","7","6th Grade Promotion",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"77","7","First Day at Raney",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"78","7","Raney Robotics Competition",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"79","7","Being Baptized",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"80","7","Europe Trip (Copenhagen)",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"81","7","Open House, Visiting ROTC",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"82","7","Minecraft Tag with Boyfriend",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"83","7","Military Ball Junior Year",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"84","7","Leadership Academy Round 1",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"85","7","First Instructor Meeting",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"86","7","Troy Sports Day",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"87","7","Last Day of Highschool",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"88","7","Grad Nite",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"89","7","Graduation",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"90","7","Leadership Academy Round 2",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"91","7","VBS",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"92","7","Highlander Day",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"93","7","Painting Esri's Piano",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"94","7","Visiting Hindu Temple",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"95","7","Young Ladies' Conference",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"96","7","Western University Tour",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"97","8","LAX Hotel Issue",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"98","8","Round 1 date",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"99","8","May 15th ",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"100","8","Move in day",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"101","8","Disney airbnb",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"102","8","20th birthday",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"103","8","Flowermart 1st time",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"104","8","LA Trip with friends",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"105","8","Late night san diego",3,3,0,0.435511528776948,-0.955523465203832,-0.282218732942943
+"106","8","1st day of pre school",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"107","8","Acko Riding as kid",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"108","8","Wasabi guarding valuables",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"109","8","Finding Pocky ",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"110","8","Shaoshao brought home",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"111","8","Grandfather death",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"112","8","Funeral for grandpa",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"113","8","Drinking with family in Japan",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"114","8","Pretend worker in Japan",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"115","8","Shibuya and Akihabara",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"116","8","Shooting range with friends",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"117","8","Shadowing in hospital",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"118","8","The Fishbowl",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"119","8","Final for BCH110B",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"120","8","Jake mimic flexing guy",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"121","17","North Marin United State Cup Championship",2,2,0,0.0117705818588364,-0.955523465203832,-0.581038567823706
+"122","17","Brother's beachside wedding In Hawaii",7,5,2,1.28299342261317,0.0134580769747018,0.913060606580109
+"123","17","Senior Ditch Day at the River",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"124","17","High School Senior Year Prom",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"125","17","Quince Mexico Trip in the Summer",6,0,6,-0.835711311977387,1.95142116133177,0.614240771699346
+"126","17","2024 Vacation to Waikiki Hawaii",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"127","17","Trip to Aquarium of the Pacific ",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"128","17","New York City Family Roadtrip",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"129","17","Snowmass Colorado with Doug Carlston",8,5,3,1.28299342261317,0.497948848063969,1.21188044146087
+"130","17","Niagra Falls with Boat Tour",3,3,0,0.435511528776948,-0.955523465203832,-0.282218732942943
+"131","17","Buffalo Billiards and being with friends",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"132","17","Late night runs at Luchessi Park",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"133","17","High School Graduation Yayos After Party ",2,2,0,0.0117705818588364,-0.955523465203832,-0.581038567823706
+"134","17","Golden State Warriors Championship Parade",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"135","17","UCR Freshman Year Move In Week ",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"136","17","First UCR Block Party Event",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"137","17","Christmas Break at SF Union Square",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"138","17","My Sisters Quince Party in SF",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"139","17","Kiaras Birthday In Vallejo",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"140","17","Giants Baseball Game with my friends",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"141","17","Seattle Space Needle and the city",8,6,2,1.70673436953128,0.0134580769747018,1.21188044146087
+"142","17","Driving to LA for Drake Concert",8,5,3,1.28299342261317,0.497948848063969,1.21188044146087
+"143","17","Meeting my brother At Pismo Beach",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"144","17","Clippers game to The Groves Market",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"145","19","Shiro ",2,2,0,0.0117705818588364,-0.955523465203832,-0.581038567823706
+"146","19","Sweet Creek",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"147","19","Kyle",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"148","19","Jaeden",9,8,1,2.55421626336751,-0.471032694114565,1.51070027634163
+"149","19","Dad ",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"150","19","Shooting star",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"151","19","Snowcat",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"152","19","Monique",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"153","19","Montecito",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"154","19","Grandma",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"155","19","Miyuk Gook",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"156","19","El Monte Aquatics",5,0,5,-0.835711311977387,1.4669303902425,0.315420936818583
+"157","19","Painting ",7,6,1,1.70673436953128,-0.471032694114565,0.913060606580109
+"158","19","Ichiko Aoba",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"159","19","Little Tokyo Girl",4,4,0,0.85925247569506,-0.955523465203832,0.0166011019378201
+"160","19","Beginners Day",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"161","19","Donkeys ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"162","19","Seaside ",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"163","19","New Years 2024",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"164","19","Yummy Tea ",9,2,7,0.0117705818588364,2.43591193242104,1.51070027634163
+"165","19","Crescent City",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"166","19","Arches",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"167","19","1st Year Parties",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"168","19","Juicy",4,0,4,-0.835711311977387,0.982439619153236,0.0166011019378201
+"169","48","discovery science center bubble show cousins",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"170","48","linda crafts hidden from grandma",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"171","48","mom payless forgetting shoes for school",10,9,1,2.97795721028562,-0.471032694114565,1.8095201112224
+"172","48","twins jungle gym third grade",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"173","48","twins shared journal entries",2,2,0,0.0117705818588364,-0.955523465203832,-0.581038567823706
+"174","48","twins career day slushee face paint",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"175","48","free lunch park grandmas house",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"176","48","early day kindergarten baby sister born",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"177","48","gold rush day square dancing",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"178","48","family san francisco trip",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"179","48","family san diego trip",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"180","48","friends san diego trip",6,3,3,0.435511528776948,0.497948848063969,0.614240771699346
+"181","48","jordan met up sierra bella park",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"182","48","freshmen link crew orientation",8,1,7,-0.411970365059275,2.43591193242104,1.21188044146087
+"183","48","covid pandemic shut down day",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"184","48","failed first drivers test blonde lady",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"185","48","wisdom teeth and braces week",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"186","48","quince court beach video",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"187","48","day of my quince",8,6,2,1.70673436953128,0.0134580769747018,1.21188044146087
+"188","48","highschool graduation",7,2,5,0.0117705818588364,1.4669303902425,0.913060606580109
+"189","48","senior year homecoming queen",6,2,4,0.0117705818588364,0.982439619153236,0.614240771699346
+"190","48","senior year prom",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"191","48","link crew disneyland trip",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"192","48","first day of college",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"193","50","Life in Ghana",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"194","50","California 2019",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"195","50","Private School",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"196","50","Hillcrest High",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"197","50","Nana 2018",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"198","50","College Acceptances",3,3,0,0.435511528776948,-0.955523465203832,-0.282218732942943
+"199","50","Covid Lockdown",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"200","50","UCR Life",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"201","50","Choir performance",6,0,6,-0.835711311977387,1.95142116133177,0.614240771699346
+"202","50","2023 Ghana",6,2,4,0.0117705818588364,0.982439619153236,0.614240771699346
+"203","50","School in Ghana",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"204","50","Kayemon Debut",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"205","50","Church Life in Ghana",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"206","50","Birthday party",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"207","50","Playing sports in Ghana",7,5,2,1.28299342261317,0.0134580769747018,0.913060606580109
+"208","50","Volleyball at Hillcrest",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"209","50","Cross Country racing",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"210","50","Emotionless but calm",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"211","50","Old house at demo",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"212","50","St Micheal's swing",6,1,5,-0.411970365059275,1.4669303902425,0.614240771699346
+"213","50","Barracks camp ",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"214","50","Nana Yaw and Isaac",7,7,0,2.13047531644939,-0.955523465203832,0.913060606580109
+"215","50","Sunday School",9,7,2,2.13047531644939,0.0134580769747018,1.51070027634163
+"216","50","Vacation Bible School",7,6,1,1.70673436953128,-0.471032694114565,0.913060606580109
+"217","22","Sadness",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"218","22","Joyful",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"219","22","Betrayed",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"220","22","Painful",7,7,0,2.13047531644939,-0.955523465203832,0.913060606580109
+"221","22","Annoyed",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"222","22","Concerned",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"223","22","Funny",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"224","22","Naive",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"225","22","Energetic",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"226","22","Hopeful",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"227","22","Worried",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"228","22","Happy",5,0,5,-0.835711311977387,1.4669303902425,0.315420936818583
+"229","22","Broken",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"230","22","Heartbroken",11,6,5,1.70673436953128,1.4669303902425,2.10833994610316
+"231","22","New Perspectives",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"232","22","Critique",4,0,4,-0.835711311977387,0.982439619153236,0.0166011019378201
+"233","22","Disconnected",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"234","22","Easy going",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"235","22","Peaceful",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"236","22","Fun Chaotic",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"237","22","Workaholic ",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"238","22","Time Management",5,1,4,-0.411970365059275,0.982439619153236,0.315420936818583
+"239","22","Music Therapy",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"240","22","Sleepy",6,3,3,0.435511528776948,0.497948848063969,0.614240771699346
+"241","23","Family trip to new york city to visit my aunt ",9,9,0,2.97795721028562,-0.955523465203832,1.51070027634163
+"242","23","The day I got my dog for my 7th birthday ",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"243","23","My 5th grade graduation ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"244","23","The day I passed my drivers license test ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"245","23","My 5th birthday party ",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"246","23","The day my cousin moved to vegas ",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"247","23","When I got first place at worlds",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"248","23","Family trip to Disney World ",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"249","23","Became league champion for the 100 and 200m",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"250","23","Family trip the Bahamas ",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"251","23","The day my uncle passed away ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"252","23","My high school graduation party ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"253","23","The day I ran 12.27 in the 100m",5,0,5,-0.835711311977387,1.4669303902425,0.315420936818583
+"254","23","The day I moved to UC Riverside ",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"255","23","Family trip to Washigton DC ",7,7,0,2.13047531644939,-0.955523465203832,0.913060606580109
+"256","23","The day my aunt Jonie moved out",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"257","23","My brothers 8th grade graduation ",4,4,0,0.85925247569506,-0.955523465203832,0.0166011019378201
+"258","23","My last gymnastics competition ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"259","23","My 8th grade graduation ",8,5,3,1.28299342261317,0.497948848063969,1.21188044146087
+"260","23","Saying goodbye to my friends before moving ",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"261","23","Last day practicing with coach and reggie ",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"262","23","When my teacher took my harry potter book ",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"263","23","The day I passed my permit test ",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"264","23","My last AP Gov class of high school ",5,0,5,-0.835711311977387,1.4669303902425,0.315420936818583
+"265","24","Truck:",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"266","24","Guinness:",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"267","24","Military: ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"268","24","SubUwU: ",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"269","24","Grandpa Howard: ",7,5,2,1.28299342261317,0.0134580769747018,0.913060606580109
+"270","24","Welk: ",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"271","24","Running through Fire: ",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"272","24","English 1A: ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"273","24","Alphonse The Clanless: ",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"274","24","Wii: ",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"275","24","ElHafsi: ",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"276","24","Halo 2: ",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"277","24","Discord DND: ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"278","24","Sacrificial Lamb: ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"279","24","Baker's: ",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"280","24","Freddy: ",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"281","24","One Piece: ",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"282","24","Black Clover: ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"283","24","Pegasus: ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"284","24","Octopaths: ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"285","24","Unova: ",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"286","24","Plague: ",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"287","24","Inland Empire: ",11,11,0,3.82543910412184,-0.955523465203832,2.10833994610316
+"288","24","Lancer: ",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"289","26","how i didn't go to preschool",7,5,2,1.28299342261317,0.0134580769747018,0.913060606580109
+"290","26","doing gymnastics as a kid",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"291","26","chinese school/VBS",12,5,7,1.28299342261317,2.43591193242104,2.40715978098392
+"292","26","my parents' life story ?",5,2,3,0.0117705818588364,0.497948848063969,0.315420936818583
+"293","26","chad's halloween party in 6th grade",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"294","26","visiting temple in oakland",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"295","26","crashing the green car 2x",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"296","26","high school thyroid diagnosis",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"297","26","high school volunteering - zucchini, scottish",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"298","26","first job - staples, nice aura",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"299","26","high school my first boyfriend",7,3,4,0.435511528776948,0.982439619153236,0.913060606580109
+"300","26","my first breakup",13,5,8,1.28299342261317,2.9204027035103,2.70597961586469
+"301","26","smoking in sri's car",7,6,1,1.70673436953128,-0.471032694114565,0.913060606580109
+"302","26","guess I'm going to UCR",5,2,3,0.0117705818588364,0.497948848063969,0.315420936818583
+"303","26","pentland w/nowreen - eldon's house/friends",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"304","26","travel bug- aus with friends",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"305","26","great grandma's birthdays/reunions",3,3,0,0.435511528776948,-0.955523465203832,-0.282218732942943
+"306","26","graduation day/making our caps",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"307","26","dad's financial crisis",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"308","26","isabelle coming out, SD family",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"309","26","kenny",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"310","26","passing quals ",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"311","26","RCH S6, feeding blind, teeth brushing",7,6,1,1.70673436953128,-0.471032694114565,0.913060606580109
+"312","26","unhappy during grad school 2nd year",7,4,3,0.85925247569506,0.497948848063969,0.913060606580109
+"313","32","moving from apartment to house",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"314","32","inside car with fire outside",11,10,1,3.40169815720373,-0.471032694114565,2.10833994610316
+"315","32","lost my pillow after camp",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"316","32","playing dodgeball at tntt",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"317","32","fell on ladder at monkey bars ",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"318","32","met destiny during pe",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"319","32","played minecraft in art class",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"320","32","swam in pool with Jessica ",6,3,3,0.435511528776948,0.497948848063969,0.614240771699346
+"321","32","got phone taken away in choir ",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"322","32","said good bye to Anni",9,3,6,0.435511528776948,1.95142116133177,1.51070027634163
+"323","32","went to winter formal ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"324","32","passed MA test",7,6,1,1.70673436953128,-0.471032694114565,0.913060606580109
+"325","32","found out a pride secret ",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"326","32","went running at senior prom ",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"327","32","met current boyfriend at orientation ",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"328","32","bonded over tea video ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"329","32","met two friends at sorority recruitment ",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"330","32","first party with two friends ",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"331","32","lost two friends ",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"332","32","kung fu panda 2 with friends ",9,5,4,1.28299342261317,0.982439619153236,1.51070027634163
+"333","32","called cops for Nayan ",15,0,15,-0.835711311977387,6.31183810113517,3.30361928562621
+"334","32","cotton candy milkshake and soda ",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"335","32","bestie almost break up with Lucas ",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"336","32","movie dates and marvel movies",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"337","34","playing with waterballoons in kindergarten",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"338","34","getting asked to prom",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"339","34","walking across the stage at graduation",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"340","34","moving into my dorm at UCR",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"341","34","first visit at the temple",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"342","34","getting a keyboard piano for christmas",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"343","34","going to legoland with my little brother",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"344","34","hiding under the table with my cousin during a storm",5,2,3,0.0117705818588364,0.497948848063969,0.315420936818583
+"345","34","wax museum project in sixth grade ",6,3,3,0.435511528776948,0.497948848063969,0.614240771699346
+"346","34","holding a snake in Ms. Fukishima's class",7,4,3,0.85925247569506,0.497948848063969,0.913060606580109
+"347","34","going to the taylor swift concert ",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"348","34","waking up late for my first test for WHAP",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"349","34","taking the AP psych exam",9,3,6,0.435511528776948,1.95142116133177,1.51070027634163
+"350","34","my first halloween party with friends in 2022",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"351","34","getting surprised for my 18th birthday",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"352","34","getting acupuncture at the temple ",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"353","34","having to move into my aunts house ",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"354","34","going for a walk in the forest ",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"355","34","watching doctor strange with my best friend",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"356","34","spending my summer in france ",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"357","34","going to gradnite at disneyland",5,2,3,0.0117705818588364,0.497948848063969,0.315420936818583
+"358","34","collecting rolliepollies and hiding them in my desk",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"359","34","playing capture the flag ",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"360","34","crying on the last day of 8th grade",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"361","33","holding down dustpan for mom",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"362","33","split my head in fourth grade",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"363","33","first failed test third grade",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"364","33","Suspension in fifth grade(people mover)",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"365","33","In school suspension 6th grade",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"366","33","mother's day avocado toast incident",5,0,5,-0.835711311977387,1.4669303902425,0.315420936818583
+"367","33","Bryce seventh grade homeroom",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"368","33","First day of highschool sports",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"369","33","Meeting JT in Freshman Biology",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"370","33","First season of track",5,0,5,-0.835711311977387,1.4669303902425,0.315420936818583
+"371","33","Becoming friends with Kevin over quarantine",5,1,4,-0.411970365059275,0.982439619153236,0.315420936818583
+"372","33","League finals for track senior year",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"373","33","rejected from every UC except riverside",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"374","33","Returning my cap and gown",13,13,0,4.67292099795806,-0.955523465203832,2.70597961586469
+"375","33","getting COVID on welcome week",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"376","33","Richard in my freshman year",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"377","33","Dad's christmas outburst ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"378","33","First day with my new bike",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"379","33","Crash bike first time in Riverside",7,6,1,1.70673436953128,-0.471032694114565,0.913060606580109
+"380","33","Meeting Jo",6,3,3,0.435511528776948,0.497948848063969,0.614240771699346
+"381","33","Managers at work mad at me",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"382","33","PA pool party",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"383","33","First thanksgiving birthday",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"384","33","Schutes and Ladders test failed",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"385","31","First car accident as a kid",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"386","31","Birthday party at Chucky(?) Cheese",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"387","31","21st birthday party",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"388","31","College dorm experience",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"389","31","First long-term relationship",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"390","31","College graduation",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"391","31","First apartment",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"392","31","First full-time job",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"393","31","First undergraduate research symposium",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"394","31","First first-author publication",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"395","31","Dad's passing",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"396","31","First PC that I built",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"397","31","First memories of my pets",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"398","31","Injury to right leg",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"399","31","My tattoo",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"400","31","Chipped toenail during childhood",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"401","31","First trip to disneyland",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"402","31","Trip to cancun",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"403","31","Trip to seattle",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"404","31","First presentation in grad school",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"405","31","First date with current girlfriend",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"406","31","Girlfriend's white coat ceremony",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"407","31","Moving to California",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"408","31","Stolen car",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"409","46","Divorce of mom and dad ",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"410","46","grandfather passing ",9,6,3,1.70673436953128,0.497948848063969,1.51070027634163
+"411","46","starting high school ",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"412","46","getting my drivers license  ",10,4,6,0.85925247569506,1.95142116133177,1.8095201112224
+"413","46","getting into UCR",10,8,2,2.55421626336751,0.0134580769747018,1.8095201112224
+"414","46","my boyfriend asking me to be his girlfriend ",16,10,6,3.40169815720373,1.95142116133177,3.60243912050698
+"415","46","getting coffee with my friend Salomay ",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"416","46","halloween nights with my friends ",15,6,9,1.70673436953128,3.40489347459957,3.30361928562621
+"417","46","my childhood dog Roxy ",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"418","46","my 20th birthday party ",7,0,7,-0.835711311977387,2.43591193242104,0.913060606580109
+"419","46","going to Hawaii with my friend Sam ",8,5,3,1.28299342261317,0.497948848063969,1.21188044146087
+"420","46","graduating high school ",8,5,3,1.28299342261317,0.497948848063969,1.21188044146087
+"421","46","beach trips with friends ",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"422","46","first day of college ",4,0,4,-0.835711311977387,0.982439619153236,0.0166011019378201
+"423","46","Playing lacrosse in high school ",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"424","46","going ice skating with family during Christmas ",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"425","46","Volunteering at the hospital ",11,6,5,1.70673436953128,1.4669303902425,2.10833994610316
+"426","46","seeing my grandpa in a senior center ",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"427","46","going to disneyland with my dad ",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"428","46","seeing my dad remarry ",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"429","46","seeing my baby nephew be born ",7,3,4,0.435511528776948,0.982439619153236,0.913060606580109
+"430","46","Oceanside trip with my friend Sam ",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"431","46","working at starbucks ",6,0,6,-0.835711311977387,1.95142116133177,0.614240771699346
+"432","46","My brothers and I living in separate homes growing up ",12,3,9,0.435511528776948,3.40489347459957,2.40715978098392
+"433","59","First golf medal in the rain",2,2,0,0.0117705818588364,-0.955523465203832,-0.581038567823706
+"434","59","Acceptance into college",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"435","59","Sadness from a relative's death",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"436","59","Watching that basketball game with friends",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"437","59","Asking out a girl to prom",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"438","59","Losing my first sports bet",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"439","59","Graduating high school",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"440","59","Feeling dejection after breakup",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"441","59","Seeing her for the first time",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"442","59","Seeing her for the last time",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"443","59","Watching a movie after car crash",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"444","59","Choosing where to commit",2,2,0,0.0117705818588364,-0.955523465203832,-0.581038567823706
+"445","59","Giving up on golf",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"446","59","Winning that golf game in Camarillo",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"447","59","Eating Blaze Pizza after winning",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"448","59","Buying my first Jordan shoes",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"449","59","Getting my first job",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"450","59","Working my last shift",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"451","59","Saying bye to my underclassmen friends",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"452","59","Hearing the news on a date",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"453","59","Lying on bed staring at stars",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"454","59","Dropping my phone in the backyard",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"455","59","Hitting the gym after 4 months",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"456","59","Singing songs to her in room",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"457","45","My dog, Teddy, passing away.",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"458","45","Graduating high school.",10,9,1,2.97795721028562,-0.471032694114565,1.8095201112224
+"459","45","Completing my Girl Scout Gold Award.",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"460","45","Starting my first job. ",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"461","45","Buying my first car.",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"462","45","Adopting my cats. ",8,3,5,0.435511528776948,1.4669303902425,1.21188044146087
+"463","45","Transferring job locations. ",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"464","45","Danzantes Unidos Festival in Fresno.",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"465","45","Beyond Wonderland with my boyfriend.",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"466","45","High School Grad Nite.",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"467","45","The start of the pandemic. ",6,2,4,0.0117705818588364,0.982439619153236,0.614240771699346
+"468","45","Receiving my UCR acceptance letter. ",8,3,5,0.435511528776948,1.4669303902425,1.21188044146087
+"469","45","Selling Girl Scout cookies. ",8,6,2,1.70673436953128,0.0134580769747018,1.21188044146087
+"470","45","Coldplay concert for my birthday. ",7,2,5,0.0117705818588364,1.4669303902425,0.913060606580109
+"471","45","Moving into my first apartment. ",7,4,3,0.85925247569506,0.497948848063969,0.913060606580109
+"472","45","My dad with the owie lamb. ",8,2,6,0.0117705818588364,1.95142116133177,1.21188044146087
+"473","45","24 Hour Fitness child care.",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"474","45","Seattle with my Girl Scout Troop. ",6,2,4,0.0117705818588364,0.982439619153236,0.614240771699346
+"475","45","Getting my first piercing. ",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"476","45","My dog, Cato, passing away. ",6,3,3,0.435511528776948,0.497948848063969,0.614240771699346
+"477","45","Getting my driver's license. ",7,4,3,0.85925247569506,0.497948848063969,0.913060606580109
+"478","45","Getting baptized. ",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"479","45","Funko Pops with my boyfriend. ",6,2,4,0.0117705818588364,0.982439619153236,0.614240771699346
+"480","45","First car accident in my car.",6,1,5,-0.411970365059275,1.4669303902425,0.614240771699346
+"481","61","Cutting my hand open with sink",5,5,0,1.28299342261317,-0.955523465203832,0.315420936818583
+"482","61","How Joel and I became friends",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"483","61","Learning my great grandma has alzheimers",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"484","61","Leaving St. Linus",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"485","61","Meeting Nick and John",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"486","61","Getting my first detention",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"487","61","Finding out I could go blind",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"488","61","Washington DC Trip",5,2,3,0.0117705818588364,0.497948848063969,0.315420936818583
+"489","61","Becoming student council president",3,3,0,0.435511528776948,-0.955523465203832,-0.282218732942943
+"490","61","Drama with many girls",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"491","61","Winning 4th in Academic Decathlon",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"492","61","Graduating Valedictorian",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"493","61","Accepted into the Onward Scholar's Program",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"494","61","Running my first track event",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"495","61","Getting appendicitis",16,2,14,0.0117705818588364,5.82734733004591,3.60243912050698
+"496","61","Asking out my current girlfriend",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"497","61","My aunt leaving our family",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"498","61","COVID 19 pandemic",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"499","61","First varsity volleyball game during pandemic",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"500","61","Graduating with latin honors",4,0,4,-0.835711311977387,0.982439619153236,0.0166011019378201
+"501","61","Accepted into UCR",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"502","61","Going to Philippines 2023",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"503","61","Spending time with my dad's family",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"504","61","My first day as a teacher",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"505","44","confined",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"506","44","strict",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"507","44","decent",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"508","44","fun",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"509","44","loved",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"510","44","friends",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"511","44","family",2,2,0,0.0117705818588364,-0.955523465203832,-0.581038567823706
+"512","44","hard",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"513","44","standards",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"514","44","yolo",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"515","44","toys",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"516","44","trick-or-treat",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"517","44","explore",2,2,0,0.0117705818588364,-0.955523465203832,-0.581038567823706
+"518","44","puberty",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"519","44","worry-full",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"520","44","esteem",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"521","44","complex",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"522","44","studies",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"523","44","college",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"524","44","parties",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"525","44","drinking",3,3,0,0.435511528776948,-0.955523465203832,-0.282218732942943
+"526","44","smoking",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"527","44","virginity",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"528","44","freedom",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"529","43","dublin apartments waiting for dad ",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"530","43","playing tag in miami with cousins",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"531","43","karaoke in dorms 1st week",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"532","43","moving to a new house ",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"533","43","christmas lights with trisha",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"534","43","six flags with group",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"535","43","1st time going to party",8,6,2,1.70673436953128,0.0134580769747018,1.21188044146087
+"536","43","getting a puppy",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"537","43","cherry picking with cousins",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"538","43","strawberry picking and flower fields",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"539","43","palm springs with friends",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"540","43","first time snorkeling in hawaii",4,0,4,-0.835711311977387,0.982439619153236,0.0166011019378201
+"541","43","san diego zoo during thanksgiving",8,5,3,1.28299342261317,0.497948848063969,1.21188044146087
+"542","43","moving into drom, far from family",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"543","43","taking cousins out for dessert ",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"544","43","SF with cousins, 1 car",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"545","43","carmel by the sea",6,1,5,-0.411970365059275,1.4669303902425,0.614240771699346
+"546","43","SF with shreeya ",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"547","43","putting together pieces with asa ",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"548","43","19th birthday",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"549","43","3am trip to newport beach",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"550","43","trip to SD, Spring 23",11,7,4,2.13047531644939,0.982439619153236,2.10833994610316
+"551","43","hike to the C, thorns ",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"552","43","downtown with asa ",6,1,5,-0.411970365059275,1.4669303902425,0.614240771699346
+"553","108","crawling with my brother",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"554","108","giraffe slide at Vaness Preschool",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"555","108","diboo table dance party ",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"556","108","swings with grandpa",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"557","108","six flags cheer competition",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"558","108","first crush, snickering in bathroom",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"559","108","brushing TJ's teeth ",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"560","108","youth retreat, all nighter bear siting",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"561","108","first day of middle school, binder",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"562","108","second day, next door neighbor",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"563","108","soak city, kathleen leg, cotton candy",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"564","108","disneyland, glow hour ",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"565","108","mun, taking pics with laura",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"566","108","asb elections, cheating drama",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"567","108","asb putting up door poster",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"568","108","learning itzy icy don knabe",5,1,4,-0.411970365059275,0.982439619153236,0.315420936818583
+"569","108","biking with ddongs, tire pops ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"570","108","driving test, 100% ",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"571","108","online classes, ft with evelyn ",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"572","108","meeting kcm people outside glasgow",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"573","108","Indian kids wanting autograph",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"574","108","Julie Miss house, tuktut, ice cream",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"575","108","snorlax kyle, ",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"576","108","flowers, sycamore park",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"577","42","toddler, sitting in box playing",13,10,3,3.40169815720373,0.497948848063969,2.70597961586469
+"578","42","AP biology, crying as cramming",17,11,6,3.82543910412184,1.95142116133177,3.90125895538774
+"579","42","Mr. Duan art classes, oil painting",8,8,0,2.55421626336751,-0.955523465203832,1.21188044146087
+"580","42","Bassoon case, weekend GSYO practices",14,13,1,4.67292099795806,-0.471032694114565,3.00479945074545
+"581","42","All nighter Ochem 8C, genetics final",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"582","42","Arguing with mom, ADHD diagnosis",8,0,8,-0.835711311977387,2.9204027035103,1.21188044146087
+"583","42","First year, studying biology in Rivera",15,8,7,2.55421626336751,2.43591193242104,3.30361928562621
+"584","42","Crying in BCH100 discussion",20,10,10,3.40169815720373,3.88938424568884,4.79771846003003
+"585","42","Ochem 8B final, completed in office",20,4,16,0.85925247569506,6.79632887222444,4.79771846003003
+"586","42","Crying finishing When Breath Becomes Air",15,3,12,0.435511528776948,4.85836578786737,3.30361928562621
+"587","42","Accompanying dad at work, in truck",8,3,5,0.435511528776948,1.4669303902425,1.21188044146087
+"588","42","Working on sterile technique",13,13,0,4.67292099795806,-0.955523465203832,2.70597961586469
+"589","42","Summer with Penny, making dumplings",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"590","42","Hanging at Sarah's house with Farrah",14,14,0,5.09666194487618,-0.955523465203832,3.00479945074545
+"591","42","Ms. Karry, piano classes in shed",16,14,2,5.09666194487618,0.0134580769747018,3.60243912050698
+"592","42","MHHS office hours, Fuson's backstory, Daniel",17,17,0,6.36788478563051,-0.955523465203832,3.90125895538774
+"593","42","Walking with Eric, talking grad school",16,3,13,0.435511528776948,5.34285655895664,3.60243912050698
+"594","42","Wisdom teeth removal aftermath",14,5,9,1.28299342261317,3.40489347459957,3.00479945074545
+"595","42","SF portfolio day with Sarah, Christina",13,0,13,-0.835711311977387,5.34285655895664,2.70597961586469
+"596","42","CSSSA eating Buldak ramen with Marion",17,6,11,1.70673436953128,4.3738750167781,3.90125895538774
+"597","42","Walking through natural history museum, Sekirou",13,5,8,1.28299342261317,2.9204027035103,2.70597961586469
+"598","42","Beach day with Aly, Brenton, Vanessa",6,0,6,-0.835711311977387,1.95142116133177,0.614240771699346
+"599","42","Spring splash, pizza and Just Dance",18,2,16,0.0117705818588364,6.79632887222444,4.2000787902685
+"600","42","Thinking about future, noon outside MRB",17,9,8,2.97795721028562,2.9204027035103,3.90125895538774
+"601","41","getting my first dog",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"602","41","exploring the slope in the back",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"603","41","my messed up eye",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"604","41","going to the bookstore with my dad",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"605","41","getting picked up by my grandma",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"606","41","painting my nails",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"607","41","going to indonesia",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"608","41","having fun in eighth grade",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"609","41","breaking my toe",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"610","41","spraining my wrist",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"611","41","getting my other two dogs",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"612","41","meeting my first best friend in middle school",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"613","41","fajita prank in high school",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"614","41","getting into college",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"615","41","seeing my brother leave for college",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"616","41","making new friends in college (1st year)",8,7,1,2.13047531644939,-0.471032694114565,1.21188044146087
+"617","41","hanging out at usha's dorm in 1st year",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"618","41","bombing chem1B midterm 2",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"619","41","talking with my philosophy professor",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"620","41","taking two finals back to back (chem8c and biol102)",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"621","41","getting a free head of lettuce at school",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"622","41","anderson throwing a box in lecture hall",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"623","41","the unfortunate beach trip (spring freshman yr)",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"624","41","ruining my hair and getting scammed",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"625","39","getting my horse",10,9,1,2.97795721028562,-0.471032694114565,1.8095201112224
+"626","39","my parents divorcing",13,12,1,4.24918005103995,-0.471032694114565,2.70597961586469
+"627","39","my relationship with alex",5,2,3,0.0117705818588364,0.497948848063969,0.315420936818583
+"628","39","being super depressed in high school",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"629","39","living with the martellos",10,8,2,2.55421626336751,0.0134580769747018,1.8095201112224
+"630","39","kamp karaman",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"631","39","vacationing in maine",8,5,3,1.28299342261317,0.497948848063969,1.21188044146087
+"632","39","meeting john",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"633","39","deciding to major in psychology",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"634","39","going to paris",6,2,4,0.0117705818588364,0.982439619153236,0.614240771699346
+"635","39","going to london",8,3,5,0.435511528776948,1.4669303902425,1.21188044146087
+"636","39","applying to grad school",6,0,6,-0.835711311977387,1.95142116133177,0.614240771699346
+"637","39","working at harvard",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"638","39","meeting kate & the LEL",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"639","39","road trip to california",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"640","39","completing my SYP",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"641","39","halloween party at willow run",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"642","39","reuniting with kayla",5,2,3,0.0117705818588364,0.497948848063969,0.315420936818583
+"643","39","starting antidepressants",8,5,3,1.28299342261317,0.497948848063969,1.21188044146087
+"644","39","playing volleyball in high school",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"645","39","going to firefly with jenny",4,0,4,-0.835711311977387,0.982439619153236,0.0166011019378201
+"646","39","going to warped tour with summer",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"647","39","concerts at starland ballroom",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"648","39","AJ's wedding in savannah",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"649","75","Living in Los Angeles",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"650","75","Moving to Riverside",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"651","75","Starting school",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"652","75","Being accessed by school district ",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"653","75","Moving to elementary school",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"654","75","Making friends",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"655","75","English classes",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"656","75","Breaking my arm",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"657","75","Brother moving away to college",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"658","75","Meeting my first nephew",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"659","75","Bonding more with my other brother",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"660","75","Meeting my closest friend",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"661","75","Parents getting divorced",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"662","75","Change in personality",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"663","75","Discovering music, books, movies etc.",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"664","75","Finding my own beliefs",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"665","75","Starting middle school",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"666","75","Academic struggles",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"667","75","Father moving away",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"668","75","Online school in 2020",6,0,6,-0.835711311977387,1.95142116133177,0.614240771699346
+"669","75","Senior year high school",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"670","75","Friendships drifting apart",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"671","75","Starting college ",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"672","75","Getting diagnosed with ADHD",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"673","76","Minecraft with kids my mom babysat",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"674","76","Going to Fiesta Village",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"675","76","Science teacher buys snacks for me",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"676","76","Neighbor's parents pick me up",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"677","76","Beginning dance",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"678","76","Public speaking class/debate",3,3,0,0.435511528776948,-0.955523465203832,-0.282218732942943
+"679","76","8th grade skit for drama class",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"680","76","Swimming during band camp",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"681","76","The start of COVID",8,5,3,1.28299342261317,0.497948848063969,1.21188044146087
+"682","76","Dalgona coffee",3,3,0,0.435511528776948,-0.955523465203832,-0.282218732942943
+"683","76","Windy Rancho Verde band competition",9,8,1,2.55421626336751,-0.471032694114565,1.51070027634163
+"684","76","Senior sunrise",12,9,3,2.97795721028562,0.497948848063969,2.40715978098392
+"685","76","Homecoming announcement",9,6,3,1.70673436953128,0.497948848063969,1.51070027634163
+"686","76","Senior field day",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"687","76","Getting ready for graduation",16,9,7,2.97795721028562,2.43591193242104,3.60243912050698
+"688","76","Day 2 freshmen orientation",9,5,4,1.28299342261317,0.982439619153236,1.51070027634163
+"689","76","Plane flight to Boston",10,4,6,0.85925247569506,1.95142116133177,1.8095201112224
+"690","76","Ski Mask Block Party",5,0,5,-0.835711311977387,1.4669303902425,0.315420936818583
+"691","76","VSA ACE Week",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"692","76","First time at Knott's Berry Farm",7,3,4,0.435511528776948,0.982439619153236,0.913060606580109
+"693","76","Dance final",6,1,5,-0.411970365059275,1.4669303902425,0.614240771699346
+"694","76","Illenium Concert",12,2,10,0.0117705818588364,3.88938424568884,2.40715978098392
+"695","76","Valentine's Day",12,2,10,0.0117705818588364,3.88938424568884,2.40715978098392
+"696","76","Spring Splash",5,0,5,-0.835711311977387,1.4669303902425,0.315420936818583
+"697","78","speaking at high school graduation",9,9,0,2.97795721028562,-0.955523465203832,1.51070027634163
+"698","78","speaking at middle school promotion",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"699","78","meeting my childhood best friend Sofia",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"700","78","playing twelve scales on the saxophone",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"701","78","watching Frozen in a movie theatre",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"702","78","adopting my dog Lucky",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"703","78","my first dance performance",2,2,0,0.0117705818588364,-0.955523465203832,-0.581038567823706
+"704","78","volunteering for my middle school librarian",5,2,3,0.0117705818588364,0.497948848063969,0.315420936818583
+"705","78","volunteering for my high school librarian",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"706","78","winning class speech competition junior year",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"707","78","playing around broken tetherball courts",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"708","78","reading Harry Potter fanfiction in class",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"709","78","studying with IXL",5,2,3,0.0117705818588364,0.497948848063969,0.315420936818583
+"710","78","meeting my internet friend chloe",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"711","78","being internet pen pals with dani",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"712","78","learning to dance en pointe",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"713","78","drawing my little pony ocs",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"714","78","making a discord for penelope scott",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"715","78","volunteering at Middle Tree",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"716","78","Odyssey of the Mind performance",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"717","78","watching centricide 7 on youtube",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"718","78","my first kiss",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"719","78","guy i dated in winter quarter",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"720","78","failing a class",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"721","79","parrots, death, religion, hospital, thunder",14,8,6,2.55421626336751,1.95142116133177,3.00479945074545
+"722","79"," room, struggle, five, unkept",10,8,2,2.55421626336751,0.0134580769747018,1.8095201112224
+"723","79","dad, tears, unfair, anger",7,4,3,0.85925247569506,0.497948848063969,0.913060606580109
+"724","79","helicopter, spotlight, danger, gun",11,5,6,1.28299342261317,1.95142116133177,2.10833994610316
+"725","79","cancer, call, tears",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"726","79","wither, weak, tubes, food",9,4,5,0.85925247569506,1.4669303902425,1.51070027634163
+"727","79","joy, love, bestie, eyes",5,1,4,-0.411970365059275,0.982439619153236,0.315420936818583
+"728","79","friend, chem, talk",6,2,4,0.0117705818588364,0.982439619153236,0.614240771699346
+"729","79","group, apartment, slime, dance",8,4,4,0.85925247569506,0.982439619153236,1.21188044146087
+"730","79","flowers, car, food, open",8,2,6,0.0117705818588364,1.95142116133177,1.21188044146087
+"731","79","grandma, beautiful, funny, tiktok, ",6,3,3,0.435511528776948,0.497948848063969,0.614240771699346
+"732","79","mom, sad, surgery, """"ugly"""", weight",9,4,5,0.85925247569506,1.4669303902425,1.51070027634163
+"733","79","parents, money, argue, belittle,",9,7,2,2.13047531644939,0.0134580769747018,1.51070027634163
+"734","79","work, hug, comfort, break, leave",9,6,3,1.70673436953128,0.497948848063969,1.51070027634163
+"735","79","sister, love, roblox, hug",11,8,3,2.55421626336751,0.497948848063969,2.10833994610316
+"736","79"," looks, perfect, ugly, notice, bad",6,2,4,0.0117705818588364,0.982439619153236,0.614240771699346
+"737","79","dream, fear, shooting ,hide, accept",6,3,3,0.435511528776948,0.497948848063969,0.614240771699346
+"738","79","phone, trouble, talking, people, pillow",6,2,4,0.0117705818588364,0.982439619153236,0.614240771699346
+"739","79","ponytail, mirror, stare, cry, mark",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"740","79","illness, hate, embarrassed, hide, makeup, medicine",9,4,5,0.85925247569506,1.4669303902425,1.51070027634163
+"741","79","dying, fear, after, unknown",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"742","79","weird, stalk, text, scary, paranoid, man",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"743","79","mom, walmart, hard, money, 12am, starving",31,9,22,2.97795721028562,9.70327349876004,8.08473664371842
+"744","79","rice, meat, dinner, only, onion, hungry, best",9,5,4,1.28299342261317,0.982439619153236,1.51070027634163
+"745","83","daycare help, dim lights in fall",3,3,0,0.435511528776948,-0.955523465203832,-0.282218732942943
+"746","83","elementary sister lunches",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"747","83","mom volunteering christmas day kindergarten ",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"748","83","asb lta secretary",5,2,3,0.0117705818588364,0.497948848063969,0.315420936818583
+"749","83","ucla sleepover bruin life",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"750","83","mental hospital confusion",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"751","83","selling childhood home",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"752","83","moving to seattle for...ever?",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"753","83","driver's license mailbox mina accident",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"754","83","first job in n out",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"755","83","boba vape freezer",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"756","83","starbucks drive-thru and bar love",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"757","83","moving in to dorm",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"758","83","delts ceos and hoes ensuing chaos",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"759","83","fourth of july nobu police stop",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"760","83","oregon police pleads",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"761","83","spring quarter sopi pledging memories",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"762","83","sd uggs",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"763","83","rainy post college ramen boba croffle",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"764","83","75 hard winter quarter growth",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"765","83","covid first sneakout first kiss",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"766","83","opening first college acceptance",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"767","83","klara's house paranoia ",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"768","83","irvine spectrum summerfields steal bonding",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"769","82","my 6th birthday party at home",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"770","82","kindergarten field trip to fairytale land",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"771","82","not wanting to get my flu shot for the first time ",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"772","82","grandparents taking my brother and i to mcdonalds after school",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"773","82","getting my ears pierced at 8 years old",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"774","82","throwing up in a walmart from food poisoning ",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"775","82","my first crush in middle school ",6,3,3,0.435511528776948,0.497948848063969,0.614240771699346
+"776","82","first day of high school ",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"777","82","first dance show of high school ",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"778","82","my high school graduation day ",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"779","82","my 8th grade graduation ",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"780","82","my junior and senior year of high school being online ",6,1,5,-0.411970365059275,1.4669303902425,0.614240771699346
+"781","82","playing video games with new friends during the pandemic ",7,7,0,2.13047531644939,-0.955523465203832,0.913060606580109
+"782","82","going to the beach with friends for the first time ",4,0,4,-0.835711311977387,0.982439619153236,0.0166011019378201
+"783","82","summer camping with family for the first time ",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"784","82","my first date with a guy ",6,2,4,0.0117705818588364,0.982439619153236,0.614240771699346
+"785","82","my baby brother being born ",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"786","82","helping plan my grandpa's funeral ",6,4,2,0.85925247569506,0.0134580769747018,0.614240771699346
+"787","82","first day of university in a new city ",6,1,5,-0.411970365059275,1.4669303902425,0.614240771699346
+"788","82","meeting my best friends in university ",5,2,3,0.0117705818588364,0.497948848063969,0.315420936818583
+"789","82","my 21st birthday being in las vegas ",4,0,4,-0.835711311977387,0.982439619153236,0.0166011019378201
+"790","82","going to hawaii for the first time ",6,0,6,-0.835711311977387,1.95142116133177,0.614240771699346
+"791","82","being scolded while doing math homework ",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"792","82","taking my little brother to the park ",3,3,0,0.435511528776948,-0.955523465203832,-0.282218732942943
+"793","84","Quince",2,2,0,0.0117705818588364,-0.955523465203832,-0.581038567823706
+"794","84","Freshman Football",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"795","84","High School Softball",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"796","84","November 2023",9,6,3,1.70673436953128,0.497948848063969,1.51070027634163
+"797","84","Mexico ",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"798","84","Phakday",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"799","84","Buggs ",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"800","84","Going to Yosemite",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"801","84","Kitty",4,0,4,-0.835711311977387,0.982439619153236,0.0166011019378201
+"802","84","Peer Counseling class in High school",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"803","84","Culinary Course with Damien ",2,2,0,0.0117705818588364,-0.955523465203832,-0.581038567823706
+"804","84","After School Softball Practice",7,5,2,1.28299342261317,0.0134580769747018,0.913060606580109
+"805","84","Championship game against Edgewood",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"806","84","Grandma's Surprise Party",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"807","84","Tia Lucila",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"808","84","Angels game with Alexa",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"809","84","Disneyland",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"810","84","graduation",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"811","84","Move in Riverside",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"812","84","Bus in Mexico",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"813","84","Riverside bus",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"814","84","Formal Semi",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"815","84","Senior night",4,0,4,-0.835711311977387,0.982439619153236,0.0166011019378201
+"816","84","Spring Splash",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"817","88","Spontaneous anger towards previously unknown relative",6,3,3,0.435511528776948,0.497948848063969,0.614240771699346
+"818","88","Crying in school bathroom",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"819","88","Mom reading me specific children's book",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"820","88","Crying to mom about bullying",6,2,4,0.0117705818588364,0.982439619153236,0.614240771699346
+"821","88","Coming out to parents",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"822","88","Bad breakup with highschool ex",8,6,2,1.70673436953128,0.0134580769747018,1.21188044146087
+"823","88","Psychiatric ward stay for 3 days",10,9,1,2.97795721028562,-0.471032694114565,1.8095201112224
+"824","88","Self-harm in highschool bathroom",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"825","88","Unsuccessful overdose",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"826","88","Moving to different independent-study highschool",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"827","88","Meeting friend at thanksgiving party",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"828","88","Betrayal of former best friend",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"829","88","Reconnecting with old friend ",5,2,3,0.0117705818588364,0.497948848063969,0.315420936818583
+"830","88","Sudden abandonment of 8th grade friend",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"831","88","Bullying in 6th grade",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"832","88","""""Nobody likes you"""" statement from peer",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"833","88","""""I just want to be happy"""" ",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"834","88","1st time at group therapy",6,3,3,0.435511528776948,0.497948848063969,0.614240771699346
+"835","88","Adopting my 1st cat",13,9,4,2.97795721028562,0.982439619153236,2.70597961586469
+"836","88","Being sent to counselor's office",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"837","88","Failing highschool English class",4,0,4,-0.835711311977387,0.982439619153236,0.0166011019378201
+"838","88","Making a promise ",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"839","88","Friend bringing me pizza",3,0,3,-0.835711311977387,0.497948848063969,-0.282218732942943
+"840","88","Emotional conversation with mom",5,2,3,0.0117705818588364,0.497948848063969,0.315420936818583
+"841","89","Jumping onto wet floor",2,2,0,0.0117705818588364,-0.955523465203832,-0.581038567823706
+"842","89","Running at night",8,6,2,1.70673436953128,0.0134580769747018,1.21188044146087
+"843","89","Grabbing a ballon",6,6,0,1.70673436953128,-0.955523465203832,0.614240771699346
+"844","89","First stitches",9,5,4,1.28299342261317,0.982439619153236,1.51070027634163
+"845","89","Second stitches",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"846","89","Staying in hospital for 4 days",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"847","89","What food are we eating today",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"848","89","Baby brother",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"849","89","Not sharing toys",13,9,4,2.97795721028562,0.982439619153236,2.70597961586469
+"850","89","Pushing baby brother",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"851","89","Uncle wedding (orange shirt, gray pants)",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"852","89","Roasted pork for lunch and dinner",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"853","89","Hearing rats ",8,4,4,0.85925247569506,0.982439619153236,1.21188044146087
+"854","89","First time bicycle riding",7,3,4,0.435511528776948,0.982439619153236,0.913060606580109
+"855","89","Scraping my knee in first grade",7,2,5,0.0117705818588364,1.4669303902425,0.913060606580109
+"856","89","Moving to the US",5,0,5,-0.835711311977387,1.4669303902425,0.315420936818583
+"857","89","Living with another family",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"858","89","Broke my dad's favorite toy",5,0,5,-0.835711311977387,1.4669303902425,0.315420936818583
+"859","89","Went to Frank Wright Elementary",6,0,6,-0.835711311977387,1.95142116133177,0.614240771699346
+"860","89","Detention school",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"861","89","Transfer to Durfee school (3rd grade)",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"862","89","Made friends in America",4,0,4,-0.835711311977387,0.982439619153236,0.0166011019378201
+"863","89","Went to Arroyo High School",4,1,3,-0.411970365059275,0.497948848063969,0.0166011019378201
+"864","89","COVID",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"865","90","me running elbow break window",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"866","90","dad carried upside down thrown",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"867","90","sister me late night giggling",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"868","90","PE teacher Georgia fidgeting stop that",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"869","90","Thomas the Tank Dillsboro late conflict",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"870","90","TPS homework late night stress",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"871","90","Kim screaming schoolyard dragging fear",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"872","90","Erinn Gooz gown hands feet laughing",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"873","90","Look at the lion glass door",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"874","90","Chrissy hand on neck crying",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"875","90","Running away late night yellow bag",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"876","90","World of Warcraft tiny laptop room",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"877","90","Cortney Goodman last time walk home",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"878","90","Hide and seek YHS summer friends",0,0,0,-0.835711311977387,-0.955523465203832,-1.17867823758523
+"879","90","Randy came out Born This Way",1,1,0,-0.411970365059275,-0.955523465203832,-0.879858402704469
+"880","90","Joselyn Taylor Jeep menage a trois",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"881","90","Meeting Jaana Juvonen office hours",5,2,3,0.0117705818588364,0.497948848063969,0.315420936818583
+"882","90","No one cares have to say",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"883","90","UCLA graduation Culver Hotel breakfast family",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"884","90","Kurt Junior Sequoia betrayal sick Xanax",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"885","90","Jessica Julio Sequoia 2020 roadtrip",7,4,3,0.85925247569506,0.497948848063969,0.913060606580109
+"886","90","Circle Bar Jessica kissing cannot stop",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"887","90","Loyd graduate school sitting at UCR",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"888","90","Pass qualifying exams happy laugh hugs",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"889","80","grandparents holding my hand at beach",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"890","80","mom takes picture with Scooby-Doo",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"891","80","adopting a puppy for my birthday",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"892","80","chewing sugarcane for the first time",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"893","80","frog dissection in 7th grade biology",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"894","80","1st place at marching band championships",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"895","80","dislocating my kneecap",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"896","80","bee sting on my middle finger",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"897","80","first kiss",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"898","80","laughing about emoji with a friend",8,4,4,0.85925247569506,0.982439619153236,1.21188044146087
+"899","80","first time eating tomato in burger",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"900","80","falling asleep in high school history",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"901","80","accident while running in PE",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"902","80","learning piccolo for the first time",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"903","80","calling out friend on their behavior",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"904","80","letting pianist play my violin",4,0,4,-0.835711311977387,0.982439619153236,0.0166011019378201
+"905","80","eating silpancho with grandma",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"906","80","mom teaches me how to park",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"907","80","late to biology midterm",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"908","80","going on the bus alone",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"909","80","first youth orchestra rehearsal",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"910","80","late to first ever university lecture",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"911","80","ant infestation in my bedroom",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"912","80","crying before symposium at practice session",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"913","92","crawling towards grandma Annie",4,3,1,0.435511528776948,-0.471032694114565,0.0166011019378201
+"914","92","first day of Louise's daycare",6,5,1,1.28299342261317,-0.471032694114565,0.614240771699346
+"915","92","4th birthday party",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"916","92","not actually missing the bus",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"917","92","playing Charlie from Willy Wonka",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"918","92","moving over to Salmon Creek",5,3,2,0.435511528776948,0.0134580769747018,0.315420936818583
+"919","92","being in middle school plays",4,2,2,0.0117705818588364,0.0134580769747018,0.0166011019378201
+"920","92","anxiety of wearing skinny jeans",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"921","92","sleepovers with Marena",5,4,1,0.85925247569506,-0.471032694114565,0.315420936818583
+"922","92","breaking up with Nick S.",3,2,1,0.0117705818588364,-0.471032694114565,-0.282218732942943
+"923","92","dating Nick H.",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"924","92","friends drinking in my room",8,6,2,1.70673436953128,0.0134580769747018,1.21188044146087
+"925","92","smoking at the skate park",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"926","92","not making varsity volleyball",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"927","92","mental health crisis in undergrad",3,1,2,-0.411970365059275,0.0134580769747018,-0.282218732942943
+"928","92","3 years with Sean",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"929","92","gay awakening",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"930","92","hanging with friends in San Francisco",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"931","92","starting graduate school and anxiety",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469
+"932","92","ADHD diagnosis",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"933","92","playing Zelda with Brooke",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"934","92","planning wedding with Brooke",2,1,1,-0.411970365059275,-0.471032694114565,-0.581038567823706
+"935","92","learning to not give a fuck",2,0,2,-0.835711311977387,0.0134580769747018,-0.581038567823706
+"936","92","passing PhD defense",1,0,1,-0.835711311977387,-0.471032694114565,-0.879858402704469

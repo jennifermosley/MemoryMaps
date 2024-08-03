@@ -21,7 +21,7 @@ is_all_na <- function(column) {
 ### Functions ###
 
 
-data <- read.csv("centralityDf.csv") # Import Centrality dataset
+data <- read.csv("centralityDf_40.csv") # Import Centrality dataset
 data <- data[ ,-1] # Remove the first column
 data$subID <- as.factor(data$subID) # Set subject IDs to a factor
 data$degree_scaled <- scale(data$degree)
