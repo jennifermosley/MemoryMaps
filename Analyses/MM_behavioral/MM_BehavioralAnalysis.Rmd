@@ -23,18 +23,18 @@ devtools::source_url("https://raw.githubusercontent.com/JacobElder/Miscellaneous
 devtools::source_url("https://raw.githubusercontent.com/JacobElder/MiscellaneousR/master/named.effects.ref.R")
 
 # Import fullLong includes memories for each subject
-fullLong <- read.csv("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/fullLong.csv")
+fullLong <- read.csv("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/fullLong40.csv")
 fullLong <- fullLong[-1, ]
 
 # Import fullShort - doesn't include memories for each subject
-fullShort <- read.csv("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/fullShort.csv")
+fullShort <- read.csv("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/fullShort40.csv")
 fullShort <- fullShort[-1, ]
 # rankData <- arrow::read_parquet(here("RepData/rankings2.parquet"))
 
 # Join fullLong and fullShort
 fullData <- fullLong %>% full_join(fullShort, by = c("subID"))
 fullData$subID <- as.factor(fullData$subID)
-fullData <- fullData[ ,-1]
+# fullData <- fullData[ ,-1]
 
 # Download fullData file for separate analysis (onset file creation)
 write.csv(fullData,"~/GitLab/SecondYearProject/MemoryMaps/Data/processed/fullData.csv")
@@ -82,6 +82,30 @@ r2beta(m)
 ```{r}
 m<-lmer( scale(vad_pos) ~  scale(strengthOut) + scale(strengthIn) + numID + scale(length) + ( scale(strengthOut) + scale(strengthIn) | subID), data=fullData)
 tbl_regression(m) %>% as_gt()
+```
+
+## Centrality Descriptives
+
+```{r}
+cent <- fullData[, c(1,4,5,6)] # For descriptives and later onset file usage
+
+degree_mean <- mean(cent$degree) # Average overall connections across networks
+degree_sd <- sd(cent$degree) # Standard deviation of overall connections across networks
+degree_freq <- hist(cent$degree) # Distribution of network density across subject networks
+cent$degree_scaled <- as.vector(scale(cent$degree)) # Scaled density values for lme
+
+outdegree_mean <- mean(cent$outdegree) # Average outward connections
+outdegree_sd <- sd(cent$outdegree) # Standard deviation from average outward connections
+outdegree_freq <- hist(cent$outdegree) # Distribution of network density across subject networks
+cent$outdegree_scaled <- as.vector(scale(cent$outdegree)) # Scaled density values for lme
+
+indegree_mean <- mean(cent$indegree) # Average inward connections
+indegree_sd <- sd(cent$indegree) # Standard deviation from average outward connections
+indegree_freq <- hist(cent$indegree) # Distribution of network density across subject networks
+cent$indegree_scaled<- as.vector(scale(cent$indegree)) # Scaled density values for lme
+
+
+write.csv(cent,"centralityDf_40.csv") # Write file to csv for later onset files
 ```
 
 ## Does degree centrality predict memory IMPORTANCE?
