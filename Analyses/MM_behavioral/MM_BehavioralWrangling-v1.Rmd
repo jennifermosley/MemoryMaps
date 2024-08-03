@@ -1254,8 +1254,8 @@ colnames(fullShort)[1:length(begNames)] <- begNames
 fullShort <- as.data.frame(fullShort)
 
 # Use this to export final datasets
-write.csv(fullLong,"~/Downloads/fullLong.csv", row.names = FALSE)
-write.csv(fullShort,"~/Downloads/fullShort.csv", row.names = FALSE)
+write.csv(fullLong,"~/Downloads/fullLong40.csv", row.names = FALSE)
+write.csv(fullShort,"~/Downloads/fullShort40.csv", row.names = FALSE)
 ```
 
 
