@@ -1,0 +1,12 @@
+"0","# Remove columns irrelevant to memory graph analysis
+procDf_1 <- rawDf_1 %>% 
+  select(-c(1:18))
+"
+"1","[1m[33mError[39m in `select()`:[22m
+[33m![39m Names must be unique.
+[31m✖[39m These names are duplicated:
+  * ""RSE1"" at locations 4054 and 4064.
+Backtrace:
+[90m 1. [39mrawDf_1 %>% select(-c(1:18))
+[90m 3. [39m[1m[94mdplyr:::select.data.frame([39m[22m., -c(1:18)[1m[94m)[39m[22m
+"

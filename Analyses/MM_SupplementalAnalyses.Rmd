@@ -1,0 +1,893 @@
+---
+title: "MM_SupplementalAnalyses"
+author: "Jennifer Mosley"
+date: "2024-09-08"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyr)
+library(dplyr)
+library(lubridate)
+library(lmerTest)
+library(gtsummary)
+library(report)
+library(kableExtra)
+library(sjPlot)
+```
+
+## Supplemental Analyses
+
+```{r}
+# Import datasets and merge
+
+# Import individual differences (ID) data set
+Df <- read.csv("cleaned_S1.csv")
+Df <- Df[-c(1)]
+Df <- Df[-c(684)] # Remove check column
+
+subID <- select(Df,c("loginID"))
+ID <- Df[ ,639:729]
+
+data <- cbind(subID,ID) # Use this for individual differences/demo analysis
+
+# Import centrality data set
+cent <- read.csv("centralityDf_48.csv")
+cent <- cent[-c(1)] # Remove extraneous column in front
+# Remove sub22 from the centrality dataset, as they are not included in the in-scan ratings data
+cent <- cent[cent$subID != "22", ]
+
+# Import density data set
+dense <- read.csv("density.csv")
+dense <- dense[-c(1)] # Remove extraneous column in front
+
+netmetrics <- cbind(cent,dense)
+
+# Import in-scan memory ratings
+inscan <- read.csv("scan_ratings.csv")
+inscan <- inscan[-c(1)] # Remove extraneous column in front
+
+fullData <- read.csv("fullData48.csv")
+fullData <- fullData[-c(1)] # Remove extraneous column in front
+fullData <- fullData[fullData$subID != 22, ]
+
+```
+
+# Individual Differences
+
+## Recode/Reverse scores
+```{r}
+# Rosenberg Self-Esteem Scale
+RSE <- data[2:11]
+
+RSE <- RSE %>%
+  mutate(RSE3 = case_when(
+    RSE3 == 1 ~ 4,
+    RSE3 == 2 ~ 3,
+    RSE3 == 4 ~ 1,
+    RSE3 == 3 ~ 2,
+    TRUE ~ RSE3  # Keep the original value if none of the conditions are met
+  ))
+
+RSE <- RSE %>%
+  mutate(RSE5 = case_when(
+    RSE5 == 1 ~ 4,
+    RSE5 == 2 ~ 3,
+    RSE5 == 4 ~ 1,
+    RSE5 == 3 ~ 2,
+    TRUE ~ RSE5  # Keep the original value if none of the conditions are met
+  ))
+
+RSE <- RSE %>%
+  mutate(RSE8 = case_when(
+    RSE8 == 1 ~ 4,
+    RSE8 == 2 ~ 3,
+    RSE8 == 4 ~ 1,
+    RSE8 == 3 ~ 2,
+    TRUE ~ RSE8  # Keep the original value if none of the conditions are met
+  ))
+
+RSE <- RSE %>%
+  mutate(RSE9 = case_when(
+    RSE9 == 1 ~ 4,
+    RSE9 == 2 ~ 3,
+    RSE9 == 4 ~ 1,
+    RSE9 == 3 ~ 2,
+    TRUE ~ RSE9  # Keep the original value if none of the conditions are met
+  ))
+
+RSE <- RSE %>%
+  mutate(RSE10 = case_when(
+    RSE10 == 1 ~ 4,
+    RSE10 == 2 ~ 3,
+    RSE10 == 4 ~ 1,
+    RSE10 == 3 ~ 2,
+    TRUE ~ RSE10  # Keep the original value if none of the conditions are met
+  ))
+
+RSE_sum <- rowSums(RSE,na.rm = TRUE)
+RSE_sum <- as.vector(RSE_sum)
+
+RSE$RSE_sum <- RSE_sum
+
+sums <- select(data,c("loginID"))
+sums$RSE <- RSE_sum # Max possible: 40; higher score, higher self-esteem
+
+# Need for Cognition
+NFC <- data[12:17]
+
+# Items 3,4 are reverse scored (reverse agreement for low need for cognition)
+NFC <- NFC %>%
+  mutate(NFC.6_3 = case_when(
+    NFC.6_3 == 1 ~ 4,
+    NFC.6_3 == 2 ~ 3,
+    NFC.6_3 == 4 ~ 1,
+    NFC.6_3 == 3 ~ 2,
+    TRUE ~ NFC.6_3  # Keep the original value if none of the conditions are met
+  ))
+
+NFC <- NFC %>%
+  mutate(NFC.6_4 = case_when(
+    NFC.6_4 == 1 ~ 4,
+    NFC.6_4 == 2 ~ 3,
+    NFC.6_4 == 4 ~ 1,
+    NFC.6_4 == 3 ~ 2,
+    TRUE ~ NFC.6_4  # Keep the original value if none of the conditions are met
+  ))
+
+NFC_sum <- rowSums(NFC,na.rm = TRUE)
+NFC_sum <- as.vector(NFC_sum)
+sums$NFC <-NFC_sum  # Max possible: 30; higher score, higher need for cognition
+
+# Self-Concept Clarity
+SCC <- data[18:29]
+
+# Items 1,2,3,4,5,7,8,9,10,12 are reverse scored (reverse agreement for low self-concept clarity)
+SCC <- SCC %>%
+  mutate(SCC1 = case_when(
+    SCC1 == 1 ~ 5,
+    SCC1 == 2 ~ 4,
+    SCC1 == 4 ~ 2,
+    SCC1 == 5 ~ 1,
+    TRUE ~ SCC1  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC2 = case_when(
+    SCC2 == 1 ~ 5,
+    SCC2 == 2 ~ 4,
+    SCC2 == 4 ~ 2,
+    SCC2 == 5 ~ 1,
+    TRUE ~ SCC2  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC3 = case_when(
+    SCC3 == 1 ~ 5,
+    SCC3 == 2 ~ 4,
+    SCC3 == 4 ~ 2,
+    SCC3 == 5 ~ 1,
+    TRUE ~ SCC3  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC4 = case_when(
+    SCC4 == 1 ~ 5,
+    SCC4 == 2 ~ 4,
+    SCC4 == 4 ~ 2,
+    SCC4 == 5 ~ 1,
+    TRUE ~ SCC4  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC5 = case_when(
+    SCC5 == 1 ~ 5,
+    SCC5 == 2 ~ 4,
+    SCC5 == 4 ~ 2,
+    SCC5 == 5 ~ 1,
+    TRUE ~ SCC5  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC7 = case_when(
+    SCC7 == 1 ~ 5,
+    SCC7 == 2 ~ 4,
+    SCC7 == 4 ~ 2,
+    SCC7 == 5 ~ 1,
+    TRUE ~ SCC7  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC8 = case_when(
+    SCC8 == 1 ~ 5,
+    SCC8 == 2 ~ 4,
+    SCC8 == 4 ~ 2,
+    SCC8 == 5 ~ 1,
+    TRUE ~ SCC8  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC9 = case_when(
+    SCC9 == 1 ~ 5,
+    SCC9 == 2 ~ 4,
+    SCC9 == 4 ~ 2,
+    SCC9 == 5 ~ 1,
+    TRUE ~ SCC9  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC10 = case_when(
+    SCC10 == 1 ~ 5,
+    SCC10 == 2 ~ 4,
+    SCC10 == 4 ~ 2,
+    SCC10 == 5 ~ 1,
+    TRUE ~ SCC10  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC12 = case_when(
+    SCC12 == 1 ~ 5,
+    SCC12 == 2 ~ 4,
+    SCC12 == 4 ~ 2,
+    SCC12 == 5 ~ 1,
+    TRUE ~ SCC12  # Keep the original value if none of the conditions are met
+  ))
+
+SCC_sum <- rowSums(SCC,na.rm = TRUE)
+SCC_sum <- as.vector(SCC_sum)
+sums$SCC <- SCC_sum # Max possible: 60; higher score, higher self-concept clarity
+
+
+# S-DS, Self-Discrepancy Scale
+DSS <- data[30:43]
+
+# Items 1,5,6,7,9,14 are reverse scored
+DSS <- DSS %>%
+  mutate(DS.S_1 = case_when(
+    DS.S_1 == 1 ~ 7,
+    DS.S_1 == 2 ~ 6,
+    DS.S_1 == 7 ~ 1,
+    DS.S_1 == 6 ~ 2,
+    TRUE ~ DS.S_1  # Keep the original value if none of the conditions are met
+  ))
+
+DSS <- DSS %>%
+  mutate(DS.S_5 = case_when(
+    DS.S_5 == 1 ~ 7,
+    DS.S_5 == 2 ~ 6,
+    DS.S_5 == 7 ~ 1,
+    DS.S_5 == 6 ~ 2,
+    TRUE ~ DS.S_5  # Keep the original value if none of the conditions are met
+  ))
+
+DSS <- DSS %>%
+  mutate(DS.S_6 = case_when(
+    DS.S_6 == 1 ~ 7,
+    DS.S_6 == 2 ~ 6,
+    DS.S_6 == 7 ~ 1,
+    DS.S_6 == 6 ~ 2,
+    TRUE ~ DS.S_6  # Keep the original value if none of the conditions are met
+  ))
+
+DSS <- DSS %>%
+  mutate(DS.S_7 = case_when(
+    DS.S_7 == 1 ~ 7,
+    DS.S_7 == 2 ~ 6,
+    DS.S_7 == 7 ~ 1,
+    DS.S_7 == 6 ~ 2,
+    TRUE ~ DS.S_7  # Keep the original value if none of the conditions are met
+  ))
+
+DSS <- DSS %>%
+  mutate(DS.S_9 = case_when(
+    DS.S_9 == 1 ~ 7,
+    DS.S_9 == 2 ~ 6,
+    DS.S_9 == 7 ~ 1,
+    DS.S_9 == 6 ~ 2,
+    TRUE ~ DS.S_9  # Keep the original value if none of the conditions are met
+  ))
+
+DSS <- DSS %>%
+  mutate(DS.S_14 = case_when(
+    DS.S_14 == 1 ~ 7,
+    DS.S_14 == 2 ~ 6,
+    DS.S_14 == 7 ~ 1,
+    DS.S_14 == 6 ~ 2,
+    TRUE ~ DS.S_14  # Keep the original value if none of the conditions are met
+  ))
+
+DSS_sum <- rowSums(DSS,na.rm = TRUE)
+DSS_sum <- as.vector(DSS_sum)
+sums$DSS <- DSS_sum # Max possible: 98; Higher score, higher self-discrepancy (lower self-concept clarity)
+
+# Center for Epidemiologic Studies Depression Scale (CESD)
+CESD <- data[44:63]
+
+# Items 4,8,12,16 are reverse scored
+CESD <- CESD %>%
+  mutate(CESD4 = case_when(
+    CESD4 == 1 ~ 4,
+    CESD4 == 2 ~ 3,
+    CESD4 == 4 ~ 1,
+    CESD4 == 3 ~ 2,
+    TRUE ~ CESD4  # Keep the original value if none of the conditions are met
+  ))
+
+CESD <- CESD %>%
+  mutate(CESD8 = case_when(
+    CESD8 == 1 ~ 4,
+    CESD8 == 2 ~ 3,
+    CESD8 == 4 ~ 1,
+    CESD8 == 3 ~ 2,
+    TRUE ~ CESD8  # Keep the original value if none of the conditions are met
+  ))
+
+CESD <- CESD %>%
+  mutate(CESD12 = case_when(
+    CESD12 == 1 ~ 4,
+    CESD12 == 2 ~ 3,
+    CESD12 == 4 ~ 1,
+    CESD12 == 3 ~ 2,
+    TRUE ~ CESD12  # Keep the original value if none of the conditions are met
+  ))
+
+CESD <- CESD %>%
+  mutate(CESD16 = case_when(
+    CESD16 == 1 ~ 4,
+    CESD16 == 2 ~ 3,
+    CESD16 == 4 ~ 1,
+    CESD16 == 3 ~ 2,
+    TRUE ~ CESD16  # Keep the original value if none of the conditions are met
+  ))
+
+CESD_sum <- rowSums(CESD,na.rm = TRUE)
+CESD_sum <- as.vector(CESD_sum)
+sums$CESD <- CESD_sum # Max possible: 60; Higher score, higher depressive symptomatology
+
+# Subjective Happiness Scale (SHS)
+SHS <- data[64:67]
+
+# Items 4 is reversed scored
+SHS <- SHS %>%
+  mutate(SHS4 = case_when(
+    SHS4 == 7 ~ 1,
+    SHS4 == 6 ~ 2,
+    SHS4 == 1 ~ 7,
+    SHS4 == 2 ~ 6,
+    TRUE ~ SHS4  # Keep the original value if none of the conditions are met
+  ))
+
+SHS_sum <- rowSums(SHS,na.rm = TRUE)
+SHS_sum <- as.vector(SHS_sum)
+sums$SHS <- SHS_sum # Max possible: 28; Higher score, higher subjective happiness
+
+# Rumination-Reflection Questionnaire (RRQ)
+RRQ <- data[68:91]
+
+# Items 6,9,10,13,14,17,20,24 is reversed scored
+RRQ <- RRQ %>%
+  mutate(RRQ_6 = case_when(
+    RRQ_6 == 5 ~ 1,
+    RRQ_6 == 2 ~ 2,
+    RRQ_6 == 1 ~ 5,
+    RRQ_6 == 2 ~ 4,
+    TRUE ~ RRQ_6  # Keep the original value if none of the conditions are met
+  ))
+
+RRQ <- RRQ %>%
+  mutate(RRQ_9 = case_when(
+    RRQ_9 == 5 ~ 1,
+    RRQ_9 == 2 ~ 2,
+    RRQ_9 == 1 ~ 5,
+    RRQ_9 == 2 ~ 4,
+    TRUE ~ RRQ_9  # Keep the original value if none of the conditions are met
+  ))
+
+RRQ <- RRQ %>%
+  mutate(RRQ_10 = case_when(
+    RRQ_10 == 5 ~ 1,
+    RRQ_10 == 2 ~ 2,
+    RRQ_10 == 1 ~ 5,
+    RRQ_10 == 2 ~ 4,
+    TRUE ~ RRQ_10  # Keep the original value if none of the conditions are met
+  ))
+
+RRQ <- RRQ %>%
+  mutate(RRQ_13 = case_when(
+    RRQ_13 == 5 ~ 1,
+    RRQ_13 == 2 ~ 2,
+    RRQ_13 == 1 ~ 5,
+    RRQ_13 == 2 ~ 4,
+    TRUE ~ RRQ_13  # Keep the original value if none of the conditions are met
+  ))
+
+RRQ <- RRQ %>%
+  mutate(RRQ_14 = case_when(
+    RRQ_14 == 5 ~ 1,
+    RRQ_14 == 2 ~ 2,
+    RRQ_14 == 1 ~ 5,
+    RRQ_14 == 2 ~ 4,
+    TRUE ~ RRQ_14  # Keep the original value if none of the conditions are met
+  ))
+
+RRQ <- RRQ %>%
+  mutate(RRQ_17 = case_when(
+    RRQ_17 == 5 ~ 1,
+    RRQ_17 == 2 ~ 2,
+    RRQ_17 == 1 ~ 5,
+    RRQ_17 == 2 ~ 4,
+    TRUE ~ RRQ_17  # Keep the original value if none of the conditions are met
+  ))
+
+RRQ <- RRQ %>%
+  mutate(RRQ_20 = case_when(
+    RRQ_20 == 5 ~ 1,
+    RRQ_20 == 2 ~ 2,
+    RRQ_20 == 1 ~ 5,
+    RRQ_20 == 2 ~ 4,
+    TRUE ~ RRQ_20  # Keep the original value if none of the conditions are met
+  ))
+
+RRQ <- RRQ %>%
+  mutate(RRQ_24 = case_when(
+    RRQ_24 == 5 ~ 1,
+    RRQ_24 == 2 ~ 2,
+    RRQ_24 == 1 ~ 5,
+    RRQ_24 == 2 ~ 4,
+    TRUE ~ RRQ_24  # Keep the original value if none of the conditions are met
+  ))
+
+
+RRQ_Rum <- select(RRQ,c("RRQ_1","RRQ_2","RRQ_3","RRQ_4","RRQ_5","RRQ_6","RRQ_7",
+                        "RRQ_8","RRQ_9","RRQ_10","RRQ_11","RRQ_12"))
+RRQ_Rum$Rum_mean <- rowMeans(RRQ_Rum, na.rm = TRUE)
+
+RRQ_Ref <- select(RRQ,c("RRQ_13","RRQ_14","RRQ_15","RRQ_16","RRQ_17","RRQ_18","RRQ_19",
+                        "RRQ_20","RRQ_21","RRQ_22","RRQ_23","RRQ_24"))
+RRQ_Ref$Ref_mean <- rowMeans(RRQ_Ref, na.rm = TRUE)
+
+RRQ <- RRQ %>%
+  mutate(Ref_mean = RRQ_Ref$Ref_mean)
+
+RRQ <- RRQ %>%
+  mutate(Rum_mean = RRQ_Rum$Rum_mean)
+
+RRQ_stats <- select(RRQ,c("Ref_mean", "Rum_mean"))
+
+sums <- bind_cols(sums, RRQ_stats) # Rumination vs. Reflection
+```
+
+## Repeat individual differences for centrality/ratings dataframe
+```{r}
+repeat_data_df <- function(df, n_times) {
+  # Use the `rep()` function to repeat the indices of the dataframe
+  repeated_df <- df[rep(1:nrow(df), each = n_times), ]
+  
+  # Return the repeated dataframe
+  return(repeated_df)
+}
+
+individual_data <- repeat_data_df(sums, 24)
+individual_data <- individual_data[individual_data$loginID != "22", ]
+```
+
+## Combine all datasets and finalize
+```{r}
+# Be sure to run the rest of the script before this, depends on dimensions after processing.
+
+
+# Force combine datasets that are off by a single observation
+full_index <- seq_len(max(nrow(individual_data), nrow(netmetrics)))
+
+# Align df1
+df1_aligned <- individual_data[full_index, , drop = FALSE]
+df1_aligned[is.na(df1_aligned)] <- NA
+
+# Align df2
+df2_aligned <- netmetrics[full_index, , drop = FALSE]
+df2_aligned[is.na(df2_aligned)] <- NA
+
+# Combine aligned dataframes
+data2 <- cbind(df1_aligned, df2_aligned)
+
+data <- cbind(data2,inscan)
+
+# Remove extra subID columns 
+data <- select(data, -subID)
+
+# Set numeric columns to numeric
+data$valRate <- as.numeric(data$valRate)
+data$intenseRate <- as.numeric(data$intenseRate)
+data$vividRate <- as.numeric(data$vividRate)
+
+# Remove 22 from sums
+sums <- sums[data$loginID != 22, ]
+
+ratings <- fullData[, c(24:29,33)] # Remove extraneous column in front
+
+# Repeat first row of data to pad for later cbind
+first_row <- ratings[1, ]
+ratings <- rbind(first_row, ratings)
+ratings[1, ] <- NA
+
+all <- cbind(data,ratings)
+
+# centUnique <- cent[! duplicated(cent$subID), ]
+# sums_cent <- cbind(sums,centUnique) 
+# sums_cent <- sums_cent[,-c(10)] # Remove extra subject ID col
+# 
+# denseUnique <- dense[! duplicated(dense$subID), ]
+# sums_dense <- cbind(sums,denseUnique)
+# sums_dense <- sums_dense[,-c(10)] # Remove extra subject ID col
+```
+
+
+```{r}
+# Set numID
+numID = 24
+```
+
+# Analyses (lmer)
+
+# Predicting memory RATINGS from outdegree x individual differences
+```{r}
+m1 <- lmer(scale(transformativeness) ~ scale(RSE) + scale(outdegree) + (scale(RSE) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m1)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m2 <- lmer(scale(valRate) ~ scale(Rum_mean) + scale(outdegree) + (scale(Rum_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m2)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m3 <- lmer(scale(importance) ~ scale(SCC) + scale(outdegree) + (scale(SCC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m3)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m4 <- lmer(scale(clear) ~ scale(Ref_mean) + scale(outdegree) + (scale(Ref_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m4)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m5 <- lmer(scale(easy) ~ scale(Ref_mean) + scale(outdegree) + (scale(Ref_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m5)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m6 <- lmer(scale(agency) ~ scale(SHS) + scale(outdegree) + (scale(SHS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m6)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m7 <- lmer(scale(change) ~ scale(Rum_mean) + scale(outdegree) + (scale(Rum_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m7)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m8 <- lmer(scale(recency_sum) ~ scale(Rum_mean) + scale(outdegree) + (scale(Rum_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m8)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+
+
+# Predicting memory RATINGS from indegree x individual differences
+```{r}
+m1 <- lmer(scale(transformativeness) ~ scale(Ref_mean) + scale(indegree) + (scale(Ref_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m1)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m2 <- lmer(scale(valRate) ~ scale(RSE) + scale(indegree) + (scale(RSE) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m2)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m3 <- lmer(scale(importance) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m3)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m4 <- lmer(scale(clear) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m4)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m5 <- lmer(scale(easy) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m5)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m6 <- lmer(scale(agency) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m6)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m7 <- lmer(scale(change) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m7)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m8 <- lmer(scale(recency_sum) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m8)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+
+
+## Predicting recall ratings from network centrality
+```{r}
+# Predicting memory recall valence from centrality (directional)
+valence_cent <-lmer( scale(valRate) ~  scale(outdegree) + scale(indegree) + ( scale(outdegree) + scale(indegree) | loginID), data=data)
+tbl_regression(valence_cent) %>% as_gt()
+
+#report(m1)
+```
+
+```{r}
+# Predicting memory recall affective intensity from centrality (directional)
+intense_cent <-lmer( scale(intenseRate) ~  scale(outdegree) + scale(indegree) + ( scale(outdegree) + scale(indegree) | loginID), data=data)
+tbl_regression(intense_cent) %>% as_gt()
+```
+
+```{r}
+# Predicting memory recall vividness from centrality (directional)
+vivid_cent <-lmer( scale(vividRate) ~  scale(outdegree) + scale(indegree) + ( scale(outdegree) + scale(indegree) | loginID), data=data)
+tbl_regression(vivid_cent) %>% as_gt()
+```
+
+
+```{r}
+# Predicting memory recall valence from centrality (non-directional)
+valence_overall <-lmer( scale(valRate) ~  scale(degree) + ( scale(degree) | loginID), data=data)
+tbl_regression(valence_overall) %>% as_gt()
+```
+
+```{r}
+# Predicting memory recall affective intensity from centrality (non-directional)
+intense_overall <-lmer( scale(intenseRate) ~  scale(degree) + ( scale(degree) | loginID), data=data)
+tbl_regression(intense_overall) %>% as_gt()
+```
+
+```{r}
+# Predicting memory recall vividness from centrality (non-directional)
+vivid_overall <-lmer( scale(vividRate) ~  scale(degree) + ( scale(degree) | loginID), data=data)
+tbl_regression(vivid_overall) %>% as_gt()
+```
+
+##  Predicting individual differences from network centrality
+```{r}
+# Does centrality predict RSE?
+RSE_cent <-lmer( scale(RSE)  ~  scale(outdegree) + scale(indegree) + ( scale(outdegree) + scale(indegree) | loginID), data=data)
+tbl_regression(RSE_cent) %>% as_gt()
+```
+
+```{r}
+# Does centrality predict NFC?
+NFC_cent <-lmer( scale(NFC)  ~  scale(outdegree) + scale(indegree) + ( scale(outdegree) + scale(indegree) | loginID), data=data)
+tbl_regression(NFC_cent) %>% as_gt()
+```
+
+```{r}
+# Does centrality predict SCC?
+SCC_cent <-lmer( scale(SCC)  ~  scale(outdegree) + scale(indegree) + ( scale(outdegree) + scale(indegree) | loginID), data=data)
+tbl_regression(SCC_cent) %>% as_gt()
+```
+
+```{r}
+# Does centrality predict SD-S?
+SDS_cent <-lmer( scale(DSS)  ~  scale(outdegree) + scale(indegree) + ( scale(outdegree) + scale(indegree) | loginID), data=data)
+tbl_regression(SDS_cent) %>% as_gt()
+```
+
+```{r}
+# Does centrality predict CESD?
+CESD_cent <-lmer( scale(CESD)  ~  scale(outdegree) + scale(indegree) + ( scale(outdegree) + scale(indegree) | loginID), data=data)
+tbl_regression(CESD_cent) %>% as_gt()
+
+# VERY odd confidence intervals, should probably re-run if interested in interpreting
+```
+
+```{r}
+# Does centrality predict SHS?
+SHS_cent <-lmer( scale(SHS)  ~  scale(outdegree) + scale(indegree)+( scale(outdegree) + scale(indegree) | loginID), data=data)
+tbl_regression(SHS_cent) %>% as_gt()
+```
+
+
+```{r}
+# Does centrality predict Reflection?
+Ref_cent <-lmer( scale(Ref_mean)  ~  scale(outdegree) + scale(indegree) + ( scale(outdegree) + scale(indegree) | loginID), data=data)
+tbl_regression(Ref_cent) %>% as_gt()
+```
+
+```{r}
+# Does centrality predict Rumination?
+Rum_cent <-lmer( scale(Rum_mean)  ~  scale(outdegree) + scale(indegree) + ( scale(outdegree) + scale(indegree) | loginID), data=data)
+tbl_regression(Rum_cent) %>% as_gt()
+```
+
+
+##############################################################################
+##############################################################################
+##############################################################################
+
+
+##  Predicting individual differences from network density
+
+```{r}
+# Remove subj2 - lack of density values? N = 46 (excluding 22 and 2 from centrality analyses)
+data <- data[data$loginID != 2, ]
+
+# dens <- read_csv("densityDf.csv")
+# dens <- dens[ ,-c(1,2)]
+
+# dense <- dense[-c(1:23), , drop = FALSE]
+
+denseModel <- cbind(iDiffs,dens)
+#denseModel<- denseModel[!duplicated(denseModel$loginID), ]
+```
+```{r}
+# Define the function to calculate and combine correlation results
+calculate_correlations <- function(data, var_pairs) {
+  results <- list()  # Initialize an empty list to store correlation results
+  
+  # Loop over each pair of variables
+  for (i in 1:nrow(var_pairs)) {
+    var1 <- var_pairs[i, 1]
+    var2 <- var_pairs[i, 2]
+    
+    # Calculate correlation
+    cor_test <- cor.test(as.matrix(data[, c(var1, var2)]))
+    cor_value <- cor_test$r[1, 2]    # Extract the correlation value
+    p_value <- cor_test$P[1, 2]      # Extract the p-value
+    
+    # Store results in a list
+    results[[i]] <- data.frame(
+      Variable1 = var1,
+      Variable2 = var2,
+      Correlation = round(cor_value, 3),
+      P_value = round(p_value, 3)
+    )
+  }
+  
+  # Combine results into a single dataframe
+  results_df <- bind_rows(results)
+  
+  return(results_df)
+}
+```
+
+
+```{r}
+# Does centrality predict RSE?
+#RSE_dens <-lmer( scale(RSE) ~ scale(dense) + ( scale(dense) | loginID), data=data)
+
+#m10 <-lm( scale(transformativeness) ~ scale(RSE) + scale(dense) + (scale(CESD) + scale(dense)), data=all)
+
+m10 <- cor.test(scale(all$dense),scale(all$RSE),method = "pearson") ##
+tab_model(m10)
+
+m11 <- cor.test(scale(all$dense),scale(all$NFC),method = "pearson")
+tab_model(m11)
+
+m12 <- cor.test(scale(all$dense),scale(all$SCC),method = "pearson")
+tab_model(m12)
+
+m13 <- cor.test(scale(all$dense),scale(all$DSS),method = "pearson") ##
+tab_model(m13)
+
+m14 <- cor.test(scale(all$dense),scale(all$CESD),method = "pearson") ##
+tab_model(m14)
+
+m15 <- cor.test(scale(all$dense),scale(all$SHS),method = "pearson") ##
+tab_model(m15)
+
+m16 <- cor.test(scale(all$dense),scale(all$Ref_mean),method = "pearson")
+tab_model(m16)
+
+m17 <- cor.test(scale(all$dense),scale(all$Rum_mean),method = "pearson") ##
+tab_model(m17)
+
+#report(m10)
+#tab_model(m10)
+```
+
+```{r}
+# Does centrality predict NFC?
+NFC_dens <-lmer( scale(NFC)  ~  scale(dense) + ( scale(dense) | loginID), data=data)
+tbl_regression(NFC_dens) %>% as_gt()
+```
+
+```{r}
+# Does centrality predict SCC?
+SCC_dense <-lmer(scale(SCC)  ~  scale(dense) + ( scale(dense) | loginID), data=data) 
+tbl_regression(SCC_dense) %>% as_gt()
+```
+
+```{r}
+# Does centrality predict SD-S?
+SDS_cent <-lmer( scale(DSS)  ~  scale(dense) + (scale(dense) | loginID), data=data)
+tbl_regression(SDS_cent) %>% as_gt()
+```
+
+
+```{r}
+# Does centrality predict CESD?
+CESD_dense <-lmer( scale(CESD)  ~  scale(dense) + (scale(dense) | loginID), data=data)
+tbl_regression(CESD_dense) %>% as_gt()
+
+# VERY odd confidence intervals, should probably re-run if interested in interpreting
+```
+
+```{r}
+# Does centrality predict SHS?
+SHS_dense <-lmer( scale(SHS)  ~  scale(dense) + ( scale(dense) | loginID), data=data)
+tbl_regression(SHS_dense) %>% as_gt()
+```
+
+
+```{r}
+# Does centrality predict Reflection?
+Ref_dense <-lmer( scale(Ref_mean)  ~  scale(dense)+ ( scale(dense) | loginID), data=data)
+tbl_regression(Ref_dense) %>% as_gt()
+```
+
+```{r}
+# Does centrality predict Rumination?
+Rum_dense <-lmer( scale(Rum_mean)  ~  scale(dense) + ( scale(dense) | loginID), data=data)
+tbl_regression(Rum_cent) %>% as_gt()
+```
+

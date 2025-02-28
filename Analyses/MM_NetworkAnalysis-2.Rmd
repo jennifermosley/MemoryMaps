@@ -1,0 +1,544 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+## Prepare for Analysis and Visualizations
+
+```{r}
+#library(groundhog)
+
+pkgs <-  c("tidyverse","here", "lmerTest", "sjPlot","broom.mixed", "kableExtra", "ggeffects", "gt", "brms", "bayestestR","ggdist", "pheatmap", "heatmaply","pheatmap","gplots","RColorBrewer", "tm", "wordcloud", "psych", "wesanderson","patchwork", "broom.mixed", "dplyr", "gtsummary")
+
+pacman::p_load("tidyverse","here", "lmerTest", "sjPlot","broom.mixed", "kableExtra", "ggeffects", "gt", "brms", "bayestestR","ggdist", "pheatmap", "heatmaply","pheatmap","gplots","RColorBrewer", "tm", "wordcloud", "psych", "wesanderson","patchwork", "broom.mixed", "dplyr", "gtsummary","ordinal","r2glmm")
+
+update.packages(pkgs)
+
+library(lmerTest)
+library(partR2)
+library(dplyr)
+
+# Useful resources Jake imported from S2 analysis
+devtools::source_url("https://raw.githubusercontent.com/JacobElder/MiscellaneousR/master/corToOne.R")
+devtools::source_url("https://raw.githubusercontent.com/JacobElder/MiscellaneousR/master/plotCommAxes.R")
+devtools::source_url("https://raw.githubusercontent.com/JacobElder/MiscellaneousR/master/named.effects.ref.R")
+
+# Import fullLong includes memories for each subject
+fullLong <- read.csv("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/fullLong48.csv")
+fullLong <- fullLong[-1, ]
+
+# Import fullShort - doesn't include memories for each subject
+fullShort <- read.csv("~/GitLab/SecondYearProject/MemoryMaps/Data/processed/fullShort48.csv")
+#fullShort <- fullShort[-1, ]
+# rankData <- arrow::read_parquet(here("RepData/rankings2.parquet"))
+
+# Join fullLong and fullShort
+fullData <- fullLong %>% full_join(fullShort, by = c("subID"))
+fullData$subID <- as.factor(fullData$subID)
+# fullData <- fullData[ ,-1]
+
+# Download fullData file for separate analysis (onset file creation)
+write.csv(fullData,"~/GitLab/SecondYearProject/MemoryMaps/Data/processed/fullData48.csv")
+
+# pal1 <-n colorRampPalette(brewer.pal(11,"BrBG"))(227)
+pal <- colorRampPalette(wes_palette("Zissou1", 5))(length(unique(fullLong$subID)))
+
+ID <- read.csv("ID_48.csv")
+ID <- ID[,-c(1)]
+
+```
+
+# Linear Mixed Models (and some descriptives)
+
+--------------------------------------------------------------------------------
+
+# Centrality Predictors (A priori)
+
+## From rep pipeline: valence (pos/neg) \~ degree centrality
+
+### NOTE: this data was not collected through memory ratings, but were collected
+
+### from the subject in the scanner.
+
+```{r}
+# m <- lmer(scale(positive) ~  scale(outdegree) + scale(indegree) + numID + ( scale(outdegree) + scale(indegree) | subID), data=fullData)
+# 
+# tbl_regression(m) %>% as_gt()
+# # Indegree (counterfactually-central, such that other memories would not have happened without the target memory) memories closely predict self-reported positivity of memories)
+# 
+# m <-lmer( scale(vad_pos) ~  scale(strengthOut) + scale(strengthIn) + numID + ( scale(strengthOut) + scale(strengthIn) | subID), data=fullData)
+# 
+# tbl_regression(m) %>% as_gt()
+# ```
+# 
+# ```{r}
+# m<-lmer( scale(negative) ~  scale(outdegree) + scale(indegree) + numID + ( scale(outdegree) + scale(indegree) | subID), data=fullData)
+# 
+# tbl_regression(m) %>% as_gt()
+# #
+# ```
+# 
+# ```{r}
+# m<-lmer( scale(vad_pos) ~  scale(outdegree) + scale(indegree) + numID + ( scale(outdegree) + scale(indegree) | subID), data=fullData)
+# tbl_regression(m) %>% as_gt()
+# r2beta(m)
+# ```
+# 
+# ```{r}
+# m<-lmer( scale(vad_pos) ~  scale(strengthOut) + scale(strengthIn) + numID + scale(length) + ( scale(strengthOut) + scale(strengthIn) | subID), data=fullData)
+# tbl_regression(m) %>% as_gt()
+```
+
+## Centrality Descriptives - ACROSS Subjects
+
+```{r}
+cent <- fullData[, c(1,4,5,6)] # For descriptives and later onset file usage
+
+degree_mean <- mean(cent$degree) # Average overall connections across networks
+degree_sd <- sd(cent$degree) # Standard deviation of overall connections across networks
+degree_freq <- hist(cent$degree) # Distribution of network density across subject networks
+cent$degree_scaled <- as.vector(scale(cent$degree)) # Scaled density values for lme
+
+outdegree_mean <- mean(cent$outdegree) # Average outward connections
+outdegree_sd <- sd(cent$outdegree) # Standard deviation from average outward connections
+outdegree_freq <- hist(cent$outdegree) # Distribution of network density across subject networks
+cent$outdegree_scaled <- as.vector(scale(cent$outdegree)) # Scaled density values for lme
+
+indegree_mean <- mean(cent$indegree) # Average inward connections
+indegree_sd <- sd(cent$indegree) # Standard deviation from average outward connections
+indegree_freq <- hist(cent$indegree) # Distribution of network density across subject networks
+cent$indegree_scaled<- as.vector(scale(cent$indegree)) # Scaled density values for lme
+
+write.csv(cent,"centralityDf_48.csv") # Write file to csv for later onset files
+```
+
+## Centrality Descriptives - WITHIN Subjects
+
+```{r}
+# Create subject list for descriptives loop
+sublist <- as.array(unique(fullData$subID))
+
+# Create dataframe to add to later and rename first column
+withinDesc <- data.frame(unique(fullData$subID))
+names(withinDesc)[1] <- "subID"
+
+# Begin within-subjects loop
+for (s in sublist){
+  
+  # Initialize df for current subject
+  centsub <- cent %>%
+    filter(subID == s)
+  
+  # Within-subject degree
+  sub_degree1 <- round(mean(centsub$degree),5)
+  sub_degree2 <- round(sd(centsub$degree),5)
+  
+  # Within-subject outdegree
+  sub_outdegree1 <- round(mean(centsub$outdegree),5)
+  sub_outdegree2 <- round(sd(centsub$outdegree),5)
+  
+  # Within-subject indegree
+  sub_indegree1 <- round(mean(centsub$indegree),5)
+  sub_indegree2 <- round(sd(centsub$indegree),5)
+  
+  withinDesc[ , 2:7] <- c(sub_degree1,sub_degree2,sub_outdegree1,sub_outdegree2,
+                          sub_indegree1,sub_indegree2)
+  
+  names(withinDesc)[2:7] <- c("mean_degree","sd_degree","mean_outdegree","sd_outdegree",
+                          "mean_indegree","sd_indegree")
+  
+}
+
+write.csv(withinDesc,"withinDesc_48.csv") # Write file to csv for later onset files
+```
+
+## What happens if we remove the 6 subjects (of N=37 batch) that have an average degree less than 1. 
+```{r}
+# remove_subs <- c(17,24,46,79,90,108)
+# 
+# # Remove columns where the factor column matches the specified levels
+# fullData2 <- fullData[!fullData$subID %in% remove_subs, ]
+```
+
+##################################################################
+
+
+## Does directional degree centrality predict memory IMPORTANCE?
+
+\>\>\>
+
+```{r}
+m <-lmer( scale(importance) ~  scale(outdegree) + scale(indegree) + numID + ( scale(outdegree) + scale(indegree) | subID), data=fullData) 
+
+tbl_regression(m) %>% as_gt()
+
+
+# Personal importance of the memory is equally associated with outdegree and indegree within the memory network
+
+# StrengthIn/Out analyses from rep pipeline
+# m<-lmer( scale(importance) ~  scale(strengthOut) + scale(strengthIn) + numID + ( scale(strengthOut) + scale(strengthIn) | subID), data=fullData)
+# tbl_regression(m) %>% as_gt()
+```
+
+## Does directional degree centrality predict memory CLARITY?
+
+\>\>\>
+
+```{r}
+m<-lmer( scale(clear) ~  scale(outdegree) + scale(indegree) + numID + ( scale(outdegree) + scale(indegree) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+
+# StrengthIn/Out analyses from rep pipeline
+# m<-lmer( scale(clear) ~  scale(strengthOut) + scale(strengthIn) + numID + ( scale(strengthOut) + scale(strengthIn) | subID), data=fullData)
+# tbl_regression(m) %>% as_gt()
+```
+
+## Does directional degree centrality predict memory AGENCY?
+
+\>\>\>
+
+```{r}
+m<-lmer( scale(agency) ~  scale(outdegree) + scale(indegree) + numID + ( scale(outdegree) + scale(indegree) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+
+# StrengthIn/Out analyses from rep pipeline
+# m<-lmer( scale(agency) ~  scale(strengthOut) + scale(strengthIn) + numID + ( scale(strengthOut) + scale(strengthIn) | subID), data=fullData)
+# tbl_regression(m) %>% as_gt()
+```
+
+## Does directional degree centrality predict memory EASE OF RECALL?
+
+\>\>\>
+
+```{r}
+m<-lmer( scale(easy) ~  scale(outdegree) + scale(indegree) + numID + ( scale(outdegree) + scale(indegree) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+
+ggpredict(m, terms="outdegree") %>% plot(colors="black") +
+  labs(
+    x = "Outdegree Centrality",
+    y = "Ease of Recall",
+    title = "Predicted Effect of Outdegree Centrality on Ease of Recall"
+  ) +
+  theme(
+    axis.title.x = element_text(face = "bold"),
+    axis.title.y = element_text(face = "bold")
+  )
+
+summary(m)
+
+ease_r2 <- partR2(m)
+# StrengthIn/Out analyses from rep pipeline
+# m<-lmer( scale(Easy) ~  scale(strengthOut) + scale(strengthIn) + numID + ( scale(strengthOut) + scale(strengthIn) | subID), data=fullData)
+# tbl_regression(m) %>% as_gt()
+```
+
+## Does directional degree centrality predict memory TRANSFORMATIVENESS?
+
+\>\>\>
+
+```{r}
+# Replicating Jake's test - accounting for both outdegree and indegree at the population level
+m<-lmer( scale(transformativeness) ~  scale(outdegree) + scale(indegree) + numID + ( scale(outdegree) + scale(indegree) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+summary(m)
+
+ggpredict(m, terms="outdegree") %>% plot(colors="orange") +
+  labs(
+    x = "Outdegree Centrality",
+    y = "Self-Transformativeness",
+    title = "Predicted Effect of Outdegree Centrality on Self-Transformativeness"
+  ) +
+  theme(
+    axis.title.x = element_text(face = "bold"),
+    axis.title.y = element_text(face = "bold")
+  )
+
+transf_r2 <- partR2(m)
+
+# StrengthIn/Out analyses from rep pipeline
+# m<-lmer( scale(transformativeness) ~  scale(strengthOut) + scale(strengthIn) + numID + ( scale(strengthOut) + scale(strengthIn) | subID), data=fullData)
+# tbl_regression(m) %>% as_gt()
+```
+
+## Does directional degree centrality predict memory CHANGEABILITY?
+
+\>\>\>
+
+```{r}
+# Replicating Jake's test - accounting for both outdegree and indegree at the population level
+m<-lmer( scale(change) ~  scale(outdegree) + scale(indegree) + numID + ( scale(outdegree) + scale(indegree) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+
+
+
+# StrengthIn/Out analyses from rep pipeline
+# m<-lmer( scale(change) ~  scale(strengthOut) + scale(strengthIn) + numID + ( scale(strengthOut) + scale(strengthIn) | subID), data=fullData)
+# tbl_regression(m) %>% as_gt()
+```
+
+
+
+##################################################################
+
+
+
+
+# Degree Centrality (Non-directional - overall number of connections)
+
+## Does NON-directional degree centrality predict memory IMPORTANCE?
+
+\>\>\>
+
+```{r}
+m <-lmer( scale(importance) ~  scale(degree) + numID + ( scale(degree) | subID), data=fullData)
+
+tbl_regression(m) %>% as_gt()
+
+```
+
+## Does directional degree centrality predict memory CLARITY?
+
+\>\>\>
+
+```{r}
+m<-lmer( scale(clear) ~  scale(degree) + numID + ( scale(degree) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+
+# StrengthIn/Out analyses from rep pipeline
+# m<-lmer( scale(clear) ~  scale(strengthOut) + scale(strengthIn) + numID + ( scale(strengthOut) + scale(strengthIn) | subID), data=fullData)
+# tbl_regression(m) %>% as_gt()
+```
+
+## Does directional degree centrality predict memory AGENCY?
+
+\>\>\>
+
+```{r}
+m<-lmer( scale(agency) ~  scale(degree) + numID + ( scale(degree) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+
+# StrengthIn/Out analyses from rep pipeline
+# m<-lmer( scale(agency) ~  scale(strengthOut) + scale(strengthIn) + numID + ( scale(strengthOut) + scale(strengthIn) | subID), data=fullData)
+# tbl_regression(m) %>% as_gt()
+```
+
+## Does non-directional degree centrality predict memory EASE OF RECALL?
+
+\>\>\>
+
+```{r}
+m<-lmer( scale(easy) ~  scale(degree) + numID + ( scale(degree) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+
+# StrengthIn/Out analyses from rep pipeline
+# m<-lmer( scale(Easy) ~  scale(strengthOut) + scale(strengthIn) + numID + ( scale(strengthOut) + scale(strengthIn) | subID), data=fullData)
+# tbl_regression(m) %>% as_gt()
+```
+
+## Does directional degree centrality predict memory TRANSFORMATIVENESS?
+
+\>\>\>
+
+```{r}
+m<-lmer( scale(transformativeness) ~  scale(degree) + numID + ( scale(degree) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+
+# StrengthIn/Out analyses from rep pipeline
+# m<-lmer( scale(transformativeness) ~  scale(strengthOut) + scale(strengthIn) + numID + ( scale(strengthOut) + scale(strengthIn) | subID), data=fullData)
+# tbl_regression(m) %>% as_gt()
+```
+
+## Does directional degree centrality predict memory CHANGEABILITY?
+
+\>\>\>
+
+```{r}
+m<-lmer( scale(change) ~  scale(degree) + numID + ( scale(degree) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+
+# StrengthIn/Out analyses from rep pipeline
+# m<-lmer( scale(change) ~  scale(strengthOut) + scale(strengthIn) + numID + ( scale(strengthOut) + scale(strengthIn) | subID), data=fullData)
+# tbl_regression(m) %>% as_gt()
+```
+
+
+
+# Density (Post-Hoc)
+
+## Descriptives
+
+```{r}
+dens <- fullData[, c(1,45)] # For descriptives and later onset file usage
+dens <- unique(dens) # Restructure to compare between networks (one dens value per subject)
+
+
+dens_mean <- mean(dens$dense) # Average network density
+dens_sd <- sd(dens$dense) # Standard deviation from density average
+
+dens_freq <- hist(dens$dense) # Distribution of network density across subject networks
+dens$density_scaled <- as.vector(scale(dens$dense)) # Scaled density values for lme
+
+write.csv(dens,"densityDf.csv") # Write file to csv for later onset files
+```
+
+## Inferences (Linear Mixed Effects Model)
+
+### Does network density predict memory IMPORTANCE?
+
+```{r}
+m<-lmer( scale(importance) ~  scale(edgeTot) + numID + ( scale(edgeTot) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+```
+
+### Does network density predict memory CLARITY?
+
+```{r}
+m<-lmer( scale(clear) ~  scale(dense) + numID + ( scale(dense) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+```
+
+### Does network density predict memory AGENCY?
+
+```{r}
+m<-lmer( scale(agency) ~  scale(dense) + numID + ( scale(dense) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+```
+
+### Does network density predict memory EASE OF RECALL?
+
+```{r}
+m<-lmer( scale(easy) ~  scale(dense) + numID + ( scale(dense) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+```
+
+### Does network density predict memory CHANGEABILITY?
+
+```{r}
+m<-lmer( scale(change) ~  scale(dense) + numID + ( scale(dense) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+```
+
+### Does network density predict memory TRANSFORMATIVENESS?
+
+```{r}
+m<-lmer( scale(transformativeness) ~  scale(dense) + numID + ( scale(dense) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+```
+
+
+# Edge Total (Post-Hoc)
+
+## Descriptives
+
+# ```{r}
+# edgTotal <- fullData[, c(1,45)] # For descriptives and later onset file usage
+# edgTotal <- unique(edgTotal) # Restructure to compare between networks (one dens value per subject)
+# edgTotal$edg_scaled <- as.vector(scale(edgTotal$edgeTot)) # Scaled density values for lme
+# 
+# edgTotal_mean <- mean(edgTotal$edgeTot) # Average network density
+# edgTotal_sd <- sd(edgTotal$edgeTot) # Standard deviation from density average
+# 
+# edgTotal_freq <- hist(edgTotal$edgeTot) # Distribution of network density across subject networks
+# 
+# write.csv(edgTotal,"edgeTotalDf.csv") # Write file to csv for later onset files
+# ```
+
+## Inferences (Linear Mixed Effects Model)
+
+### Does network edge total predict memory IMPORTANCE?
+
+```{r}
+m<-lmer( scale(change) ~  scale(dense) + numID + ( scale(dense) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+```
+
+### Does network edge total predict memory CLARITY?
+
+```{r}
+m<-lmer( scale(clear) ~  scale(dense) + numID + ( scale(dense) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+
+```
+
+### Does network edge total predict memory AGENCY?
+
+```{r}
+m<-lmer( scale(agency) ~  scale(dense) + numID + ( scale(dense) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+```
+
+### Does network edge total predict memory EASE OF RECALL?
+
+```{r}
+m<-lmer( scale(easy) ~  scale(dense) + numID + ( scale(dense) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+```
+
+### Does network edge total predict memory CHANGEABILITY?
+
+```{r}
+m<-lmer( scale(change) ~  scale(dense) + numID + ( scale(dense) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+```
+
+
+### Does network edge total predict memory TRANSFORMATIVENESS?
+
+```{r}
+m<-lmer( scale(transformativeness) ~  scale(dense) + numID + ( scale(dense) | subID), data=fullData)
+tbl_regression(m) %>% as_gt()
+```
+
+
+# Visualizations
+
+## Fundamental (FUND)
+
+```{r}
+mF<-lmer( scale(Fund) ~  scale(outdegree) + scale(indegree) + numID + ( scale(outdegree) + scale(indegree) | subID), data=fullData)
+tidy(mF)
+
+
+tbl_regression(mF) %>% as_gt()
+ggpredict(m, terms="outdegree") %>% plot(colors="orange") +
+  labs(
+    x = "Outdegree Centrality",
+    y = "Fundamental (Study 2)",
+  )
+```
+
+## Representative (REP)
+
+```{r}
+mR<-lmer( scale(Rep) ~  scale(outdegree) + scale(indegree) + numID + ( scale(outdegree) + scale(indegree) | subID), data=fullData)
+tidy(mR)
+
+tbl_regression(mR) %>% as_gt()
+ggpredict(m, terms="outdegree") %>% plot(colors="blue") +
+  labs(
+    x = "Outdegree Centrality",
+    y = "Representative (Study 2)",
+  )
+```
+
+## Changeability (CHAN)
+
+```{r}
+mC<-lmer( scale(Chan) ~  scale(outdegree) + scale(indegree) + numID + ( scale(outdegree) + scale(indegree) | subID), data=fullData)
+tidy(mC)
+
+
+tbl_regression(mC) %>% as_gt()
+ggpredict(m, terms="outdegree") %>% plot(colors="brown") +
+  labs(
+    x = "Outdegree Centrality",
+    y = "Transformative (Study 2)",
+  )
+```
+
+## Memory Maps Extension Power Analysis
+```{r}
+
+```
+

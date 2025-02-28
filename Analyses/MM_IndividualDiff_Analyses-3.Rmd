@@ -1,0 +1,1543 @@
+---
+title: "MM_SupplementalAnalyses"
+author: "Jennifer Mosley"
+date: "2024-09-08"
+output:
+  html_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyr)
+library(broom.mixed)
+library(dplyr)
+library(lubridate)
+library(lmerTest)
+library(gtsummary)
+library(report)
+library(kableExtra)
+library(sjPlot)
+library(ggplot2)
+library(partR2)
+library(effects)
+```
+
+## Supplemental Analyses - Individual Differences/Self-Report Analysis
+
+```{r}
+# Import datasets and merge
+
+# Import individual differences (ID) data set
+Df <- read.csv("cleaned_S1.csv")
+Df <- Df[-c(1)]
+Df <- Df[-c(684)] # Remove check column
+
+subID <- select(Df,c("loginID"))
+ID <- Df[ ,639:729]
+
+data <- cbind(subID,ID) # Use this for individual differences/demo analysis
+
+# Import centrality data set
+cent <- read.csv("centralityDf_48.csv")
+cent <- cent[-c(1)] # Remove extraneous column in front
+# Remove sub22 from the centrality dataset, as they are not included in the in-scan ratings data
+cent <- cent[cent$subID != "22", ]
+
+# Import density data set
+dense <- read.csv("density.csv")
+dense <- dense[-c(1)] # Remove extraneous column in front
+
+netmetrics <- cbind(cent,dense)
+
+# Import in-scan memory ratings
+inscan <- read.csv("scan_ratings.csv")
+inscan <- inscan[-c(1)] # Remove extraneous column in front
+
+fullData <- read.csv("fullData48.csv")
+fullData <- fullData[-c(1)] # Remove extraneous column in front
+fullData <- fullData[fullData$subID != 22, ]
+
+```
+
+# Individual Differences
+
+## Recode/Reverse scores
+```{r}
+# Rosenberg Self-Esteem Scale
+RSE <- data[2:11]
+
+RSE <- RSE %>%
+  mutate(RSE3 = case_when(
+    RSE3 == 1 ~ 4,
+    RSE3 == 2 ~ 3,
+    RSE3 == 4 ~ 1,
+    RSE3 == 3 ~ 2,
+    TRUE ~ RSE3  # Keep the original value if none of the conditions are met
+  ))
+
+RSE <- RSE %>%
+  mutate(RSE5 = case_when(
+    RSE5 == 1 ~ 4,
+    RSE5 == 2 ~ 3,
+    RSE5 == 4 ~ 1,
+    RSE5 == 3 ~ 2,
+    TRUE ~ RSE5  # Keep the original value if none of the conditions are met
+  ))
+
+RSE <- RSE %>%
+  mutate(RSE8 = case_when(
+    RSE8 == 1 ~ 4,
+    RSE8 == 2 ~ 3,
+    RSE8 == 4 ~ 1,
+    RSE8 == 3 ~ 2,
+    TRUE ~ RSE8  # Keep the original value if none of the conditions are met
+  ))
+
+RSE <- RSE %>%
+  mutate(RSE9 = case_when(
+    RSE9 == 1 ~ 4,
+    RSE9 == 2 ~ 3,
+    RSE9 == 4 ~ 1,
+    RSE9 == 3 ~ 2,
+    TRUE ~ RSE9  # Keep the original value if none of the conditions are met
+  ))
+
+RSE <- RSE %>%
+  mutate(RSE10 = case_when(
+    RSE10 == 1 ~ 4,
+    RSE10 == 2 ~ 3,
+    RSE10 == 4 ~ 1,
+    RSE10 == 3 ~ 2,
+    TRUE ~ RSE10  # Keep the original value if none of the conditions are met
+  ))
+
+RSE_sum <- rowSums(RSE,na.rm = TRUE)
+RSE_sum <- as.vector(RSE_sum)
+
+RSE$RSE_sum <- RSE_sum
+
+sums <- select(data,c("loginID"))
+sums$RSE <- RSE_sum # Max possible: 40; higher score, higher self-esteem
+
+# Need for Cognition
+NFC <- data[12:17]
+
+# Items 3,4 are reverse scored (reverse agreement for low need for cognition)
+NFC <- NFC %>%
+  mutate(NFC.6_3 = case_when(
+    NFC.6_3 == 1 ~ 4,
+    NFC.6_3 == 2 ~ 3,
+    NFC.6_3 == 4 ~ 1,
+    NFC.6_3 == 3 ~ 2,
+    TRUE ~ NFC.6_3  # Keep the original value if none of the conditions are met
+  ))
+
+NFC <- NFC %>%
+  mutate(NFC.6_4 = case_when(
+    NFC.6_4 == 1 ~ 4,
+    NFC.6_4 == 2 ~ 3,
+    NFC.6_4 == 4 ~ 1,
+    NFC.6_4 == 3 ~ 2,
+    TRUE ~ NFC.6_4  # Keep the original value if none of the conditions are met
+  ))
+
+NFC_sum <- rowSums(NFC,na.rm = TRUE)
+NFC_sum <- as.vector(NFC_sum)
+sums$NFC <-NFC_sum  # Max possible: 30; higher score, higher need for cognition
+
+# Self-Concept Clarity
+SCC <- data[18:29]
+
+# Items 1,2,3,4,5,7,8,9,10,12 are reverse scored (reverse agreement for low self-concept clarity)
+SCC <- SCC %>%
+  mutate(SCC1 = case_when(
+    SCC1 == 1 ~ 5,
+    SCC1 == 2 ~ 4,
+    SCC1 == 4 ~ 2,
+    SCC1 == 5 ~ 1,
+    TRUE ~ SCC1  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC2 = case_when(
+    SCC2 == 1 ~ 5,
+    SCC2 == 2 ~ 4,
+    SCC2 == 4 ~ 2,
+    SCC2 == 5 ~ 1,
+    TRUE ~ SCC2  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC3 = case_when(
+    SCC3 == 1 ~ 5,
+    SCC3 == 2 ~ 4,
+    SCC3 == 4 ~ 2,
+    SCC3 == 5 ~ 1,
+    TRUE ~ SCC3  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC4 = case_when(
+    SCC4 == 1 ~ 5,
+    SCC4 == 2 ~ 4,
+    SCC4 == 4 ~ 2,
+    SCC4 == 5 ~ 1,
+    TRUE ~ SCC4  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC5 = case_when(
+    SCC5 == 1 ~ 5,
+    SCC5 == 2 ~ 4,
+    SCC5 == 4 ~ 2,
+    SCC5 == 5 ~ 1,
+    TRUE ~ SCC5  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC7 = case_when(
+    SCC7 == 1 ~ 5,
+    SCC7 == 2 ~ 4,
+    SCC7 == 4 ~ 2,
+    SCC7 == 5 ~ 1,
+    TRUE ~ SCC7  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC8 = case_when(
+    SCC8 == 1 ~ 5,
+    SCC8 == 2 ~ 4,
+    SCC8 == 4 ~ 2,
+    SCC8 == 5 ~ 1,
+    TRUE ~ SCC8  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC9 = case_when(
+    SCC9 == 1 ~ 5,
+    SCC9 == 2 ~ 4,
+    SCC9 == 4 ~ 2,
+    SCC9 == 5 ~ 1,
+    TRUE ~ SCC9  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC10 = case_when(
+    SCC10 == 1 ~ 5,
+    SCC10 == 2 ~ 4,
+    SCC10 == 4 ~ 2,
+    SCC10 == 5 ~ 1,
+    TRUE ~ SCC10  # Keep the original value if none of the conditions are met
+  ))
+
+SCC <- SCC %>%
+  mutate(SCC12 = case_when(
+    SCC12 == 1 ~ 5,
+    SCC12 == 2 ~ 4,
+    SCC12 == 4 ~ 2,
+    SCC12 == 5 ~ 1,
+    TRUE ~ SCC12  # Keep the original value if none of the conditions are met
+  ))
+
+SCC_sum <- rowSums(SCC,na.rm = TRUE)
+SCC_sum <- as.vector(SCC_sum)
+sums$SCC <- SCC_sum # Max possible: 60; higher score, higher self-concept clarity
+
+
+# S-DS, Self-Discrepancy Scale
+DSS <- data[30:43]
+
+# Items 1,5,6,7,9,14 are reverse scored
+DSS <- DSS %>%
+  mutate(DS.S_1 = case_when(
+    DS.S_1 == 1 ~ 7,
+    DS.S_1 == 2 ~ 6,
+    DS.S_1 == 7 ~ 1,
+    DS.S_1 == 6 ~ 2,
+    TRUE ~ DS.S_1  # Keep the original value if none of the conditions are met
+  ))
+
+DSS <- DSS %>%
+  mutate(DS.S_5 = case_when(
+    DS.S_5 == 1 ~ 7,
+    DS.S_5 == 2 ~ 6,
+    DS.S_5 == 7 ~ 1,
+    DS.S_5 == 6 ~ 2,
+    TRUE ~ DS.S_5  # Keep the original value if none of the conditions are met
+  ))
+
+DSS <- DSS %>%
+  mutate(DS.S_6 = case_when(
+    DS.S_6 == 1 ~ 7,
+    DS.S_6 == 2 ~ 6,
+    DS.S_6 == 7 ~ 1,
+    DS.S_6 == 6 ~ 2,
+    TRUE ~ DS.S_6  # Keep the original value if none of the conditions are met
+  ))
+
+DSS <- DSS %>%
+  mutate(DS.S_7 = case_when(
+    DS.S_7 == 1 ~ 7,
+    DS.S_7 == 2 ~ 6,
+    DS.S_7 == 7 ~ 1,
+    DS.S_7 == 6 ~ 2,
+    TRUE ~ DS.S_7  # Keep the original value if none of the conditions are met
+  ))
+
+DSS <- DSS %>%
+  mutate(DS.S_9 = case_when(
+    DS.S_9 == 1 ~ 7,
+    DS.S_9 == 2 ~ 6,
+    DS.S_9 == 7 ~ 1,
+    DS.S_9 == 6 ~ 2,
+    TRUE ~ DS.S_9  # Keep the original value if none of the conditions are met
+  ))
+
+DSS <- DSS %>%
+  mutate(DS.S_14 = case_when(
+    DS.S_14 == 1 ~ 7,
+    DS.S_14 == 2 ~ 6,
+    DS.S_14 == 7 ~ 1,
+    DS.S_14 == 6 ~ 2,
+    TRUE ~ DS.S_14  # Keep the original value if none of the conditions are met
+  ))
+
+DSS_sum <- rowSums(DSS,na.rm = TRUE)
+DSS_sum <- as.vector(DSS_sum)
+sums$DSS <- DSS_sum # Max possible: 98; Higher score, higher self-discrepancy (lower self-concept clarity)
+
+# Center for Epidemiologic Studies Depression Scale (CESD)
+CESD <- data[44:63]
+
+# Items 4,8,12,16 are reverse scored
+CESD <- CESD %>%
+  mutate(CESD4 = case_when(
+    CESD4 == 1 ~ 4,
+    CESD4 == 2 ~ 3,
+    CESD4 == 4 ~ 1,
+    CESD4 == 3 ~ 2,
+    TRUE ~ CESD4  # Keep the original value if none of the conditions are met
+  ))
+
+CESD <- CESD %>%
+  mutate(CESD8 = case_when(
+    CESD8 == 1 ~ 4,
+    CESD8 == 2 ~ 3,
+    CESD8 == 4 ~ 1,
+    CESD8 == 3 ~ 2,
+    TRUE ~ CESD8  # Keep the original value if none of the conditions are met
+  ))
+
+CESD <- CESD %>%
+  mutate(CESD12 = case_when(
+    CESD12 == 1 ~ 4,
+    CESD12 == 2 ~ 3,
+    CESD12 == 4 ~ 1,
+    CESD12 == 3 ~ 2,
+    TRUE ~ CESD12  # Keep the original value if none of the conditions are met
+  ))
+
+CESD <- CESD %>%
+  mutate(CESD16 = case_when(
+    CESD16 == 1 ~ 4,
+    CESD16 == 2 ~ 3,
+    CESD16 == 4 ~ 1,
+    CESD16 == 3 ~ 2,
+    TRUE ~ CESD16  # Keep the original value if none of the conditions are met
+  ))
+
+CESD_sum <- rowSums(CESD,na.rm = TRUE)
+CESD_sum <- as.vector(CESD_sum)
+sums$CESD <- CESD_sum # Max possible: 60; Higher score, higher depressive symptomatology
+
+# Subjective Happiness Scale (SHS)
+SHS <- data[64:67]
+
+# Items 4 is reversed scored
+SHS <- SHS %>%
+  mutate(SHS4 = case_when(
+    SHS4 == 7 ~ 1,
+    SHS4 == 6 ~ 2,
+    SHS4 == 1 ~ 7,
+    SHS4 == 2 ~ 6,
+    TRUE ~ SHS4  # Keep the original value if none of the conditions are met
+  ))
+
+SHS_sum <- rowSums(SHS,na.rm = TRUE)
+SHS_sum <- as.vector(SHS_sum)
+sums$SHS <- SHS_sum # Max possible: 28; Higher score, higher subjective happiness
+
+# Rumination-Reflection Questionnaire (RRQ)
+RRQ <- data[68:91]
+
+# Items 6,9,10,13,14,17,20,24 is reversed scored
+RRQ <- RRQ %>%
+  mutate(RRQ_6 = case_when(
+    RRQ_6 == 5 ~ 1,
+    RRQ_6 == 2 ~ 2,
+    RRQ_6 == 1 ~ 5,
+    RRQ_6 == 2 ~ 4,
+    TRUE ~ RRQ_6  # Keep the original value if none of the conditions are met
+  ))
+
+RRQ <- RRQ %>%
+  mutate(RRQ_9 = case_when(
+    RRQ_9 == 5 ~ 1,
+    RRQ_9 == 2 ~ 2,
+    RRQ_9 == 1 ~ 5,
+    RRQ_9 == 2 ~ 4,
+    TRUE ~ RRQ_9  # Keep the original value if none of the conditions are met
+  ))
+
+RRQ <- RRQ %>%
+  mutate(RRQ_10 = case_when(
+    RRQ_10 == 5 ~ 1,
+    RRQ_10 == 2 ~ 2,
+    RRQ_10 == 1 ~ 5,
+    RRQ_10 == 2 ~ 4,
+    TRUE ~ RRQ_10  # Keep the original value if none of the conditions are met
+  ))
+
+RRQ <- RRQ %>%
+  mutate(RRQ_13 = case_when(
+    RRQ_13 == 5 ~ 1,
+    RRQ_13 == 2 ~ 2,
+    RRQ_13 == 1 ~ 5,
+    RRQ_13 == 2 ~ 4,
+    TRUE ~ RRQ_13  # Keep the original value if none of the conditions are met
+  ))
+
+RRQ <- RRQ %>%
+  mutate(RRQ_14 = case_when(
+    RRQ_14 == 5 ~ 1,
+    RRQ_14 == 2 ~ 2,
+    RRQ_14 == 1 ~ 5,
+    RRQ_14 == 2 ~ 4,
+    TRUE ~ RRQ_14  # Keep the original value if none of the conditions are met
+  ))
+
+RRQ <- RRQ %>%
+  mutate(RRQ_17 = case_when(
+    RRQ_17 == 5 ~ 1,
+    RRQ_17 == 2 ~ 2,
+    RRQ_17 == 1 ~ 5,
+    RRQ_17 == 2 ~ 4,
+    TRUE ~ RRQ_17  # Keep the original value if none of the conditions are met
+  ))
+
+RRQ <- RRQ %>%
+  mutate(RRQ_20 = case_when(
+    RRQ_20 == 5 ~ 1,
+    RRQ_20 == 2 ~ 2,
+    RRQ_20 == 1 ~ 5,
+    RRQ_20 == 2 ~ 4,
+    TRUE ~ RRQ_20  # Keep the original value if none of the conditions are met
+  ))
+
+RRQ <- RRQ %>%
+  mutate(RRQ_24 = case_when(
+    RRQ_24 == 5 ~ 1,
+    RRQ_24 == 2 ~ 2,
+    RRQ_24 == 1 ~ 5,
+    RRQ_24 == 2 ~ 4,
+    TRUE ~ RRQ_24  # Keep the original value if none of the conditions are met
+  ))
+
+
+RRQ_Rum <- select(RRQ,c("RRQ_1","RRQ_2","RRQ_3","RRQ_4","RRQ_5","RRQ_6","RRQ_7",
+                        "RRQ_8","RRQ_9","RRQ_10","RRQ_11","RRQ_12"))
+RRQ_Rum$Rum_mean <- rowMeans(RRQ_Rum, na.rm = TRUE)
+
+RRQ_Ref <- select(RRQ,c("RRQ_13","RRQ_14","RRQ_15","RRQ_16","RRQ_17","RRQ_18","RRQ_19",
+                        "RRQ_20","RRQ_21","RRQ_22","RRQ_23","RRQ_24"))
+RRQ_Ref$Ref_mean <- rowMeans(RRQ_Ref, na.rm = TRUE)
+
+RRQ <- RRQ %>%
+  mutate(Ref_mean = RRQ_Ref$Ref_mean)
+
+RRQ <- RRQ %>%
+  mutate(Rum_mean = RRQ_Rum$Rum_mean)
+
+RRQ_stats <- select(RRQ,c("Ref_mean", "Rum_mean"))
+
+sums <- bind_cols(sums, RRQ_stats) # Rumination vs. Reflection
+```
+
+## Repeat individual differences for centrality/ratings dataframe
+```{r}
+repeat_data_df <- function(df, n_times) {
+  # Use the `rep()` function to repeat the indices of the dataframe
+  repeated_df <- df[rep(1:nrow(df), each = n_times), ]
+  
+  # Return the repeated dataframe
+  return(repeated_df)
+}
+
+individual_data <- repeat_data_df(sums, 24)
+individual_data <- individual_data[individual_data$loginID != "22", ]
+individual_data[individual_data==0] <- NA
+```
+
+## Combine all datasets and finalize
+```{r}
+# Be sure to run the rest of the script before this, depends on dimensions after processing.
+
+
+# Force combine datasets that are off by a single observation
+full_index <- seq_len(max(nrow(individual_data), nrow(netmetrics)))
+
+# Align df1
+df1_aligned <- individual_data[full_index, , drop = FALSE]
+df1_aligned[is.na(df1_aligned)] <- NA
+
+# Align df2
+df2_aligned <- netmetrics[full_index, , drop = FALSE]
+df2_aligned[is.na(df2_aligned)] <- NA
+
+# Combine aligned dataframes
+data2 <- cbind(df1_aligned, df2_aligned)
+
+data <- cbind(data2,inscan)
+
+# Remove extra subID columns 
+data <- select(data, -subID)
+
+# Set numeric columns to numeric
+data$valRate <- as.numeric(data$valRate)
+data$intenseRate <- as.numeric(data$intenseRate)
+data$vividRate <- as.numeric(data$vividRate)
+
+# Remove 22 from sums
+sums <- sums[data$loginID != 22, ]
+
+ratings <- fullData[, c(24:29,33)] # Remove extraneous column in front
+
+# Repeat first row of data to pad for later cbind
+first_row <- ratings[1, ]
+ratings <- rbind(first_row, ratings)
+ratings[1, ] <- NA
+
+all <- cbind(data,ratings)
+
+# centUnique <- cent[! duplicated(cent$subID), ]
+# sums_cent <- cbind(sums,centUnique) 
+# sums_cent <- sums_cent[,-c(10)] # Remove extra subject ID col
+# 
+# denseUnique <- dense[! duplicated(dense$subID), ]
+# sums_dense <- cbind(sums,denseUnique)
+# sums_dense <- sums_dense[,-c(10)] # Remove extra subject ID col
+```
+
+
+```{r}
+# Set numID
+numID = 24
+```
+
+# Analyses (lmer)
+
+# Predicting memory RATINGS from outdegree x individual differences
+```{r}
+
+m1 <- lmer(scale(transformativeness) ~ scale(RSE) + scale(outdegree) + (scale(RSE) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+#tab_model(m1)
+#summary(m1)
+#transRSE_r2 <- partR2(m1)
+
+# RSE_plot <- ggplot(all, aes(x = RSE, y = transformativeness, color = outdegree)) +
+#   geom_smooth(method = "lm", se = TRUE) +
+#   labs(title = "Self-Esteem Interaction with Transformativeness and Outdegree",
+#        x = "Self-Esteem",
+#        y = "Self-Transformativeness") +
+#   theme_minimal() +
+#   theme(
+#     axis.title.x = element_text(face = "bold"),   # Make x-axis label bold
+#     axis.title.y = element_text(face = "bold"),   # Make y-axis label bold
+#     panel.grid.major = element_blank()            # Remove major gridlines
+#   )
+# 
+# plot(RSE_plot)
+
+
+m12 <- lmer(scale(transformativeness) ~ scale(NFC) + scale(outdegree) + (scale(NFC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m13 <- lmer(scale(transformativeness) ~ scale(SCC) + scale(outdegree) + (scale(SCC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m14 <- lmer(scale(transformativeness) ~ scale(DSS) + scale(outdegree) + (scale(DSS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m15 <- lmer(scale(transformativeness) ~ scale(CESD) + scale(outdegree) + (scale(CESD) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m16 <- lmer(scale(transformativeness) ~ scale(SHS) + scale(outdegree) + (scale(SHS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m17 <- lmer(scale(transformativeness) ~ scale(Ref_mean) + scale(outdegree) + (scale(Ref_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m18 <- lmer(scale(transformativeness) ~ scale(Rum_mean) + scale(outdegree) + (scale(Rum_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+
+tab_model(m1, m12, m13, m14, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+tab_model(m15, m16, m17, m18, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m2 <- lmer(scale(valRate) ~ scale(RSE) + scale(outdegree) + (scale(RSE) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m21 <- lmer(scale(valRate) ~ scale(NFC) + scale(outdegree) + (scale(NFC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m22 <- lmer(scale(valRate) ~ scale(SCC) + scale(outdegree) + (scale(SCC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m23 <- lmer(scale(valRate) ~ scale(DSS) + scale(outdegree) + (scale(DSS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m24 <- lmer(scale(valRate) ~ scale(CESD) + scale(outdegree) + (scale(CESD) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m25 <- lmer(scale(valRate) ~ scale(SHS) + scale(outdegree) + (scale(SHS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m26 <- lmer(scale(valRate) ~ scale(Ref_mean) + scale(outdegree) + (scale(Ref_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m27 <- lmer(scale(valRate) ~ scale(Rum_mean) + scale(outdegree) + (scale(Rum_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+
+tab_model(m2, m21, m22, m23, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+tab_model(m24, m25, m26, m27, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+#tab_model(m2)
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+
+m3 <- lmer(scale(importance) ~ scale(RSE) + scale(outdegree) + (scale(RSE) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m3)
+summary(m3)
+impRSE_r2 <- partR2(m3)
+m32 <- lmer(scale(importance) ~ scale(NFC) + scale(outdegree) + (scale(NFC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m33 <- lmer(scale(importance) ~ scale(SCC) + scale(outdegree) + (scale(SCC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+#tab_model(m33)
+#summary(m33)
+#importSCC_r2 <- partR2(m33)
+m34 <- lmer(scale(importance) ~ scale(DSS) + scale(outdegree) + (scale(DSS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m35 <- lmer(scale(importance) ~ scale(CESD) + scale(outdegree) + (scale(CESD) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m36 <- lmer(scale(importance) ~ scale(SHS) + scale(outdegree) + (scale(SHS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m37 <- lmer(scale(importance) ~ scale(Ref_mean) + scale(outdegree) + (scale(Ref_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m38 <- lmer(scale(importance) ~ scale(Rum_mean) + scale(outdegree) + (scale(Rum_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+
+tab_model(m3, m32, m33, m34, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+tab_model(m35, m36, m37, m38, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+#tab_model(m3)
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+
+m4 <- lmer(scale(clear) ~ scale(RSE) + scale(outdegree) + (scale(RSE) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m42 <- lmer(scale(clear) ~ scale(NFC) + scale(outdegree) + (scale(NFC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m43 <- lmer(scale(clear) ~ scale(SCC) + scale(outdegree) + (scale(SCC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m44 <- lmer(scale(clear) ~ scale(DSS) + scale(outdegree) + (scale(DSS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m45 <- lmer(scale(clear) ~ scale(CESD) + scale(outdegree) + (scale(CESD) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m46 <- lmer(scale(clear) ~ scale(SHS) + scale(outdegree) + (scale(SHS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m47 <- lmer(scale(clear) ~ scale(Ref_mean) + scale(outdegree) + (scale(Ref_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m47)
+summary(m47)
+clearRef_r2 <- partR2(m47)
+m48 <- lmer(scale(clear) ~ scale(Rum_mean) + scale(outdegree) + (scale(Rum_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+
+
+tab_model(m4, m42, m43, m44, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+tab_model(m45, m46, m47, m48, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+
+#tab_model(m4)
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m5 <- lmer(scale(easy) ~ scale(RSE) + scale(outdegree) + (scale(RSE) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m52 <- lmer(scale(easy) ~ scale(NFC) + scale(outdegree) + (scale(NFC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m53 <- lmer(scale(easy) ~ scale(SCC) + scale(outdegree) + (scale(SCC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m53) #outdegree is a significant predictor of ease of recall when controlling for self-concept clarity
+m54 <- lmer(scale(easy) ~ scale(DSS) + scale(outdegree) + (scale(DSS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m55 <- lmer(scale(easy) ~ scale(CESD) + scale(outdegree) + (scale(CESD) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m56 <- lmer(scale(easy) ~ scale(SHS) + scale(outdegree) + (scale(SHS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m57 <- lmer(scale(easy) ~ scale(Ref_mean) + scale(outdegree) + (scale(Ref_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m58 <- lmer(scale(easy) ~ scale(Rum_mean) + scale(outdegree) + (scale(Rum_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+
+tab_model(m5, m52, m53, m54, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+tab_model(m55, m56, m57, m58, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+#tab_model(m5)
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m6 <- lmer(scale(agency) ~ scale(RSE) + scale(outdegree) + (scale(RSE) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m62 <- lmer(scale(agency) ~ scale(NFC) + scale(outdegree) + (scale(NFC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m63 <- lmer(scale(agency) ~ scale(SCC) + scale(outdegree) + (scale(SCC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m64 <- lmer(scale(agency) ~ scale(DSS) + scale(outdegree) + (scale(DSS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m65 <- lmer(scale(agency) ~ scale(CESD) + scale(outdegree) + (scale(CESD) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+#tab_model(m65)
+#summary(m65)
+#agencyCESD_r2 <- partR2(m65)
+#m65_plot <- ggplot(m65)
+
+#interaction_m65 <- anova(m65)
+
+m66 <- lmer(scale(agency) ~ scale(SHS) + scale(outdegree) + (scale(SHS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m66) #outdegree is a significant predictor of agency when controlling for subjective happiness
+#summary(m66)
+#agencySHS_r2 <- partR2(m66)
+
+#interaction_m66 <- anova(m66)
+
+m67 <- lmer(scale(agency) ~ scale(Ref_mean) + scale(outdegree) + (scale(Ref_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m68 <- lmer(scale(agency) ~ scale(Rum_mean) + scale(outdegree) + (scale(Rum_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+
+tab_model(m6, m62, m63, m64, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+tab_model(m65, m66, m67, m68, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+#tab_model(m6)
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m7 <- lmer(scale(change) ~ scale(RSE) + scale(outdegree) + (scale(RSE) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m72 <- lmer(scale(change) ~ scale(NFC) + scale(outdegree) + (scale(NFC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m73 <- lmer(scale(change) ~ scale(SCC) + scale(outdegree) + (scale(SCC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m74 <- lmer(scale(change) ~ scale(DSS) + scale(outdegree) + (scale(DSS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m75 <- lmer(scale(change) ~ scale(CESD) + scale(outdegree) + (scale(CESD) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m76 <- lmer(scale(change) ~ scale(SHS) + scale(outdegree) + (scale(SHS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m77 <- lmer(scale(change) ~ scale(Ref_mean) + scale(outdegree) + (scale(Ref_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m78 <- lmer(scale(change) ~ scale(Rum_mean) + scale(outdegree) + (scale(Rum_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+
+tab_model(m7, m72, m73, m74, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+tab_model(m75, m76, m77, m78, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+
+#tab_model(m7)
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+
+m8 <- lmer(scale(recency_sum) ~ scale(RSE) + scale(outdegree) + (scale(RSE) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m82 <- lmer(scale(recency_sum) ~ scale(NFC) + scale(outdegree) + (scale(NFC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m83 <- lmer(scale(recency_sum) ~ scale(SCC) + scale(outdegree) + (scale(SCC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m84 <- lmer(scale(recency_sum) ~ scale(DSS) + scale(outdegree) + (scale(DSS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m85 <- lmer(scale(recency_sum) ~ scale(CESD) + scale(outdegree) + (scale(CESD) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m86 <- lmer(scale(recency_sum) ~ scale(SHS) + scale(outdegree) + (scale(SHS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+m87 <- lmer(scale(recency_sum) ~ scale(Ref_mean) + scale(outdegree) + (scale(Ref_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+
+m88 <- lmer(scale(recency_sum) ~ scale(Rum_mean) + scale(outdegree) + (scale(Rum_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+summary(m88)
+tab_model(m88)
+recentRum_r2 <- partR2(m88)
+
+tab_model(m8, m82, m83, m84, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+tab_model(m85, m86, m87, m88, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+#tab_model(m8)
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+
+# Grouping outdegree based on high/low
+```{r}
+all$outdegree <- as.numeric(all$outdegree)
+
+all <- all %>%
+  mutate(median = median(outdegree, na.rm = TRUE),
+         outdegree_groups = case_when(
+           outdegree > median ~ "High Outdegree",
+           outdegree < median ~ "Low Outdegree",
+           TRUE ~ "Medium Outdegree" 
+         ))
+
+```
+
+# Grouping self-esteem based on high/low
+```{r}
+all$RSE <- RSE$RSE
+
+all <- all %>%
+  mutate(median = median(RSE, na.rm = TRUE),
+         RSE_groups = case_when(
+           RSE > median ~ "High Self-Esteem",
+           RSE < median ~ "Low Self-Esteem",
+           TRUE ~ "Medium Self-Esteem"
+         ))
+
+freq_table <- all %>%
+  count(RSE_groups)
+```
+
+
+
+# Visualizing significant outdegree x individual differences models
+```{r}
+m3 <- lmer(scale(importance) ~ scale(RSE) + scale(outdegree) + (scale(RSE) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m3) # Memory importance depends on an interaction between self-esteem and outdegree centrality
+
+importance_plot <- ggplot(all, aes(x = RSE, y = importance, color = outdegree_groups)) +
+  geom_smooth(method = "lm", se = TRUE, alpha = 0.2, level = 0.95, na.rm = TRUE) +
+  labs(x = "Self-Esteem",
+       y = "Percieved Personal Importance",
+       color = "Levels of Outdegree Centrality") +
+  theme_minimal() +
+  theme(
+    axis.title.x = element_text(face = "bold"),   # Make x-axis label bold
+    axis.title.y = element_text(face = "bold"),   # Make y-axis label bold
+    panel.grid.major = element_blank(),          # Remove major gridlines
+    scale_color_manual(values = c("High Outdegree" = "blue",
+                                  "Medium Outdegree" = "gold",
+                                  "Low Outdegree" = "black"))
+  )
+plot(importance_plot)
+
+
+# importance_plot <- ggplot(all %>% filter(!is.na(RSE_groups)), 
+#                           aes(x = outdegree, y = importance, color = RSE_groups)) +
+#   geom_smooth(method = "lm", se = TRUE, alpha = 0.2, level = 0.95, na.rm = TRUE) +
+#   labs(x = "Outdegree Centrality",
+#        y = "Perceived Personal Importance",
+#        color = "Levels of Self-Esteem") +
+#   theme_minimal() +
+#   theme(
+#     axis.title.x = element_text(face = "bold"),   # Make x-axis label bold
+#     axis.title.y = element_text(face = "bold"),   # Make y-axis label bold
+#     panel.grid.major = element_blank(),            # Remove major gridlines
+#     legend.position = "top",
+#     legend.direction = "horizontal"  
+#   ) + 
+#   coord_cartesian(xlim = c(min(all$outdegree, na.rm = TRUE), 
+#                            max(all$outdegree, na.rm = TRUE))) +
+#    scale_color_manual(values = c("High Self-Esteem" = "blue",
+#                                "Low Self-Esteem" = "gold",
+#                                "Medium Self-Esteem" = "black"))
+# plot(importance_plot)
+# importanceRSE_r2 <- partR2(m3)
+
+m47 <- lmer(scale(clear) ~ scale(Ref_mean) + scale(outdegree) + (scale(Ref_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m47) # Reflection tendencies and outdegree together predict clarity of memory recall
+
+clear_plot <- ggplot(all, aes(x = Ref_mean, y = clear, color = outdegree_groups)) +
+  geom_smooth(method = "lm", se = TRUE, alpha = 0.2, level = 0.95) +
+  labs(title = "Predicted Effects of Reflection and Outdegree Centrality on Memory Clarity",
+       x = "Reflection",
+       y = "Memory Clarity",
+       color = "Levels of Outdegree Centrality") +
+  theme_minimal() +
+  theme(
+    axis.title.x = element_text(face = "bold"),   # Make x-axis label bold
+    axis.title.y = element_text(face = "bold"),   # Make y-axis label bold
+    panel.grid.major = element_blank(),            # Remove major gridlines
+    )
+plot(clear_plot)
+
+m53 <- lmer(scale(easy) ~ scale(SCC) + scale(outdegree) + (scale(SCC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m53) # outdegree is a significant predictor of ease of recall in a model accounting for self-concept clarity
+# ease_plot <- ggplot(all, aes(x = outdegree, y = easy)) +
+#   geom_smooth(method = "lm", se = TRUE, alpha = 0.2, level = 0.95) +
+#   labs(title = "Predicted Effects of Reflection and Outdegree Centrality on Memory Clarity",
+#        x = "Outdegree Centrality",
+#        y = "Memory Ease of Recall") +
+#   theme_minimal() +
+#   theme(
+#     axis.title.x = element_text(face = "bold"),   # Make x-axis label bold
+#     axis.title.y = element_text(face = "bold"),   # Make y-axis label bold
+#     panel.grid.major = element_blank()            # Remove major gridlines
+#   )
+# plot(ease_plot)
+
+m66 <- lmer(scale(agency) ~ scale(SHS) + scale(outdegree) + (scale(SHS) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m66) # outdegree is a significant predictor of agency in a model accounting for subjective happiness
+
+m8 <- lmer(scale(recency_sum) ~ scale(RSE) + scale(outdegree) + (scale(RSE) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m8) # outdegree is a significant predictor of recency (in days) in a model accounting for self-esteem
+
+m82 <- lmer(scale(recency_sum) ~ scale(NFC) + scale(outdegree) + (scale(NFC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m82) # outdegree is a significant predictor of recency in a model accounting for need for cognition
+
+m83 <- lmer(scale(recency_sum) ~ scale(SCC) + scale(outdegree) + (scale(SCC) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m83) # outdegree is a significant predictor of recency in a model accounting for self-concept clarity
+
+m85 <- lmer(scale(recency_sum) ~ scale(CESD) + scale(outdegree) + (scale(CESD) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m85) # depressive symptoms are a significant predictor of recency in a model accounting for outdegree centrality
+
+m87 <- lmer(scale(recency_sum) ~ scale(Ref_mean) + scale(outdegree) + (scale(Ref_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m87) # outdegree is a significant predictor of recency in a model accounting for reflection
+
+m88 <- lmer(scale(recency_sum) ~ scale(Rum_mean) + scale(outdegree) + (scale(Rum_mean) * scale(outdegree)) + (scale(outdegree) | loginID), data=all)
+tab_model(m88) # Both rumination and outdegree predict recency, but not the interaction between the two
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Predicting memory RATINGS from INDEGREE x individual differences
+```{r}
+
+m10 <- lmer(scale(transformativeness) ~ scale(RSE) + scale(indegree) + (scale(RSE) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+#tab_model(m10)
+m102 <- lmer(scale(transformativeness) ~ scale(NFC) + scale(indegree) + (scale(NFC) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m103 <- lmer(scale(transformativeness) ~ scale(SCC) + scale(indegree) + (scale(SCC) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+#tab_model(m103)
+m104 <- lmer(scale(transformativeness) ~ scale(DSS) + scale(indegree) + (scale(DSS) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m105 <- lmer(scale(transformativeness) ~ scale(CESD) + scale(indegree) + (scale(CESD) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m106 <- lmer(scale(transformativeness) ~ scale(SHS) + scale(indegree) + (scale(SHS) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m107 <- lmer(scale(transformativeness) ~ scale(Ref_mean) + scale(indegree) + (scale(Ref_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m108 <- lmer(scale(transformativeness) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+
+tab_model(m10, m102, m103, m104, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+tab_model(m105, m106, m107, m108, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m20 <- lmer(scale(valRate) ~ scale(RSE) + scale(indegree) + (scale(RSE) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m201 <- lmer(scale(valRate) ~ scale(NFC) + scale(indegree) + (scale(NFC) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m202 <- lmer(scale(valRate) ~ scale(SCC) + scale(indegree) + (scale(SCC) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m203 <- lmer(scale(valRate) ~ scale(DSS) + scale(indegree) + (scale(DSS) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m204 <- lmer(scale(valRate) ~ scale(CESD) + scale(indegree) + (scale(CESD) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m204)
+m205 <- lmer(scale(valRate) ~ scale(SHS) + scale(indegree) + (scale(SHS) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m206 <- lmer(scale(valRate) ~ scale(Ref_mean) + scale(indegree) + (scale(Ref_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m207 <- lmer(scale(valRate) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+
+tab_model(m20, m201, m202, m203, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+tab_model(m204, m205, m206, m207, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+#tab_model(m2)
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+
+m30 <- lmer(scale(importance) ~ scale(RSE) + scale(indegree) + (scale(RSE) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m302 <- lmer(scale(importance) ~ scale(NFC) + scale(indegree) + (scale(NFC) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m303 <- lmer(scale(importance) ~ scale(SCC) + scale(indegree) + (scale(SCC) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m303)
+
+m304 <- lmer(scale(importance) ~ scale(DSS) + scale(indegree) + (scale(DSS) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m305 <- lmer(scale(importance) ~ scale(CESD) + scale(indegree) + (scale(CESD) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m306 <- lmer(scale(importance) ~ scale(SHS) + scale(indegree) + (scale(SHS) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m306)
+
+m307 <- lmer(scale(importance) ~ scale(Ref_mean) + scale(indegree) + (scale(Ref_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m308 <- lmer(scale(importance) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+
+tab_model(m30, m302, m303, m304, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+tab_model(m305, m306, m307, m308, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+#tab_model(m3)
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+
+m40 <- lmer(scale(clear) ~ scale(RSE) + scale(indegree) + (scale(RSE) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m402 <- lmer(scale(clear) ~ scale(NFC) + scale(indegree) + (scale(NFC) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m403 <- lmer(scale(clear) ~ scale(SCC) + scale(indegree) + (scale(SCC) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m404 <- lmer(scale(clear) ~ scale(DSS) + scale(indegree) + (scale(DSS) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m405 <- lmer(scale(clear) ~ scale(CESD) + scale(indegree) + (scale(CESD) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m406 <- lmer(scale(clear) ~ scale(SHS) + scale(indegree) + (scale(SHS) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m407 <- lmer(scale(clear) ~ scale(Ref_mean) + scale(indegree) + (scale(Ref_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m408 <- lmer(scale(clear) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+
+
+tab_model(m40, m402, m403, m404, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+tab_model(m405, m406, m407, m408, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+
+#tab_model(m4)
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m50 <- lmer(scale(easy) ~ scale(RSE) + scale(indegree) + (scale(RSE) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m502 <- lmer(scale(easy) ~ scale(NFC) + scale(indegree) + (scale(NFC) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m503 <- lmer(scale(easy) ~ scale(SCC) + scale(indegree) + (scale(SCC) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m504 <- lmer(scale(easy) ~ scale(DSS) + scale(indegree) + (scale(DSS) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m505 <- lmer(scale(easy) ~ scale(CESD) + scale(indegree) + (scale(CESD) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m506 <- lmer(scale(easy) ~ scale(SHS) + scale(indegree) + (scale(SHS) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m507 <- lmer(scale(easy) ~ scale(Ref_mean) + scale(indegree) + (scale(Ref_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m508 <- lmer(scale(easy) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+
+tab_model(m50, m502, m503, m504, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+tab_model(m505, m506, m507, m508, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+#tab_model(m5)
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m60 <- lmer(scale(agency) ~ scale(RSE) + scale(indegree) + (scale(RSE) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m602 <- lmer(scale(agency) ~ scale(NFC) + scale(indegree) + (scale(NFC) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m603 <- lmer(scale(agency) ~ scale(SCC) + scale(indegree) + (scale(SCC) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m604 <- lmer(scale(agency) ~ scale(DSS) + scale(indegree) + (scale(DSS) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m605 <- lmer(scale(agency) ~ scale(CESD) + scale(indegree) + (scale(CESD) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m606 <- lmer(scale(agency) ~ scale(SHS) + scale(indegree) + (scale(SHS) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m607 <- lmer(scale(agency) ~ scale(Ref_mean) + scale(indegree) + (scale(Ref_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m608 <- lmer(scale(agency) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+
+tab_model(m60, m602, m603, m604, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+tab_model(m605, m606, m607, m608, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+#tab_model(m6)
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m70 <- lmer(scale(change) ~ scale(RSE) + scale(indegree) + (scale(RSE) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m702 <- lmer(scale(change) ~ scale(NFC) + scale(indegree) + (scale(NFC) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m703 <- lmer(scale(change) ~ scale(SCC) + scale(indegree) + (scale(SCC) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m703)
+
+m704 <- lmer(scale(change) ~ scale(DSS) + scale(indegree) + (scale(DSS) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m705 <- lmer(scale(change) ~ scale(CESD) + scale(indegree) + (scale(CESD) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m706 <- lmer(scale(change) ~ scale(SHS) + scale(indegree) + (scale(SHS) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m707 <- lmer(scale(change) ~ scale(Ref_mean) + scale(indegree) + (scale(Ref_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m708 <- lmer(scale(change) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m708)
+
+tab_model(m70, m702, m703, m704, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+tab_model(m705, m706, m707, m708, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+
+#tab_model(m7)
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+
+m80 <- lmer(scale(recency_sum) ~ scale(RSE) + scale(indegree) + (scale(RSE) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m802 <- lmer(scale(recency_sum) ~ scale(NFC) + scale(indegree) + (scale(NFC) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m803 <- lmer(scale(recency_sum) ~ scale(SCC) + scale(indegree) + (scale(SCC) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m804 <- lmer(scale(recency_sum) ~ scale(DSS) + scale(indegree) + (scale(DSS) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m805 <- lmer(scale(recency_sum) ~ scale(CESD) + scale(indegree) + (scale(CESD) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m806 <- lmer(scale(recency_sum) ~ scale(SHS) + scale(indegree) + (scale(SHS) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m807 <- lmer(scale(recency_sum) ~ scale(Ref_mean) + scale(indegree) + (scale(Ref_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+m808 <- lmer(scale(recency_sum) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m808)
+
+tab_model(m80, m802, m803, m804, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+tab_model(m805, m806, m807, m808, 
+          show.p = TRUE,  # Show p-values
+          #show.ci = TRUE, # Show confidence intervals
+          show.se = TRUE, # Show standard errors
+          title = "Combined Mixed-Effects Model Results")
+
+#tab_model(m8)
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+
+
+
+
+```{r}
+# Define the function to fit lmer models with two regressors, interaction term, and random effects
+calculate_lmer_models_interaction <- function(data, models_info, random_effect) {
+  results <- list()  # Initialize an empty list to store model results
+  
+  # Function to format p-values with asterisks
+  format_p_value <- function(p) {
+    if (p < 0.001) {
+      return(paste0(format(round(p, 3), scientific = FALSE), "***"))
+    } else if (p < 0.01) {
+      return(paste0(format(round(p, 3), scientific = FALSE), "**"))
+    } else if (p < 0.05) {
+      return(paste0(format(round(p, 3), scientific = FALSE), "*"))
+    } else {
+      return(format(round(p, 3), scientific = FALSE))
+    }
+  }
+  
+  # Loop over each model specification
+  for (i in 1:nrow(models_info)) {
+    outcome <- models_info[i, 1]   # Outcome variable
+    regressor1 <- models_info[i, 2] # First regressor
+    regressor2 <- models_info[i, 3] # Second regressor
+    interaction_term <- paste(regressor1, "*", regressor2) # Interaction term
+    
+    # Scale the predictors within the data
+    data[[regressor1]] <- scale(data[[regressor1]])
+    data[[regressor2]] <- scale(data[[regressor2]])
+    
+    # Construct the formula for lmer
+    formula <- as.formula(paste(outcome, "~", regressor1, "+", regressor2, "+", 
+                                interaction_term, "+ (1 +", random_slope_predictor, "|", random_effect, ")"))
+    
+    # Fit the lmer model
+    model <- lmer(formula, data = data)
+    
+    # Use broom.mixed::tidy() to extract the model statistics
+    model_summary <- tidy(model, effects = "fixed", conf.int = TRUE)
+    
+    # Add the model specification to the summary
+    model_summary <- model_summary %>%
+      mutate(Outcome = outcome, Predictor1 = regressor1, Predictor2 = regressor2) %>%
+      mutate(p.value = sapply(p.value, format_p_value)) %>%
+      select(Outcome, Predictor1, Predictor2, term, estimate, std.error, conf.low, conf.high, p.value)
+    
+    # Store the results in the list
+    results[[i]] <- model_summary
+  }
+  
+  # Combine all model summaries into a single dataframe
+  results_df <- bind_rows(results)
+  
+  return(results_df)
+}
+```
+
+# Outdegree multiple regression visualization
+```{r}
+# Define the outcome and predictors (two regressors and interaction term) for the models
+models_info <- data.frame(
+  Outcome = c("transformativeness", "valRate", "importance","clear","easy","agency","change","recency_sum"),
+  Regressor1 = c("RSE","NFC","SCC","DSS","CESD","SHS","Ref_mean","Rum_mean"),
+  Regressor2 = c("outdegree") # Here it's Days vs Days, but can be different variables
+)
+
+# Specify the random effect (grouping variable)
+random_effect <- "loginID"
+random_slope_predictor <- "outdegree"
+
+# Fit the lmer models and extract summary statistics
+lmer_results_interaction <- calculate_lmer_models_interaction(all, models_info, random_effect)
+
+# View the results
+print(lmer_results_interaction)
+
+kable(lmer_results_interaction)
+
+# Create a styled table with kableExtra
+kable(lmer_results_interaction, caption = "Ind. Differences and Outdegree Predicting Memory Ratings") %>%
+  kable_styling(full_width = FALSE, position = "center") %>%
+  column_spec(1, bold = TRUE) %>%
+  column_spec(2:4, color = "blue")
+```
+
+
+# Predicting memory RATINGS from indegree x individual differences
+```{r}
+m1 <- lmer(scale(transformativeness) ~ scale(Ref_mean) + scale(indegree) + (scale(Ref_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m1)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m2 <- lmer(scale(valRate) ~ scale(RSE) + scale(indegree) + (scale(RSE) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m2)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m3 <- lmer(scale(importance) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m3)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m4 <- lmer(scale(clear) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m4)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m5 <- lmer(scale(easy) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m5)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m6 <- lmer(scale(agency) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m6)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m7 <- lmer(scale(change) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m7)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+```{r}
+m8 <- lmer(scale(recency_sum) ~ scale(Rum_mean) + scale(indegree) + (scale(Rum_mean) * scale(indegree)) + (scale(indegree) | loginID), data=all)
+tab_model(m8)
+
+#tbl_regression(m1) %>% as_gt()
+#summary(m1)
+```
+
+
+##############################################################################
+##############################################################################
+##############################################################################
+
+
+##  Predicting individual differences from network density
+
+```{r}
+# Remove subj2 - lack of density values? N = 46 (excluding 22 and 2 from centrality analyses)
+data <- data[data$loginID != 2, ]
+
+# dens <- read_csv("densityDf.csv")
+# dens <- dens[ ,-c(1,2)]
+
+# dense <- dense[-c(1:23), , drop = FALSE]
+
+#denseModel <- cbind(iDiffs,dens)
+#denseModel<- denseModel[!duplicated(denseModel$loginID), ]
+```
+```{r}
+# Define the function to calculate correlations using cor.test
+calculate_correlations_cortest <- function(data, var_pairs) {
+  results <- list()  # Initialize an empty list to store correlation results
+  
+  # Loop over each pair of variables
+  for (i in 1:nrow(var_pairs)) {
+    var1 <- var_pairs[i, 1]
+    var2 <- var_pairs[i, 2]
+    
+    # Calculate correlation using cor.test
+    cor_test <- cor.test(data[[var1]], data[[var2]])
+    
+    # Extract correlation value, p-value, and confidence intervals
+    cor_value <- cor_test$estimate
+    p_value <- cor_test$p.value
+    ci_lower <- cor_test$conf.int[1]
+    ci_upper <- cor_test$conf.int[2]
+    
+    # Store results in a list
+    results[[i]] <- data.frame(
+      Variable1 = var1,
+      Variable2 = var2,
+      Correlation = round(cor_value, 3),
+      P_value = round(p_value, 3),
+      CI_Lower = round(ci_lower, 3),
+      CI_Upper = round(ci_upper, 3)
+    )
+  }
+  
+  # Combine results into a single dataframe
+  results_df <- bind_rows(results)
+  
+  return(results_df)
+}
+```
+
+
+```{r}
+# Does centrality predict RSE?
+#RSE_dens <-lmer( scale(RSE) ~ scale(dense) + ( scale(dense) | loginID), data=data)
+
+#m10 <-lm( scale(transformativeness) ~ scale(RSE) + scale(dense) + (scale(CESD) + scale(dense)), data=all)
+
+m10 <- cor.test(scale(all$dense),scale(all$RSE),method = "pearson") ##
+tab_model(m10)
+
+m11 <- cor.test(scale(all$dense),scale(all$NFC),method = "pearson")
+tab_model(m11)
+
+m12 <- cor.test(scale(all$dense),scale(all$SCC),method = "pearson")
+tab_model(m12)
+
+m13 <- cor.test(scale(all$dense),scale(all$DSS),method = "pearson") ##
+tab_model(m13)
+
+m14 <- cor.test(scale(all$dense),scale(all$CESD),method = "pearson") ##
+tab_model(m14)
+
+m15 <- cor.test(scale(all$dense),scale(all$SHS),method = "pearson") ##
+tab_model(m15)
+
+m16 <- cor.test(scale(all$dense),scale(all$Ref_mean),method = "pearson")
+tab_model(m16)
+
+m17 <- cor.test(scale(all$dense),scale(all$Rum_mean),method = "pearson") ##
+tab_model(m17)
+
+var_pairs <- data.frame(
+  Density = c("dense"),
+  IndDiff = c("RSE", "NFC", "SCC","DSS","CESD","SHS","Ref_mean","Rum_mean")
+)
+
+correlation_results <- calculate_correlations_cortest(all,var_pairs)
+print(correlation_results)
+
+#library(knitr)
+ 
+# kable(correlation_results, 
+#       caption = "Correlation Results with Confidence Intervals",
+#       )
+
+kable(correlation_results, caption = "Correlations between network density and individual differences measures") %>%
+  kable_styling(full_width = FALSE, position = "center") %>%
+  column_spec(1, bold = TRUE) %>%
+  column_spec(2:4, color = "blue")
+
+#report(m10)
+#tab_model(m10)
+```
+
+# Memory Maps Extension Power Analysis
+```{r}
+if (!require("devtools")) {
+  install.packages("devtools", dependencies = TRUE)}
+
+devtools::install_github("DejanDraschkow/mixedpower")
+library(mixedpower)
+
+all <- all %>%
+  mutate(RSE_scaled = scale(RSE, center = TRUE, scale = TRUE))
+##############################################################################
+# Model 1 - outdegree and self-esteem on personal importance
+
+#Fill in NAs for self-esteem using mean imputation
+all$RSE_scaled[is.na(all$RSE_scaled)] <- mean(all$RSE_scaled, na.rm = TRUE)
+
+# Base power analysis on self-esteem x transformativeness / personal importance finding from SYP
+# model1 <- lmer(importance ~ outdegree_scaled * RSE + (outdegree_scaled | loginID), data = all)
+model1_simple <- lmer(importance ~ outdegree_scaled * RSE_scaled + (outdegree_scaled | loginID), data = all)
+summary(model1_simple)
+df1 <- summary(model1)$coefficients[, "df"]
+
+# Critical t-value for outdegree effects on personal importance
+qt(p = 0.01, df = 42) # -2.41847 = -2.42
+
+# Critical t-value for RSE effects on personal importance
+qt(p = 0.01, df = 33) # -2.444794 = -2.44
+
+# Critical t-value for interaction effects on personal importance
+qt(p = 0.01, df = 44) # -2.414134 = -2.41
+
+# Average of these critical t-values are -2.42
+
+##############################################################################
+
+model <- model1_simple # which model do we want to simulate power for?
+data <- all # data used to fit the model
+# fixed_effects <- c("outdegree", "RSE") # all fixed effects specified
+fixed_effects <- c("outdegree_scaled","RSE_scaled")
+simvar <- "loginID" # which random effect do we want to vary in the simulation?
+steps <- c(80, 100, 120, 140) # which sample sizes do we want to look at?
+critical_value <- 2.42 # which t/z value do we want to use to test for significance?
+n_sim <- 1000 # how many single simulations should be used to estimate power?
+
+# library(simr)
+# power_model1_ext <- extend(model1_simple, along="loginID", n = 80) #extend data set to include 60 participants
+# 
+# powerC_model1 <- powerCurve(fit = power_model1, test = fixed(c("outdegree_scaled","RSE_scaled")), along = "loginID",
+#                       breaks = c(60, 80, 100, 120))
+# print(powerC_model1)
+
+power_model1 <- mixedpower(model1_simple, data,fixed_effects,
+                        simvar, steps,
+                        critical_value, n_sim)
+power_model1
+multiplotPower(power_model1, ppi = 300, filename = "power.png")
+
+##############################################################################
+# Model 2 - outdegree and self-esteem on transformativeness
+
+model2_simple <- lmer(transformativeness ~ outdegree_scaled * RSE + (outdegree_scaled | loginID), data = all)
+summary(model2_simple)
+df2 <- summary(model2_simple)$coefficients[, "df"]
+
+# Same critical t-values as before 
+
+model <- model2_simple # which model do we want to simulate power for?
+data <- all # data used to fit the model
+# fixed_effects <- c("outdegree", "RSE") # all fixed effects specified in FLPmodel
+fixed_effects <- c("outdegree")
+simvar <- "loginID" # which random effect do we want to vary in the simulation?
+steps <- c(80, 100, 120, 140) # which sample sizes do we want to look at?
+critical_value <- 2.42 # which t/z value do we want to use to test for significance?
+n_sim <- 1000 # how many single simulations should be used to estimate power?
+
+power_model1 <- mixedpower(model, data,fixed_effects,
+                        simvar, steps,
+                        critical_value, n_sim)
+power_model1
+multiplotPower(power_model1, ppi = 300, filename = "power.png")
+```
+
